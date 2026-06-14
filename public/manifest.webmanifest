@@ -1,0 +1,17 @@
+{
+  "name": "HERBZ",
+  "short_name": "HERBZ",
+  "description": "Chinese medicine formula and herb reference.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f8f0df",
+  "theme_color": "#20211f",
+  "icons": [
+    {
+      "src": "icon",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
