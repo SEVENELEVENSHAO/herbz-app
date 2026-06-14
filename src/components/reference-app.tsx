@@ -362,7 +362,10 @@ export function ReferenceApp({ data }: { data: ReferenceData }) {
       queueMicrotask(() => setBookmarks(migrated));
       localStorage.setItem("herbz-bookmarks", JSON.stringify(migrated));
     }
-    if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js");
+    if ("serviceWorker" in navigator) {
+      const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+      navigator.serviceWorker.register(`${basePath}/sw.js`);
+    }
   }, [data.formulas]);
 
   useEffect(() => {

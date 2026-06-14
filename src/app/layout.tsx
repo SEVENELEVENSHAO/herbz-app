@@ -9,10 +9,12 @@ const sans = Noto_Sans_SC({
   weight: ["400", "500", "600", "700"],
 });
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export const metadata: Metadata = {
   title: "HERBZ | Formula & Herb Reference",
   description: "A private bilingual Chinese medicine formula and herb reference.",
-  manifest: "/manifest.webmanifest",
+  manifest: `${basePath}/manifest.webmanifest`,
   appleWebApp: { capable: true, title: "HERBZ", statusBarStyle: "default" },
 };
 

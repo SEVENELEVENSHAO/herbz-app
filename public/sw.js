@@ -1,8 +1,9 @@
 const CACHE = "herbz-shell-v1";
-const SHELL = ["/", "/manifest.webmanifest"];
 
 self.addEventListener("install", (event) => {
-  event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(SHELL)));
+  const scope = self.registration.scope;
+  const shell = [scope, new URL("manifest.webmanifest", scope).href];
+  event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(shell)));
   self.skipWaiting();
 });
 
