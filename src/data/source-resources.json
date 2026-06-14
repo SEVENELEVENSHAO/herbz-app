@@ -1,0 +1,39 @@
+{
+  "resources": [
+    {
+      "id": "fang-ji-xue",
+      "title": "方剂学",
+      "englishTitle": "Formula Study",
+      "fileName": "[OCR]_方剂学_20260605_1006.text.pdf",
+      "sourceRole": "Primary formula reference for compositions, dosages, actions, indications, contraindications, and modifications."
+    },
+    {
+      "id": "zhong-yao-xue",
+      "title": "中药学",
+      "englishTitle": "Chinese Materia Medica",
+      "fileName": "[OCR]_中药学_20260313_0030.text.pdf",
+      "sourceRole": "Herb-level reference for names, properties, channels entered, functions, indications, dosage ranges, and cautions."
+    },
+    {
+      "id": "zhong-yao-yao-li-xue",
+      "title": "中药药理学",
+      "englishTitle": "Chinese Herbal Pharmacology",
+      "fileName": "[OCR]_中药药理学_20260312_2342.text.pdf",
+      "sourceRole": "Pharmacology reference for modern actions, safety notes, and herb/formula mechanism support."
+    },
+    {
+      "id": "american-dragon",
+      "title": "American Dragon",
+      "englishTitle": "American Dragon Chinese Herbs and Formulas",
+      "fileName": "https://www.americandragon.com/HerbFormulaIndex2.html",
+      "sourceRole": "Preferred English terminology cross-check for formula names, herb names, actions, syndromes, manifestations, dosages, and modifications."
+    },
+    {
+      "id": "bensky-materia-medica-3e",
+      "title": "Chinese Herbal Medicine",
+      "englishTitle": "Chinese Herbal Medicine: Materia Medica, 3rd Edition",
+      "fileName": "[OCR]_Chinese Herbal Medicine_20260612_0216.text.pdf",
+      "sourceRole": "English herb monographs for pharmaceutical names, properties, channels, dosage, cautions, actions, commentary, combinations, comparisons, and preparation."
+    }
+  ]
+}

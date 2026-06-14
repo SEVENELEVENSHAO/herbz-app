@@ -1,0 +1,2033 @@
+{
+  "summary": {
+    "sourceId": "fang-ji-xue",
+    "sourceFile": "[OCR]_方剂学_20260605_1006.text.pdf",
+    "verification": "pending",
+    "extractedCandidates": 210,
+    "rejectedHeadings": 10,
+    "importedSourceVariants": 200,
+    "aliasVariants": 6,
+    "expectedNewCanonicalFormulas": 115,
+    "unresolvedIngredientEntries": 192
+  },
+  "rejected": [
+    {
+      "chineseName": "第三节扶正解表剂",
+      "reason": "section-heading",
+      "pages": [
+        61
+      ]
+    },
+    {
+      "chineseName": "第三节润下剂",
+      "reason": "section-heading",
+      "pages": [
+        73
+      ]
+    },
+    {
+      "chineseName": "第一节祛暑解表剂",
+      "reason": "section-heading",
+      "pages": [
+        112
+      ]
+    },
+    {
+      "chineseName": "第三节气血双补剂",
+      "reason": "section-heading",
+      "pages": [
+        149
+      ]
+    },
+    {
+      "chineseName": "第四节补阴剂",
+      "reason": "section-heading",
+      "pages": [
+        151
+      ]
+    },
+    {
+      "chineseName": "第六节阴阳并补剂",
+      "reason": "section-heading",
+      "pages": [
+        160
+      ]
+    },
+    {
+      "chineseName": "第三节涩肠固脱剂",
+      "reason": "section-heading",
+      "pages": [
+        168
+      ]
+    },
+    {
+      "chineseName": "第二节温开剂",
+      "reason": "section-heading",
+      "pages": [
+        193
+      ]
+    },
+    {
+      "chineseName": "第一节電行气剂",
+      "reason": "section-heading",
+      "pages": [
+        197
+      ]
+    },
+    {
+      "chineseName": "第五节祛湿化浊剂",
+      "reason": "section-heading",
+      "pages": [
+        274
+      ]
+    }
+  ],
+  "aliases": [
+    {
+      "sourceName": "加减葳蔻汤",
+      "canonicalName": "加减葳蕤汤"
+    },
+    {
+      "sourceName": "葛根黄芩黄连汤",
+      "canonicalName": "葛根芩连汤"
+    },
+    {
+      "sourceName": "参苓自术散",
+      "canonicalName": "参苓白术散"
+    },
+    {
+      "sourceName": "实脾散",
+      "canonicalName": "实脾饮"
+    },
+    {
+      "sourceName": "清气化痰丸",
+      "canonicalName": "清气化痰汤"
+    },
+    {
+      "sourceName": "苇茎汤",
+      "canonicalName": "千金苇茎汤"
+    }
+  ],
+  "unresolved": [
+    {
+      "formulaId": "da-qing-long-tang-textbook-dfbb11e0",
+      "chineseName": "大青龙汤",
+      "pages": [
+        47
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "gui-zhi-tang-textbook-a6093ef3",
+      "chineseName": "桂枝汤",
+      "pages": [
+        48
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "jiu-wei-qiang-huo-tang-textbook-b6748335",
+      "chineseName": "九味羌活汤",
+      "pages": [
+        50
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 9,
+      "unmatchedCompositionText": "香原著本方无用量"
+    },
+    {
+      "formulaId": "xiang-su-san-textbook-62b5aff6",
+      "chineseName": "香苏散",
+      "pages": [
+        52
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 4,
+      "unmatchedCompositionText": "子香各不"
+    },
+    {
+      "formulaId": "zhi-sou-san-textbook-7ce3aa4f",
+      "chineseName": "止嗽散",
+      "pages": [
+        54
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 5,
+      "unmatchedCompositionText": "紫菀百部白前各用法上为末每服开水调下食后临卧服初感风寒汤调下现代用法作汤剂水煎服"
+    },
+    {
+      "formulaId": "yin-qiao-san-textbook-7650c619",
+      "chineseName": "银翘散",
+      "pages": [
+        55
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "chai-ge-jie-ji-tang-textbook-b77dc304",
+      "chineseName": "柴葛解肌汤",
+      "pages": [
+        58
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "sheng-ma-ge-gen-tang-textbook-79841cf1",
+      "chineseName": "升麻葛根汤",
+      "pages": [
+        59
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 3,
+      "unmatchedCompositionText": "白药药各"
+    },
+    {
+      "formulaId": "cong-gu-jie-geng-tang-textbook-7302d654",
+      "chineseName": "葱鼓桔梗汤",
+      "pages": [
+        61
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 7,
+      "unmatchedCompositionText": "鲜至至钱半焦山至至苏至钱半青钱半至至鲜用法水煎服现代用法水煎服"
+    },
+    {
+      "formulaId": "can-su-yin-textbook-95eacdcb",
+      "chineseName": "参苏饮",
+      "pages": [
+        62
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 5,
+      "unmatchedCompositionText": "积壳去飄麸灸各紫苏用叶"
+    },
+    {
+      "formulaId": "zai-zao-san-textbook-e740b4d8",
+      "chineseName": "再造散",
+      "pages": [
+        63
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "ma-huang-xi-xin-fu-zi-tang-textbook-e001df64",
+      "chineseName": "麻黄细辛附子汤",
+      "pages": [
+        64
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "jia-jian-wei-kou-tang-textbook-27f2a583",
+      "chineseName": "加减葳蔻汤",
+      "pages": [
+        65
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "cong-bai-qi-wei-yin-textbook-2439748b",
+      "chineseName": "葱白七味饮",
+      "pages": [
+        65
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 3,
+      "unmatchedCompositionText": "连须干葛新豉生麦门冬"
+    },
+    {
+      "formulaId": "da-cheng-qi-tang-textbook-bccd669e",
+      "chineseName": "大承气汤",
+      "pages": [
+        67
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 3,
+      "unmatchedCompositionText": "酒积实"
+    },
+    {
+      "formulaId": "da-xian-xiong-tang-textbook-1a8c758e",
+      "chineseName": "大陷胸汤",
+      "pages": [
+        69
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 3,
+      "unmatchedCompositionText": "匕"
+    },
+    {
+      "formulaId": "da-huang-fu-zi-tang-textbook-279eb504",
+      "chineseName": "大黄附子汤",
+      "pages": [
+        71
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 3,
+      "unmatchedCompositionText": "下篇各论第二章泻下剂"
+    },
+    {
+      "formulaId": "wen-pi-tang-textbook-aa28dc81",
+      "chineseName": "温脾汤",
+      "pages": [
+        71
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 7,
+      "unmatchedCompositionText": "各各"
+    },
+    {
+      "formulaId": "san-wu-bei-ji-wan-textbook-064251f0",
+      "chineseName": "三物备急丸",
+      "pages": [
+        72
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 2,
+      "unmatchedCompositionText": "巴豆心外如脂"
+    },
+    {
+      "formulaId": "wu-ren-wan-textbook-0ec98d81",
+      "chineseName": "五仁丸",
+      "pages": [
+        74
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 4,
+      "unmatchedCompositionText": "麸各松子仁半郁李仁另末"
+    },
+    {
+      "formulaId": "ji-chuan-jian-textbook-0aff8a87",
+      "chineseName": "济川煎",
+      "pages": [
+        75
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "shi-zao-tang-textbook-37c4e584",
+      "chineseName": "十枣汤",
+      "pages": [
+        76
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 2,
+      "unmatchedCompositionText": "芜花各等分"
+    },
+    {
+      "formulaId": "yu-gong-san-textbook-77c2e6cf",
+      "chineseName": "禹功散",
+      "pages": [
+        77
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 1,
+      "unmatchedCompositionText": "黑牵牛头末茴香或加"
+    },
+    {
+      "formulaId": "huang-long-tang-textbook-9b733309",
+      "chineseName": "黄龙汤",
+      "pages": [
+        78
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "zeng-ye-cheng-qi-tang-textbook-f328a717",
+      "chineseName": "增液承气汤",
+      "pages": [
+        79
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "xiao-chai-hu-tang-textbook-cddc8fbb",
+      "chineseName": "小柴胡汤",
+      "pages": [
+        81
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 6,
+      "unmatchedCompositionText": "黄苓擎"
+    },
+    {
+      "formulaId": "hao-qin-qing-dan-tang-textbook-c7602be2",
+      "chineseName": "蒿芩清胆汤",
+      "pages": [
+        83
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "da-yuan-yin-textbook-f0d1a097",
+      "chineseName": "达原饮",
+      "pages": [
+        84
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 6,
+      "unmatchedCompositionText": "仁苟药"
+    },
+    {
+      "formulaId": "si-ni-san-textbook-5df801e7",
+      "chineseName": "四逆散",
+      "pages": [
+        85
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 3,
+      "unmatchedCompositionText": "灸积实破水渍灸干各"
+    },
+    {
+      "formulaId": "xiao-yao-san-textbook-8f3a048d",
+      "chineseName": "逍遥散",
+      "pages": [
+        86
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 6,
+      "unmatchedCompositionText": "微灸赤锉微白者白者各"
+    },
+    {
+      "formulaId": "tong-xie-yao-fang-textbook-0d49382a",
+      "chineseName": "痛泻要方",
+      "pages": [
+        87
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 4,
+      "unmatchedCompositionText": "两半"
+    },
+    {
+      "formulaId": "ban-xia-xie-xin-tang-textbook-495b46cb",
+      "chineseName": "半夏泻心汤",
+      "pages": [
+        88
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "bai-hu-tang-textbook-22e365c6",
+      "chineseName": "白虎汤",
+      "pages": [
+        90
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 3,
+      "unmatchedCompositionText": "鞭米"
+    },
+    {
+      "formulaId": "zhu-ye-shi-gao-tang-textbook-7a62c682",
+      "chineseName": "竹叶石膏汤",
+      "pages": [
+        92
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 5,
+      "unmatchedCompositionText": "二把麦门冬鞭米"
+    },
+    {
+      "formulaId": "qing-ying-tang-textbook-9a13a394",
+      "chineseName": "清营汤",
+      "pages": [
+        93
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 7,
+      "unmatchedCompositionText": "元参银花连心用"
+    },
+    {
+      "formulaId": "xi-jiao-di-huang-tang-textbook-ff00504e",
+      "chineseName": "犀角地黄汤",
+      "pages": [
+        94
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "huang-lian-jie-du-tang-textbook-e313b507",
+      "chineseName": "黄连解毒汤",
+      "pages": [
+        95
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "liang-ge-san-textbook-bc12b5f1",
+      "chineseName": "凉隔散",
+      "pages": [
+        96
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 5,
+      "unmatchedCompositionText": "川燃各山子仁叶去梗黄苓各半"
+    },
+    {
+      "formulaId": "qing-wen-bai-du-yin-textbook-d7e74561",
+      "chineseName": "清瘟败毒饮",
+      "pages": [
+        98
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 9,
+      "unmatchedCompositionText": "生大剂至中剂至小剂至小生地大剂至中剂至小剂至乌水牛角代大剂至中剂至小剂至真川连大剂至中剂至小剂至钱半生子赤药丹皮以上十味原著本方无用量"
+    },
+    {
+      "formulaId": "dao-chi-san-textbook-40c468ac",
+      "chineseName": "导赤散",
+      "pages": [
+        100
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 3,
+      "unmatchedCompositionText": "各等分"
+    },
+    {
+      "formulaId": "long-dan-xie-gan-tang-textbook-14611c8c",
+      "chineseName": "龙胆泻肝汤",
+      "pages": [
+        101
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "zuo-jin-wan-textbook-b32cb095",
+      "chineseName": "左金丸",
+      "pages": [
+        102
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 1,
+      "unmatchedCompositionText": "吴茱英"
+    },
+    {
+      "formulaId": "xie-bai-san-textbook-a9379cf8",
+      "chineseName": "泻白散",
+      "pages": [
+        103
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 3,
+      "unmatchedCompositionText": "去土焙细锉黄各"
+    },
+    {
+      "formulaId": "qing-wei-san-textbook-80486fdc",
+      "chineseName": "清胃散",
+      "pages": [
+        104
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 6,
+      "unmatchedCompositionText": "真各栋净夏月倍之大抵临时增减无定"
+    },
+    {
+      "formulaId": "yu-nu-jian-textbook-3cc68241",
+      "chineseName": "玉女煎",
+      "pages": [
+        105
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 4,
+      "unmatchedCompositionText": "三至熟地三至或各半"
+    },
+    {
+      "formulaId": "shao-yao-tang-textbook-c296d2b2",
+      "chineseName": "芍药汤",
+      "pages": [
+        106
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "bai-tou-weng-tang-textbook-a695b4e8",
+      "chineseName": "白头翁汤",
+      "pages": [
+        107
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 4,
+      "unmatchedCompositionText": "用法上药四味以水煮取去淬温服不愈更服现代用法水煎服"
+    },
+    {
+      "formulaId": "qing-hao-bie-jia-tang-textbook-8040335f",
+      "chineseName": "青蒿鳖甲汤",
+      "pages": [
+        108
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 4,
+      "unmatchedCompositionText": "丹皮"
+    },
+    {
+      "formulaId": "qing-gu-san-textbook-66c0fa49",
+      "chineseName": "清骨散",
+      "pages": [
+        109
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 7,
+      "unmatchedCompositionText": "银胡秦艺醋各"
+    },
+    {
+      "formulaId": "dang-gui-liu-huang-tang-textbook-5412904a",
+      "chineseName": "当归六黄汤",
+      "pages": [
+        110
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 7,
+      "unmatchedCompositionText": "各等分加一倍"
+    },
+    {
+      "formulaId": "qing-luo-yin-textbook-d54b7080",
+      "chineseName": "清络饮",
+      "pages": [
+        113
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 2,
+      "unmatchedCompositionText": "鲜边鲜银花西瓜翠衣丝瓜皮鲜各鲜扁豆花一枝"
+    },
+    {
+      "formulaId": "gui-ling-gan-lu-san-textbook-32ab4ea1",
+      "chineseName": "桂苓甘露散",
+      "pages": [
+        115
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 10,
+      "unmatchedCompositionText": "一方不用"
+    },
+    {
+      "formulaId": "qing-shu-yi-qi-tang-textbook-1c256850",
+      "chineseName": "清暑益气汤",
+      "pages": [
+        116
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 5,
+      "unmatchedCompositionText": "西洋参石斛荷梗梗米西瓜翠衣原著本方无用量"
+    },
+    {
+      "formulaId": "li-zhong-wan-textbook-00258eea",
+      "chineseName": "理中丸",
+      "pages": [
+        118
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 3,
+      "unmatchedCompositionText": "千姜各"
+    },
+    {
+      "formulaId": "xiao-jian-zhong-tang-textbook-b3ad29c6",
+      "chineseName": "小建中汤",
+      "pages": [
+        120
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 5,
+      "unmatchedCompositionText": "摩胶饸"
+    },
+    {
+      "formulaId": "wu-zhu-yu-tang-textbook-6418a2a8",
+      "chineseName": "吴茱萸汤",
+      "pages": [
+        121
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 4,
+      "unmatchedCompositionText": "撃"
+    },
+    {
+      "formulaId": "da-jian-zhong-tang-textbook-49389d97",
+      "chineseName": "大建中汤",
+      "pages": [
+        122
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 2,
+      "unmatchedCompositionText": "蜀椒去汗"
+    },
+    {
+      "formulaId": "si-ni-tang-textbook-e58609f9",
+      "chineseName": "四逆汤",
+      "pages": [
+        123
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 3,
+      "unmatchedCompositionText": "半生用破"
+    },
+    {
+      "formulaId": "hui-yang-jiu-ji-tang-textbook-1325f2a5",
+      "chineseName": "回阳救急汤",
+      "pages": [
+        125
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 10,
+      "unmatchedCompositionText": "熟制原著本方无用量"
+    },
+    {
+      "formulaId": "dang-gui-si-ni-tang-textbook-a6b77016",
+      "chineseName": "当归四逆汤",
+      "pages": [
+        126
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 7,
+      "unmatchedCompositionText": "擎"
+    },
+    {
+      "formulaId": "huang-qi-gui-zhi-wu-wu-tang-textbook-c0c6b9bf",
+      "chineseName": "黄芪桂枝五物汤",
+      "pages": [
+        127
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "nuan-gan-jian-textbook-9a8dfd94",
+      "chineseName": "暖肝煎",
+      "pages": [
+        128
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 8,
+      "unmatchedCompositionText": "或亦可"
+    },
+    {
+      "formulaId": "ge-gen-huang-qin-huang-lian-tang-textbook-f9ba1dc9",
+      "chineseName": "葛根黄芩黄连汤",
+      "pages": [
+        130
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 3,
+      "unmatchedCompositionText": "黄苓"
+    },
+    {
+      "formulaId": "wu-ji-san-textbook-ce4eb413",
+      "chineseName": "五积散",
+      "pages": [
+        131
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "da-chai-hu-tang-textbook-5e05bc83",
+      "chineseName": "大柴胡汤",
+      "pages": [
+        132
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 7,
+      "unmatchedCompositionText": "积实"
+    },
+    {
+      "formulaId": "fang-feng-tong-sheng-san-textbook-0e157203",
+      "chineseName": "防风通圣散",
+      "pages": [
+        133
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 15,
+      "unmatchedCompositionText": "叶各黄苓各子各"
+    },
+    {
+      "formulaId": "si-jun-zi-tang-textbook-a8552701",
+      "chineseName": "四君子汤",
+      "pages": [
+        137
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 4,
+      "unmatchedCompositionText": "各等分"
+    },
+    {
+      "formulaId": "can-ling-zi-shu-san-textbook-d00016cc",
+      "chineseName": "参苓自术散",
+      "pages": [
+        138
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 10,
+      "unmatchedCompositionText": "肉缩令深黄色姜汁浸微半白"
+    },
+    {
+      "formulaId": "bu-zhong-yi-qi-tang-textbook-76b889dc",
+      "chineseName": "补中益气汤",
+      "pages": [
+        140
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 8,
+      "unmatchedCompositionText": "病甚劳役热甚者酒焙干或晒干不或或或"
+    },
+    {
+      "formulaId": "yu-ping-feng-san-textbook-6926a85d",
+      "chineseName": "玉屏风散",
+      "pages": [
+        142
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 3,
+      "unmatchedCompositionText": "蜜各"
+    },
+    {
+      "formulaId": "sheng-mai-san-textbook-8cc219b3",
+      "chineseName": "生脉散",
+      "pages": [
+        143
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "si-wu-tang-textbook-da4d4d52",
+      "chineseName": "四物汤",
+      "pages": [
+        145
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "dang-gui-bu-xue-tang-textbook-65acf843",
+      "chineseName": "当归补血汤",
+      "pages": [
+        146
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 2,
+      "unmatchedCompositionText": "酒"
+    },
+    {
+      "formulaId": "gui-pi-tang-textbook-52aa5187",
+      "chineseName": "归脾汤",
+      "pages": [
+        148
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 12,
+      "unmatchedCompositionText": "去木去壳各各半蜜从内科摘要补人"
+    },
+    {
+      "formulaId": "tai-shan-pan-shi-san-textbook-968ffd0d",
+      "chineseName": "泰山磐石散",
+      "pages": [
+        150
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 10,
+      "unmatchedCompositionText": "药川糯米一撮黄苓"
+    },
+    {
+      "formulaId": "zuo-gui-wan-textbook-808ef0f9",
+      "chineseName": "左归丸",
+      "pages": [
+        153
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "yi-guan-jian-textbook-45fa0483",
+      "chineseName": "一贯煎",
+      "pages": [
+        155
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 5,
+      "unmatchedCompositionText": "川子原著本方无用量"
+    },
+    {
+      "formulaId": "yi-wei-tang-textbook-d426158a",
+      "chineseName": "益胃汤",
+      "pages": [
+        157
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 4,
+      "unmatchedCompositionText": "冰糖香"
+    },
+    {
+      "formulaId": "you-gui-wan-textbook-50d91039",
+      "chineseName": "右归丸",
+      "pages": [
+        159
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "qi-bao-mei-ran-dan-textbook-d0bde736",
+      "chineseName": "七宝美髯丹",
+      "pages": [
+        163
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 7,
+      "unmatchedCompositionText": "赤白米油水浸三四日瓷片刮用淘净黑豆以砂锅木铺豆及首乌重重铺盖之豆熟取出去豆曝干换豆再如此九次曝干为末各赤白末以水淘去筋膜及浮者取沉者捻块以人乳十碗浸匀晒干末各酒浸一日同第七次之至第九次止晒干酒浸晒酒浸晒丝子酒浸生芽烂晒以黑脂麻香"
+    },
+    {
+      "formulaId": "bu-tian-da-zao-wan-textbook-84ab77c6",
+      "chineseName": "补天大造丸",
+      "pages": [
+        164
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 12,
+      "unmatchedCompositionText": "蜜陈土各酒枣仁去壳水泡乳乳各酒大熟地酒晒各河车一具鹿角膏与鹿角同膏"
+    },
+    {
+      "formulaId": "mu-li-san-textbook-4ab2e76f",
+      "chineseName": "牡蛎散",
+      "pages": [
+        166
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 3,
+      "unmatchedCompositionText": "土根米油浸刷去土火通赤各"
+    },
+    {
+      "formulaId": "jiu-xian-san-textbook-2fe5bbc5",
+      "chineseName": "九仙散",
+      "pages": [
+        167
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 7,
+      "unmatchedCompositionText": "款冬花乌梅各去顶蜜黄"
+    },
+    {
+      "formulaId": "si-shen-wan-textbook-744e75c9",
+      "chineseName": "四神丸",
+      "pages": [
+        169
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 4,
+      "unmatchedCompositionText": "浸"
+    },
+    {
+      "formulaId": "tao-hua-tang-textbook-ffc8989b",
+      "chineseName": "桃花汤",
+      "pages": [
+        170
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "jin-suo-gu-jing-wan-textbook-cb5c3b34",
+      "chineseName": "金锁固精丸",
+      "pages": [
+        172
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 4,
+      "unmatchedCompositionText": "沙苑葵藜各酥盐水煮一日一夜缎粉各"
+    },
+    {
+      "formulaId": "sang-die-san-textbook-6fe51073",
+      "chineseName": "桑蝶散",
+      "pages": [
+        172
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 5,
+      "unmatchedCompositionText": "桑螺菖蒲龟甲酥以上各"
+    },
+    {
+      "formulaId": "gu-chong-tang-textbook-4f3e0dc2",
+      "chineseName": "固冲汤",
+      "pages": [
+        174
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 4,
+      "unmatchedCompositionText": "生熳捣细熳捣细黄肉去净核生杭芍海螺捣细茜草棕边炭五倍子轧细药汁送服"
+    },
+    {
+      "formulaId": "gu-jing-wan-textbook-224ec5e5",
+      "chineseName": "固经丸",
+      "pages": [
+        175
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 5,
+      "unmatchedCompositionText": "各椿树根皮半子半"
+    },
+    {
+      "formulaId": "yi-huang-tang-textbook-46ffa483",
+      "chineseName": "易黄汤",
+      "pages": [
+        176
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 5,
+      "unmatchedCompositionText": "盐水酒"
+    },
+    {
+      "formulaId": "zhu-sha-an-shen-wan-textbook-d4c263c6",
+      "chineseName": "朱砂安神丸",
+      "pages": [
+        178
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 5,
+      "unmatchedCompositionText": "另水飞为衣去须净酒"
+    },
+    {
+      "formulaId": "tian-wang-bu-xin-dan-textbook-25d6629d",
+      "chineseName": "天王补心丹",
+      "pages": [
+        182
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 10,
+      "unmatchedCompositionText": "各酒浸五味麦门冬天门冬各"
+    },
+    {
+      "formulaId": "gan-mai-da-zao-tang-textbook-58dfbf5c",
+      "chineseName": "甘麦大枣汤",
+      "pages": [
+        184
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 3,
+      "unmatchedCompositionText": "用法上三味以水煮取温分三服现代用法水煎服"
+    },
+    {
+      "formulaId": "yang-xin-tang-textbook-92cfb212",
+      "chineseName": "养心汤",
+      "pages": [
+        185
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 12,
+      "unmatchedCompositionText": "白各取肉姜汁淹焙辣桂浸隔纸香北各"
+    },
+    {
+      "formulaId": "jiao-tai-wan-textbook-9729d8ee",
+      "chineseName": "交泰丸",
+      "pages": [
+        186
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 2,
+      "unmatchedCompositionText": "川心"
+    },
+    {
+      "formulaId": "an-gong-niu-huang-wan-textbook-d8b0b1fc",
+      "chineseName": "安宫牛黄丸",
+      "pages": [
+        188
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 6,
+      "unmatchedCompositionText": "牛黄水牛角代梅片真珠山雄黄"
+    },
+    {
+      "formulaId": "zhi-bao-dan-textbook-c7fad360",
+      "chineseName": "至宝丹",
+      "pages": [
+        191
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 4,
+      "unmatchedCompositionText": "生乌犀水牛角代生雄黄各牛黄龙脑各半酒浸重阳煮令化滤去淳约取净金银箔各"
+    },
+    {
+      "formulaId": "bao-long-wan-textbook-17afc168",
+      "chineseName": "抱龙丸",
+      "pages": [
+        192
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 2,
+      "unmatchedCompositionText": "天竺黄雄黄水飞辰砂各别天腊月酿牛胆中阴干百日如无只将生者脐锉干用"
+    },
+    {
+      "formulaId": "chai-hu-shu-gan-san-textbook-765fbcd2",
+      "chineseName": "柴胡疏肝散",
+      "pages": [
+        198
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 6,
+      "unmatchedCompositionText": "醋各积壳麸各半半"
+    },
+    {
+      "formulaId": "jin-ling-zi-san-textbook-4b162344",
+      "chineseName": "金铃子散",
+      "pages": [
+        199
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 1,
+      "unmatchedCompositionText": "金铃子各"
+    },
+    {
+      "formulaId": "gua-wei-yan-bai-bai-jiu-tang-textbook-7d9a6393",
+      "chineseName": "瓜萎燕白白酒汤",
+      "pages": [
+        200
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 1,
+      "unmatchedCompositionText": "瓜萎实捣蕉白适量"
+    },
+    {
+      "formulaId": "ban-xia-hou-po-tang-textbook-10c6610c",
+      "chineseName": "半夏厚朴汤",
+      "pages": [
+        201
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "hou-po-wen-zhong-tang-textbook-4beda879",
+      "chineseName": "厚朴温中汤",
+      "pages": [
+        203
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "ju-he-wan-textbook-87560ab9",
+      "chineseName": "橘核丸",
+      "pages": [
+        205
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 8,
+      "unmatchedCompositionText": "橘核川子去肉麸各姜汁积实麸桂心各"
+    },
+    {
+      "formulaId": "su-zi-jiang-qi-tang-textbook-83d37809",
+      "chineseName": "苏子降气汤",
+      "pages": [
+        207
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 6,
+      "unmatchedCompositionText": "紫苏子汤七次各半川两半尴去粗皮姜汁拌各半"
+    },
+    {
+      "formulaId": "ding-chuan-tang-textbook-5a6bf83c",
+      "chineseName": "定喘汤",
+      "pages": [
+        208
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "si-mo-tang-textbook-9590790f",
+      "chineseName": "四磨汤",
+      "pages": [
+        209
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "xuan-fu-dai-zhe-tang-textbook-b6acb5d6",
+      "chineseName": "旋覆代赭汤",
+      "pages": [
+        210
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 6,
+      "unmatchedCompositionText": "旋覆花擎"
+    },
+    {
+      "formulaId": "ju-pi-zhu-ru-tang-textbook-3fce4a47",
+      "chineseName": "橘皮竹茹汤",
+      "pages": [
+        210
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 6,
+      "unmatchedCompositionText": "两"
+    },
+    {
+      "formulaId": "ding-xiang-shi-di-tang-textbook-3649a2b0",
+      "chineseName": "丁香柿蒂汤",
+      "pages": [
+        211
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 4,
+      "unmatchedCompositionText": "原著本方无用量"
+    },
+    {
+      "formulaId": "tao-he-cheng-qi-tang-textbook-59c0e472",
+      "chineseName": "桃核承气汤",
+      "pages": [
+        213
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "xue-fu-zhu-yu-tang-textbook-e7a15923",
+      "chineseName": "血府逐瘀汤",
+      "pages": [
+        215
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "bu-yang-hai-wu-tang-textbook-ff703b55",
+      "chineseName": "补阳还五汤",
+      "pages": [
+        217
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 6,
+      "unmatchedCompositionText": "生归尾钱半去土"
+    },
+    {
+      "formulaId": "fu-yuan-huo-xue-tang-textbook-2e7ce0b1",
+      "chineseName": "复元活血汤",
+      "pages": [
+        218
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 7,
+      "unmatchedCompositionText": "楼根各各酒浸酒漫如泥"
+    },
+    {
+      "formulaId": "qi-li-san-textbook-a6504eae",
+      "chineseName": "七厘散",
+      "pages": [
+        219
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "wen-jing-tang-textbook-4faf236b",
+      "chineseName": "温经汤",
+      "pages": [
+        219
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 10,
+      "unmatchedCompositionText": "吴茱黄芎劳"
+    },
+    {
+      "formulaId": "sheng-hua-tang-textbook-212684ec",
+      "chineseName": "生化汤",
+      "pages": [
+        221
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 5,
+      "unmatchedCompositionText": "黑"
+    },
+    {
+      "formulaId": "gui-zhi-fu-ling-wan-textbook-1041f04e",
+      "chineseName": "桂枝茯苓丸",
+      "pages": [
+        221
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 4,
+      "unmatchedCompositionText": "丹皮各等分"
+    },
+    {
+      "formulaId": "shi-xiao-san-textbook-7101db1f",
+      "chineseName": "失笑散",
+      "pages": [
+        222
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 2,
+      "unmatchedCompositionText": "香酒淘去沙土各等分"
+    },
+    {
+      "formulaId": "da-huang-mo-chong-wan-textbook-8f80be7d",
+      "chineseName": "大黄魔虫丸",
+      "pages": [
+        223
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 6,
+      "unmatchedCompositionText": "苟药干漆虹虫水蛭蜡虫"
+    },
+    {
+      "formulaId": "shi-hui-san-textbook-80efbe7c",
+      "chineseName": "十灰散",
+      "pages": [
+        224
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 7,
+      "unmatchedCompositionText": "茅根茜根山各等分各"
+    },
+    {
+      "formulaId": "ke-xue-fang-textbook-4a90f4a4",
+      "chineseName": "咳血方",
+      "pages": [
+        225
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "huai-hua-san-textbook-a2b3a13b",
+      "chineseName": "槐花散",
+      "pages": [
+        227
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 1,
+      "unmatchedCompositionText": "槐花柏叶杵焙穗积壳麸各等分"
+    },
+    {
+      "formulaId": "huang-tu-tang-textbook-5fd03246",
+      "chineseName": "黄土汤",
+      "pages": [
+        228
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 7,
+      "unmatchedCompositionText": "各"
+    },
+    {
+      "formulaId": "chuan-xiong-cha-tiao-san-textbook-331c5eef",
+      "chineseName": "川芎茶调散",
+      "pages": [
+        230
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 8,
+      "unmatchedCompositionText": "叶去梗各半燃各"
+    },
+    {
+      "formulaId": "da-qin-wu-tang-textbook-7414efc8",
+      "chineseName": "大秦芜汤",
+      "pages": [
+        231
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 14,
+      "unmatchedCompositionText": "秦芜川白苟药各川吴白各"
+    },
+    {
+      "formulaId": "xiao-feng-san-textbook-fb11934e",
+      "chineseName": "消风散",
+      "pages": [
+        232
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 8,
+      "unmatchedCompositionText": "生地蝉蜕苦参胡麻牛子各各"
+    },
+    {
+      "formulaId": "qian-zheng-san-textbook-96c65069",
+      "chineseName": "牵正散",
+      "pages": [
+        233
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 3,
+      "unmatchedCompositionText": "白白去毒并生用各等分"
+    },
+    {
+      "formulaId": "yu-zhen-san-textbook-5845a75f",
+      "chineseName": "玉真散",
+      "pages": [
+        235
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 6,
+      "unmatchedCompositionText": "天白各等分"
+    },
+    {
+      "formulaId": "ling-jiao-gou-teng-tang-textbook-48a4e7d5",
+      "chineseName": "羚角钩藤汤",
+      "pages": [
+        236
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 7,
+      "unmatchedCompositionText": "羚角片先煎半霜京川贝鲜生地双后入滁木生淡鲜刮与羚角先煎代水"
+    },
+    {
+      "formulaId": "zhen-gan-xi-feng-tang-textbook-31c95d55",
+      "chineseName": "镇肝熄风汤",
+      "pages": [
+        237
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 10,
+      "unmatchedCompositionText": "生赭石轧细生捣生捣生捣生杭芍捣钱半"
+    },
+    {
+      "formulaId": "tian-ma-gou-teng-yin-textbook-55331f3b",
+      "chineseName": "天麻钩藤饮",
+      "pages": [
+        239
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "a-jiao-ji-zi-huang-tang-textbook-100222a9",
+      "chineseName": "阿胶鸡子黄汤",
+      "pages": [
+        241
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 7,
+      "unmatchedCompositionText": "陈烊冲生双大生地清草生络石藤木先煎代水"
+    },
+    {
+      "formulaId": "xing-su-san-textbook-121e3413",
+      "chineseName": "杏苏散",
+      "pages": [
+        243
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 10,
+      "unmatchedCompositionText": "积壳原著本方无用量"
+    },
+    {
+      "formulaId": "sang-xing-tang-textbook-ec5c4a66",
+      "chineseName": "桑杏汤",
+      "pages": [
+        244
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "qing-zao-jiu-fei-tang-textbook-68654358",
+      "chineseName": "清燥救肺汤",
+      "pages": [
+        245
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 8,
+      "unmatchedCompositionText": "经霜者去枝梗净叶熳真麦门冬泡黄刷蜜涂黄"
+    },
+    {
+      "formulaId": "mai-men-dong-tang-textbook-99216539",
+      "chineseName": "麦门冬汤",
+      "pages": [
+        246
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 4,
+      "unmatchedCompositionText": "麦门冬梗米"
+    },
+    {
+      "formulaId": "yang-yin-qing-fei-tang-textbook-8046e5c5",
+      "chineseName": "养阴清肺汤",
+      "pages": [
+        247
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 4,
+      "unmatchedCompositionText": "大生地麦门冬元参钱半丹皮"
+    },
+    {
+      "formulaId": "bai-he-gu-jin-tang-textbook-45698e02",
+      "chineseName": "百合固金汤",
+      "pages": [
+        248
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 6,
+      "unmatchedCompositionText": "熟地生地归身各各各各半"
+    },
+    {
+      "formulaId": "qiong-yu-gao-textbook-4be88914",
+      "chineseName": "琼玉膏",
+      "pages": [
+        249
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 3,
+      "unmatchedCompositionText": "新罗春一千下为末九月采捣雪白木春千下为末白沙蜜"
+    },
+    {
+      "formulaId": "yu-ye-tang-textbook-66e10140",
+      "chineseName": "玉液汤",
+      "pages": [
+        250
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 6,
+      "unmatchedCompositionText": "生生生鸡内金捣细钱半"
+    },
+    {
+      "formulaId": "zeng-ye-tang-textbook-98ca318e",
+      "chineseName": "增液汤",
+      "pages": [
+        251
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 3,
+      "unmatchedCompositionText": "连心"
+    },
+    {
+      "formulaId": "ping-wei-san-textbook-885495f2",
+      "chineseName": "平胃散",
+      "pages": [
+        253
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 5,
+      "unmatchedCompositionText": "去黑皮捣为粗末黄色去粗皮涂汁令香熟陈令净焙干黄"
+    },
+    {
+      "formulaId": "huo-xiang-zheng-qi-san-textbook-40b19a29",
+      "chineseName": "藿香正气散",
+      "pages": [
+        255
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 10,
+      "unmatchedCompositionText": "紫苏各去粗皮姜汁各去土半"
+    },
+    {
+      "formulaId": "yin-chen-hao-tang-textbook-34ad51d0",
+      "chineseName": "茵陈蒿汤",
+      "pages": [
+        257
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 2,
+      "unmatchedCompositionText": "子"
+    },
+    {
+      "formulaId": "ba-zheng-san-textbook-88091bc1",
+      "chineseName": "八正散",
+      "pages": [
+        258
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 5,
+      "unmatchedCompositionText": "翟麦蓄山子仁面襄去面焙各"
+    },
+    {
+      "formulaId": "san-ren-tang-textbook-4afe2f49",
+      "chineseName": "三仁汤",
+      "pages": [
+        259
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "gan-lu-xiao-du-dan-textbook-b09b2a22",
+      "chineseName": "甘露消毒丹",
+      "pages": [
+        261
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 9,
+      "unmatchedCompositionText": "飞淡黄苓绵各白蔻仁各"
+    },
+    {
+      "formulaId": "lian-pu-yin-textbook-1be6a3da",
+      "chineseName": "连朴饮",
+      "pages": [
+        262
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 4,
+      "unmatchedCompositionText": "制川连姜汁制各香豉焦各"
+    },
+    {
+      "formulaId": "er-miao-san-textbook-87dded7b",
+      "chineseName": "二妙散",
+      "pages": [
+        264
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 2,
+      "unmatchedCompositionText": "米油水浸原著本方无用量"
+    },
+    {
+      "formulaId": "wu-ling-san-textbook-6b42fbfb",
+      "chineseName": "五苓散",
+      "pages": [
+        265
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 5,
+      "unmatchedCompositionText": "十八铢六十八铢十八铢"
+    },
+    {
+      "formulaId": "zhu-ling-tang-textbook-7524c1f9",
+      "chineseName": "猪苓汤",
+      "pages": [
+        267
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 5,
+      "unmatchedCompositionText": "各"
+    },
+    {
+      "formulaId": "fang-ji-huang-qi-tang-textbook-83d9e08c",
+      "chineseName": "防己黄芪汤",
+      "pages": [
+        268
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "wu-pi-san-textbook-6dc5d9d0",
+      "chineseName": "五皮散",
+      "pages": [
+        269
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 5,
+      "unmatchedCompositionText": "陈各等分"
+    },
+    {
+      "formulaId": "ling-gui-shu-gan-tang-textbook-00e99643",
+      "chineseName": "苓桂术甘汤",
+      "pages": [
+        269
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "zhen-wu-tang-textbook-cf91777b",
+      "chineseName": "真武汤",
+      "pages": [
+        271
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "shi-pi-san-textbook-e253ed38",
+      "chineseName": "实脾散",
+      "pages": [
+        273
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 9,
+      "unmatchedCompositionText": "去仁大腹子脐白各"
+    },
+    {
+      "formulaId": "wan-dai-tang-textbook-67c669bb",
+      "chineseName": "完带汤",
+      "pages": [
+        275
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "qiang-huo-sheng-shi-tang-textbook-6f7f4489",
+      "chineseName": "羌活胜湿汤",
+      "pages": [
+        275
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 5,
+      "unmatchedCompositionText": "各葉本各川"
+    },
+    {
+      "formulaId": "du-huo-ji-sheng-tang-textbook-98c7400b",
+      "chineseName": "独活寄生汤",
+      "pages": [
+        276
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 13,
+      "unmatchedCompositionText": "秦芜心药各"
+    },
+    {
+      "formulaId": "er-chen-tang-textbook-6bc7fd86",
+      "chineseName": "二陈汤",
+      "pages": [
+        279
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 4,
+      "unmatchedCompositionText": "汤七次各白半"
+    },
+    {
+      "formulaId": "wen-dan-tang-textbook-b23596a8",
+      "chineseName": "温胆汤",
+      "pages": [
+        282
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "qing-qi-hua-tan-wan-textbook-496e715b",
+      "chineseName": "清气化痰丸",
+      "pages": [
+        283
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 6,
+      "unmatchedCompositionText": "积实麸酒瓜萎仁去油各制各半"
+    },
+    {
+      "formulaId": "xiao-xian-xiong-tang-textbook-c1db3e56",
+      "chineseName": "小陷胸汤",
+      "pages": [
+        284
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 2,
+      "unmatchedCompositionText": "瓜萎实大者"
+    },
+    {
+      "formulaId": "bei-mu-gua-wei-san-textbook-d698a434",
+      "chineseName": "贝母瓜萎散",
+      "pages": [
+        286
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 4,
+      "unmatchedCompositionText": "瓜萎花粉各"
+    },
+    {
+      "formulaId": "ling-gan-wu-wei-jiang-xin-tang-textbook-3be7b838",
+      "chineseName": "苓甘五味姜辛汤",
+      "pages": [
+        288
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "san-zi-yang-qin-tang-textbook-c5779aa1",
+      "chineseName": "三子养亲汤",
+      "pages": [
+        289
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": "白芥子紫苏子莱子原著本方无用量"
+    },
+    {
+      "formulaId": "ban-xia-bai-zhu-tian-ma-tang-textbook-e7288a4d",
+      "chineseName": "半夏白术天麻汤",
+      "pages": [
+        290
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 6,
+      "unmatchedCompositionText": "各"
+    },
+    {
+      "formulaId": "ding-xian-wan-textbook-c1184500",
+      "chineseName": "定痫丸",
+      "pages": [
+        291
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 17,
+      "unmatchedCompositionText": "明姜汁去木各九制者石取粉去尾去咀真腐煮灯草各水泡各酒各辰砂细水飞"
+    },
+    {
+      "formulaId": "bao-he-wan-textbook-3ed0cabb",
+      "chineseName": "保和丸",
+      "pages": [
+        293
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "ji-shi-dao-zhi-wan-textbook-e5784926",
+      "chineseName": "积实导滞丸",
+      "pages": [
+        294
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 7,
+      "unmatchedCompositionText": "积实麸去瓢各去腐栋净各"
+    },
+    {
+      "formulaId": "mu-xiang-bin-lang-wan-textbook-cfa4d1ed",
+      "chineseName": "木香槟榔丸",
+      "pages": [
+        295
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 8,
+      "unmatchedCompositionText": "莪术麸各各子牵牛各"
+    },
+    {
+      "formulaId": "jian-pi-wan-textbook-afed7d62",
+      "chineseName": "健脾丸",
+      "pages": [
+        296
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 12,
+      "unmatchedCompositionText": "半另酒各半白麦芽取肉纸包槌去油各"
+    },
+    {
+      "formulaId": "ge-hua-jie-xing-tang-textbook-31cdd4b1",
+      "chineseName": "葛花解醒汤",
+      "pages": [
+        297
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 12,
+      "unmatchedCompositionText": "仁缩葛花以上各干黄以上各白以上各莲花去"
+    },
+    {
+      "formulaId": "wu-mei-wan-textbook-983a4888",
+      "chineseName": "乌梅丸",
+      "pages": [
+        299
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "hua-chong-wan-textbook-7e706d22",
+      "chineseName": "化虫丸",
+      "pages": [
+        301
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 1,
+      "unmatchedCompositionText": "胡粉鹤虱去土苦楝根去浮皮各白矾枯半"
+    },
+    {
+      "formulaId": "fei-er-wan-textbook-5d178118",
+      "chineseName": "肥儿丸",
+      "pages": [
+        301
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 5,
+      "unmatchedCompositionText": "去须各使君子麦芽各细锉晒"
+    },
+    {
+      "formulaId": "gua-di-san-textbook-83c2f7e9",
+      "chineseName": "瓜蒂散",
+      "pages": [
+        303
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "jiu-ji-xi-yan-san-textbook-117fb932",
+      "chineseName": "救急稀延散",
+      "pages": [
+        304
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": "猪牙皂角须是肥实不蛀削去黑皮四挺白矾光明通莹者"
+    },
+    {
+      "formulaId": "can-lu-yin-textbook-51cb0b4a",
+      "chineseName": "参芦饮",
+      "pages": [
+        305
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": "参芦"
+    },
+    {
+      "formulaId": "xian-fang-huo-ming-yin-textbook-e7ec0a01",
+      "chineseName": "仙方活命饮",
+      "pages": [
+        308
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 12,
+      "unmatchedCompositionText": "药皂角刺各各"
+    },
+    {
+      "formulaId": "wu-wei-xiao-du-yin-textbook-b862c104",
+      "chineseName": "五味消毒饮",
+      "pages": [
+        309
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 5,
+      "unmatchedCompositionText": "各"
+    },
+    {
+      "formulaId": "si-miao-yong-an-tang-textbook-4c24783b",
+      "chineseName": "四妙勇安汤",
+      "pages": [
+        309
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 4,
+      "unmatchedCompositionText": "各"
+    },
+    {
+      "formulaId": "xi-huang-wan-textbook-0a590913",
+      "chineseName": "犀黄丸",
+      "pages": [
+        310
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 3,
+      "unmatchedCompositionText": "犀牛黄各"
+    },
+    {
+      "formulaId": "niu-bang-jie-ji-tang-textbook-4bb4bc00",
+      "chineseName": "牛蒡解肌汤",
+      "pages": [
+        311
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "yang-he-tang-textbook-db180c14",
+      "chineseName": "阳和汤",
+      "pages": [
+        312
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 5,
+      "unmatchedCompositionText": "白芥子姜炭"
+    },
+    {
+      "formulaId": "xiao-jin-dan-textbook-f22aa723",
+      "chineseName": "小金丹",
+      "pages": [
+        313
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 5,
+      "unmatchedCompositionText": "白胶香草乌制木鳖各去油去油归身各净末各墨炭"
+    },
+    {
+      "formulaId": "hai-zao-yu-hu-tang-textbook-56b8a451",
+      "chineseName": "海藻玉壶汤",
+      "pages": [
+        314
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 12,
+      "unmatchedCompositionText": "节各"
+    },
+    {
+      "formulaId": "wei-jing-tang-textbook-ff99dcc9",
+      "chineseName": "苇茎汤",
+      "pages": [
+        315
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 2,
+      "unmatchedCompositionText": "苇锉瓜瓣尖两仁者"
+    },
+    {
+      "formulaId": "da-huang-mu-dan-tang-textbook-aa3b2dde",
+      "chineseName": "大黄牡丹汤",
+      "pages": [
+        316
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "tou-nong-san-textbook-70ca1eb8",
+      "chineseName": "透脓散",
+      "pages": [
+        317
+      ],
+      "missingComposition": true,
+      "parsedIngredientCount": 0,
+      "unmatchedCompositionText": ""
+    },
+    {
+      "formulaId": "nei-bu-huang-qi-tang-textbook-3f03424c",
+      "chineseName": "内补黄芪汤",
+      "pages": [
+        318
+      ],
+      "missingComposition": false,
+      "parsedIngredientCount": 9,
+      "unmatchedCompositionText": "盐水拌麦门冬各白苟药各"
+    }
+  ]
+}

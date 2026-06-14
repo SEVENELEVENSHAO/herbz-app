@@ -6,9 +6,16 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "validate:data": "node scripts/validate_seed.mjs",
+    "extract:formulas": "python scripts/extract_textbooks.py --pdf \"D:\\BaiduNetdiskDownload\\[OCR]_方剂学_20260605_1006.text.pdf\" --document-id fang-ji-xue --kind formula --output data/review/formulas.review.json",
+    "extract:herbs": "python scripts/extract_textbooks.py --pdf \"D:\\BaiduNetdiskDownload\\[OCR]_中药学_20260313_0030.text.pdf\" --document-id zhong-yao-xue --kind herb --output data/review/herbs.review.json",
+    "import:formula-textbook": "node scripts/import_formula_textbook.mjs",
+    "import:english-herbs": "python scripts/import_english_materia_medica.py --pdf \"D:\\BaiduNetdiskDownload\\[OCR]_Chinese Herbal Medicine_20260612_0216.text.pdf\" --herbs src/data/herbs.json --review-output data/review/english-herbs.review.json",
+    "import:american-dragon": "python scripts/import_american_dragon.py"
   },
   "dependencies": {
+    "lucide-react": "^1.17.0",
     "next": "16.2.9",
     "react": "19.2.4",
     "react-dom": "19.2.4"
@@ -20,6 +27,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
+    "pinyin-pro": "^3.28.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

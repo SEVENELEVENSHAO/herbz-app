@@ -1,0 +1,244 @@
+{
+  "variants": [
+    {
+      "pinyin": "bai hu jia gui zhi tang",
+      "formulaIds": [
+        "bai-hu-jia-gui-zhi-tang-a3b9e437",
+        "bai-hu-jia-gui-zhi-tang-1cc12e8c"
+      ]
+    },
+    {
+      "pinyin": "bao he wan",
+      "formulaIds": [
+        "bao-he-wan-3a71f2ac",
+        "bao-he-wan-4e4bb860",
+        "bao-he-wan-c63eb9c4"
+      ]
+    },
+    {
+      "pinyin": "bu yang huan wu tang",
+      "formulaIds": [
+        "bu-yang-huan-wu-tang-3b05f58c",
+        "bu-yang-huan-wu-tang-84f80f33"
+      ]
+    },
+    {
+      "pinyin": "bu zhong yi qi tang",
+      "formulaIds": [
+        "bu-zhong-yi-qi-tang-9680ecb6",
+        "bu-zhong-yi-qi-tang-32ee1750",
+        "bu-zhong-yi-qi-tang-bb85ce9b",
+        "bu-zhong-yi-qi-tang-9d91a32d"
+      ]
+    },
+    {
+      "pinyin": "chai hu shu gan san",
+      "formulaIds": [
+        "chai-hu-shu-gan-san-ea4cc548",
+        "chai-hu-shu-gan-san-3ba19747",
+        "chai-hu-shu-gan-san-cad539ac",
+        "chai-hu-shu-gan-san-7c5cca8c"
+      ]
+    },
+    {
+      "pinyin": "dan zhi xiao yao san",
+      "formulaIds": [
+        "dan-zhi-xiao-yao-san-159437b7",
+        "dan-zhi-xiao-yao-san-67031bca",
+        "dan-zhi-xiao-yao-san-e351623d"
+      ]
+    },
+    {
+      "pinyin": "gui pi tang",
+      "formulaIds": [
+        "gui-pi-tang-c605557d",
+        "gui-pi-tang-ef5fd01c",
+        "gui-pi-tang-312bebd3",
+        "gui-pi-tang-73cf53ab",
+        "gui-pi-tang-f249fb93",
+        "gui-pi-tang-a6f3e888"
+      ]
+    },
+    {
+      "pinyin": "huang lian e jiao tang",
+      "formulaIds": [
+        "huang-lian-e-jiao-tang-a5267fef",
+        "huang-lian-e-jiao-tang-4dea7f21"
+      ]
+    },
+    {
+      "pinyin": "huo xiang zheng qi san",
+      "formulaIds": [
+        "huo-xiang-zheng-qi-san-28202930",
+        "huo-xiang-zheng-qi-san-4b877d34"
+      ]
+    },
+    {
+      "pinyin": "liu jun zi tang",
+      "formulaIds": [
+        "liu-jun-zi-tang-dc0cf194",
+        "liu-jun-zi-tang-66afa024",
+        "liu-jun-zi-tang-84e4bd6a",
+        "liu-jun-zi-tang-73828a00"
+      ]
+    },
+    {
+      "pinyin": "long dan xie gan tang",
+      "formulaIds": [
+        "long-dan-xie-gan-tang-46caaea5",
+        "long-dan-xie-gan-tang-7d52a53f",
+        "long-dan-xie-gan-tang-f9aa90ff",
+        "long-dan-xie-gan-tang-819cb401"
+      ]
+    },
+    {
+      "pinyin": "ping wei san",
+      "formulaIds": [
+        "ping-wei-san-bc7827bf",
+        "ping-wei-san-7f44b405"
+      ]
+    },
+    {
+      "pinyin": "sang ju yin",
+      "formulaIds": [
+        "sang-ju-yin-3254a408",
+        "sang-ju-yin-dd0a4c6b"
+      ]
+    },
+    {
+      "pinyin": "sha shen mai dong tang",
+      "formulaIds": [
+        "sha-shen-mai-dong-tang-266e4f30",
+        "sha-shen-mai-dong-tang-dddccb79"
+      ]
+    },
+    {
+      "pinyin": "shen ling bai zhu san",
+      "formulaIds": [
+        "shen-ling-bai-zhu-san-0558e0a3",
+        "shen-ling-bai-zhu-san-1ad68645"
+      ]
+    },
+    {
+      "pinyin": "sheng mai san",
+      "formulaIds": [
+        "sheng-mai-san-6f42d920",
+        "sheng-mai-san-861f8941"
+      ]
+    },
+    {
+      "pinyin": "si jun zi tang",
+      "formulaIds": [
+        "si-jun-zi-tang-38b403d4",
+        "si-jun-zi-tang-9cdcba96"
+      ]
+    },
+    {
+      "pinyin": "si wu tang",
+      "formulaIds": [
+        "si-wu-tang-9aa4187e",
+        "si-wu-tang-fe9f7655",
+        "si-wu-tang-e8b60f30"
+      ]
+    },
+    {
+      "pinyin": "tian ma gou teng yin",
+      "formulaIds": [
+        "tian-ma-gou-teng-yin-12296d81",
+        "tian-ma-gou-teng-yin-8f798c4b"
+      ]
+    },
+    {
+      "pinyin": "wen dan tang",
+      "formulaIds": [
+        "wen-dan-tang-a39da328",
+        "wen-dan-tang-f5ad9b85",
+        "wen-dan-tang-38871ddb"
+      ]
+    },
+    {
+      "pinyin": "xiao ji yin zi",
+      "formulaIds": [
+        "xiao-ji-yin-zi-313cbc64",
+        "xiao-ji-yin-zi-d26aeeba"
+      ]
+    },
+    {
+      "pinyin": "xiao qing long tang",
+      "formulaIds": [
+        "xiao-qing-long-tang-b11c6864",
+        "xiao-qing-long-tang-03b625a1"
+      ]
+    },
+    {
+      "pinyin": "xiao yao san",
+      "formulaIds": [
+        "xiao-yao-san-3c4c2d54",
+        "xiao-yao-san-947ecc25"
+      ]
+    },
+    {
+      "pinyin": "xue fu zhu yu tang",
+      "formulaIds": [
+        "xue-fu-zhu-yu-tang-d9c2caab",
+        "xue-fu-zhu-yu-tang-44cd6db2",
+        "xue-fu-zhu-yu-tang-77170ee0",
+        "xue-fu-zhu-yu-tang-5a7efa78"
+      ]
+    },
+    {
+      "pinyin": "yi guan jian",
+      "formulaIds": [
+        "yi-guan-jian-5f1c172f",
+        "yi-guan-jian-8723d3e6"
+      ]
+    },
+    {
+      "pinyin": "yi yi ren tang",
+      "formulaIds": [
+        "yi-yi-ren-tang-40094381",
+        "yi-yi-ren-tang-da3c4fd8"
+      ]
+    },
+    {
+      "pinyin": "yin qiao san",
+      "formulaIds": [
+        "yin-qiao-san-75734ca2",
+        "yin-qiao-san-e7cf8803"
+      ]
+    },
+    {
+      "pinyin": "you gui wan",
+      "formulaIds": [
+        "you-gui-wan-3d958cf9",
+        "you-gui-wan-588ba72e",
+        "you-gui-wan-d4ad820a"
+      ]
+    },
+    {
+      "pinyin": "zhen gan xi feng tang",
+      "formulaIds": [
+        "zhen-gan-xi-feng-tang-4f2bf975",
+        "zhen-gan-xi-feng-tang-bfddb6ee"
+      ]
+    },
+    {
+      "pinyin": "zhen wu tang",
+      "formulaIds": [
+        "zhen-wu-tang-a4dfb604",
+        "zhen-wu-tang-804bc7f5",
+        "zhen-wu-tang-4a5f5332"
+      ]
+    },
+    {
+      "pinyin": "zuo gui wan",
+      "formulaIds": [
+        "zuo-gui-wan-d5fcfedd",
+        "zuo-gui-wan-426b986e",
+        "zuo-gui-wan-02a4c9d7",
+        "zuo-gui-wan-c73e240d",
+        "zuo-gui-wan-5adf8b51"
+      ]
+    }
+  ]
+}
