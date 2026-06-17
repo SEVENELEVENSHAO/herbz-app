@@ -834,6 +834,14 @@ export function ReferenceApp({ data }: { data: ReferenceData }) {
     );
   }
 
+  function addToCompare(id: string) {
+    setCompareIds((current) =>
+      current.includes(id)
+        ? current
+        : current.length < 3 ? [...current, id] : [current[1], current[2], id]
+    );
+  }
+
   function navigate(next: Section) {
     setSection(next);
     setMobileNav(false);
@@ -895,6 +903,7 @@ export function ReferenceApp({ data }: { data: ReferenceData }) {
         <DetailDrawer language={language} detail={detail} formulas={data.formulas}
           usages={detail.type === "formula" ? usagesByFormula.get(detail.item.id) ?? [] : []}
           bookmarked={bookmarks.includes(detail.item.id)} onBookmark={toggleBookmark}
+          compareIds={compareIds} onAddCompare={addToCompare}
           onClose={() => setDetail(null)} onFormulaOpen={(item) => setDetail({ type: "formula", item })} />
       )}
     </div>
@@ -1283,21 +1292,28 @@ function StudyView({ language, formulas, bookmarks, onOpen }: { language: Langua
   );
 }
 
-function DetailDrawer({ language, detail, formulas, usages, bookmarked, onBookmark, onClose, onFormulaOpen }: {
+function DetailDrawer({ language, detail, formulas, usages, bookmarked, compareIds, onBookmark, onAddCompare, onClose, onFormulaOpen }: {
   language: Language; detail: Detail; formulas: Formula[]; usages: Usage[]; bookmarked: boolean;
-  onBookmark: (id: string) => void; onClose: () => void; onFormulaOpen: (formula: Formula) => void;
+  compareIds: string[];
+  onBookmark: (id: string) => void; onAddCompare: (id: string) => void; onClose: () => void; onFormulaOpen: (formula: Formula) => void;
 }) {
   return (
     <div className="drawer-backdrop" onMouseDown={onClose}>
       <aside className="detail-drawer" onMouseDown={(event) => event.stopPropagation()}>
         <div className="drawer-toolbar"><button onClick={onClose}><ArrowLeft size={18} /> {language === "zh" ? "返回" : "Back"}</button><span>{language === "zh" ? "教材参考" : "TEXTBOOK REFERENCE"}</span><button onClick={() => onBookmark(detail.item.id)}><Bookmark size={18} fill={bookmarked ? "currentColor" : "none"} /></button></div>
-        {detail.type === "formula" ? <FormulaDetail language={language} formula={detail.item} usages={usages} /> : <HerbDetail language={language} herb={detail.item} formulas={formulas} onFormulaOpen={onFormulaOpen} />}
+        {detail.type === "formula" ? <FormulaDetail language={language} formula={detail.item} usages={usages} isCompared={compareIds.includes(detail.item.id)} onAddCompare={onAddCompare} /> : <HerbDetail language={language} herb={detail.item} formulas={formulas} onFormulaOpen={onFormulaOpen} />}
       </aside>
     </div>
   );
 }
 
-function FormulaDetail({ language, formula, usages }: { language: Language; formula: Formula; usages: Usage[] }) {
+function FormulaDetail({ language, formula, usages, isCompared, onAddCompare }: {
+  language: Language;
+  formula: Formula;
+  usages: Usage[];
+  isCompared: boolean;
+  onAddCompare: (id: string) => void;
+}) {
   const web = formula.americanDragonReference;
   const textbook = formula.textbookReference;
   const indicationDetails = parseIndications(
@@ -1319,6 +1335,10 @@ function FormulaDetail({ language, formula, usages }: { language: Language; form
 
   return (
     <div className="detail-content">
+      <button className={`formula-detail-compare-button ${isCompared ? "is-selected" : ""}`} onClick={() => onAddCompare(formula.id)}>
+        <Columns2 size={16} />
+        <span>{isCompared ? (language === "zh" ? "已加入" : "Added") : (language === "zh" ? "加入对照" : "Compare")}</span>
+      </button>
       <div className="detail-title formula-detail-title"><div><span>{language === "zh" ? "方剂" : "FORMULA"}</span><h1>{formula.names.chinese}</h1><p>{formula.names.pinyin}</p>{formula.names.english && <small>{formula.names.english}</small>}</div></div>
       <DetailSection title={language === "zh" ? "组成" : "Ingredients"}>
         <div className="ingredient-grid">

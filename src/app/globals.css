@@ -229,7 +229,10 @@ body { background: var(--page); }
 .study-controls button { border: 1.5px solid var(--ink); border-radius: 999px; background: var(--paper); }
 .drawer-toolbar { border-bottom: 2px solid var(--ink); background: rgba(255,247,232,.96); }
 .drawer-toolbar button { min-width: 38px; min-height: 38px; padding: 7px 10px; border: 1.5px solid var(--ink); border-radius: 999px; background: var(--paper); }
+.detail-content { position: relative; }
 .detail-title { padding: 22px; border: 1.5px solid var(--ink); border-radius: 22px; background: #a8d2b5; }
+.formula-detail-compare-button { position:absolute; top:52px; right:45px; z-index:2; display:inline-flex; align-items:center; gap:7px; min-height:36px; padding:8px 12px; border:1.5px solid var(--ink); border-radius:999px; background:var(--paper); color:var(--ink); font-size:10px; font-weight:900; box-shadow:2px 2px 0 rgba(32,33,31,.18); cursor:pointer; }
+.formula-detail-compare-button.is-selected { background:#cbd8ef; }
 .herb-detail-title { color: var(--ink); border: 1.5px solid var(--ink); border-radius: 22px; padding: 22px; }
 .herb-detail-title.thermal-hot,.herb-detail-title.thermal-cold { color: var(--paper); }
 .herb-detail-title.thermal-warm,.herb-detail-title.thermal-neutral,.herb-detail-title.thermal-cool { color: var(--ink); }
@@ -358,6 +361,7 @@ body { background: var(--page); }
   .detail-content { padding: 18px 14px 40px; }
   .detail-title { padding: 17px; border-radius: 18px; }
   .detail-section { padding: 16px; border-radius: 17px; }
+  .formula-detail-compare-button { top:42px; right:22px; }
   .textbook-source-banner { align-items:flex-start; flex-wrap:wrap; }
   .textbook-source-banner>span { margin-left:0; }
   .diagnostic-signs { grid-template-columns: 1fr; }
