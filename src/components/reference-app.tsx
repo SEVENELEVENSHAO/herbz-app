@@ -215,6 +215,8 @@ const sectionMeta: Record<Section, [string, string]> = {
   study: ["研习", "Study"],
 };
 
+const navSections: Section[] = ["home", "herbs", "compare", "study"];
+
 const categoryChinese: Record<string, string> = {
   "release-exterior": "解表", "clear-heat": "清热", "drain-downward": "泻下",
   harmonize: "和解", "warm-interior": "温里", tonify: "补益",
@@ -458,8 +460,8 @@ export function ReferenceApp({ data }: { data: ReferenceData }) {
           <strong>HERBZ</strong>
         </div>
         <nav className="main-nav" aria-label="Primary navigation">
-          {(Object.keys(sectionMeta) as Section[]).map((key) => {
-            const Icon = key === "home" ? Library : key === "formulas" ? FlaskConical : key === "herbs" ? Leaf : key === "compare" ? Columns2 : GraduationCap;
+          {navSections.map((key) => {
+            const Icon = key === "home" ? Library : key === "herbs" ? Leaf : key === "compare" ? Columns2 : GraduationCap;
             return (
               <button key={key} className={section === key ? "active" : ""} onClick={() => navigate(key)}>
                 <Icon size={19} />
@@ -489,7 +491,7 @@ export function ReferenceApp({ data }: { data: ReferenceData }) {
         </header>
 
         <div className="content">
-          {section === "home" && <HomeCategories language={language} formulas={formulas} total={data.formulas.length} query={query} onOpen={(item) => setDetail({ type: "formula", item })} />}
+          {section === "home" && <HomeCategories language={language} formulas={formulas} total={data.formulas.length} query={query} onBrowseAll={() => navigate("formulas")} onOpen={(item) => setDetail({ type: "formula", item })} />}
           {section === "formulas" && (
             <FormulaLibrary language={language} formulas={formulas} total={data.formulas.length} bookmarks={bookmarks} compareIds={compareIds}
               usagesByFormula={usagesByFormula} onOpen={(item) => setDetail({ type: "formula", item })}
@@ -511,11 +513,12 @@ export function ReferenceApp({ data }: { data: ReferenceData }) {
   );
 }
 
-function HomeCategories({ language, formulas, total, query, onOpen }: {
+function HomeCategories({ language, formulas, total, query, onBrowseAll, onOpen }: {
   language: Language;
   formulas: Formula[];
   total: number;
   query: string;
+  onBrowseAll: () => void;
   onOpen: (formula: Formula) => void;
 }) {
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
@@ -593,7 +596,14 @@ function HomeCategories({ language, formulas, total, query, onOpen }: {
           kicker={language === "zh" ? "按功效分类" : "FORMULAS BY ACTION"}
           title={language === "zh" ? "浏览方剂分类" : "Browse Formula Categories"}
           description={language === "zh" ? `${total} 个方剂按教材主要功效整理。` : `${total} formulas organized by primary textbook action.`}
-      />
+      >
+        <div className="navigator-heading-actions">
+        <button className="navigator-action-button" onClick={onBrowseAll}>
+          {language === "zh" ? "按 A-Z 查看全部方剂" : "See all formulas A to Z"}
+          <ArrowRight size={16} />
+        </button>
+        </div>
+      </NavigatorHeading>
       <div className="category-strip-list">
         {grouped.map(({ category, subcategories, count }, index) => {
           const categoryOpen = selectedCategoryId === category.id;
@@ -648,11 +658,12 @@ function HomeCategories({ language, formulas, total, query, onOpen }: {
   );
 }
 
-function NavigatorHeading({ kicker, title, description, onBack }: {
+function NavigatorHeading({ kicker, title, description, onBack, children }: {
   kicker: string;
   title: string;
   description: string;
   onBack?: () => void;
+  children?: React.ReactNode;
 }) {
   return (
     <div className="navigator-heading">
@@ -660,6 +671,7 @@ function NavigatorHeading({ kicker, title, description, onBack }: {
       <span>{kicker}</span>
       <h1>{title}</h1>
       <p>{description}</p>
+      {children}
     </div>
   );
 }
@@ -855,17 +867,26 @@ function DetailDrawer({ language, detail, formulas, usages, bookmarked, onBookma
 function FormulaDetail({ language, formula, usages }: { language: Language; formula: Formula; usages: Usage[] }) {
   const web = formula.americanDragonReference;
   const textbook = formula.textbookReference;
-  const indicationDetails = parseIndications(formula.indications);
+  const indicationDetails = parseIndications(
+    formula.indications,
+    web?.clinicalManifestations ?? [],
+    formula.actions
+  );
+  const diagnosticSigns = [
+    indicationDetails.pulse && { label: "Pulse", value: indicationDetails.pulse },
+    indicationDetails.tongue && { label: "Tongue", value: indicationDetails.tongue },
+    indicationDetails.coating && { label: "Coating", value: indicationDetails.coating },
+  ].filter((item): item is { label: string; value: string } => Boolean(item));
   const clinicalCorrelates = [...new Set(usages.map((usage) => {
     const condition = usage.conditionName?.trim();
     const pattern = usage.patternName?.trim();
-    if (condition && pattern) return `${condition} · ${pattern}`;
+    if (condition && pattern) return `${condition} - ${pattern}`;
     return condition || pattern;
   }).filter((value): value is string => Boolean(value)))];
 
   return (
     <div className="detail-content">
-      <div className="detail-title formula-detail-title"><div><span>{language === "zh" ? "方剂" : "FORMULA"}</span><h1>{formula.names.chinese}</h1><p>{formula.names.pinyin}</p>{language === "en" && formula.names.english && <small>{formula.names.english}</small>}</div></div>
+      <div className="detail-title formula-detail-title"><div><span>{language === "zh" ? "方剂" : "FORMULA"}</span><h1>{formula.names.chinese}</h1><p>{formula.names.pinyin}</p>{formula.names.english && <small>{formula.names.english}</small>}</div></div>
       <DetailSection title={language === "zh" ? "组成" : "Ingredients"}>
         <div className="ingredient-grid">
           {formula.ingredients.map((ingredient) => (
@@ -874,7 +895,7 @@ function FormulaDetail({ language, formula, usages }: { language: Language; form
                 <div className="ingredient-identity">
                   <div className="ingredient-western-names">
                     <span>{ingredient.pinyin}</span>
-                    <small>{ingredient.englishName}</small>
+                    {ingredient.englishName && <small>{ingredient.englishName}</small>}
                   </div>
                   <strong>{ingredient.chineseName}</strong>
                 </div>
@@ -891,15 +912,16 @@ function FormulaDetail({ language, formula, usages }: { language: Language; form
           <EmojiPointList values={formula.actions} />
         </DetailSection>
         <DetailSection title="Indications">
-          <EmojiPointList values={indicationDetails.symptoms} />
-          <div className="diagnostic-signs">
-            <article>
-              <div><small>Pulse</small><strong>{indicationDetails.pulse || "Not specified"}</strong></div>
-            </article>
-            <article>
-              <div><small>Tongue</small><strong>{indicationDetails.tongue || "Not specified"}</strong></div>
-            </article>
-          </div>
+          <EmojiPointList values={indicationDetails.symptoms} className="indication-point-list" />
+          {diagnosticSigns.length > 0 && (
+            <div className="diagnostic-signs">
+              {diagnosticSigns.map((sign) => (
+                <article key={sign.label}>
+                  <div><small>{sign.label}</small><strong>{sign.value}</strong></div>
+                </article>
+              ))}
+            </div>
+          )}
         </DetailSection>
       </div>}
       {language === "en" && clinicalCorrelates.length > 0 && (
@@ -911,15 +933,9 @@ function FormulaDetail({ language, formula, usages }: { language: Language; form
           </div>
         </DetailSection>
       )}
-      {language === "en" && <DetailSection title="Clinical context"><div className="usage-list">{usages.length ? usages.map((usage) => <article key={usage.id}><span>{usage.organSystem}</span><h4>{usage.conditionName} · {usage.patternName}</h4><p>{usage.treatmentPrinciple}</p></article>) : <p className="muted">No clinical links are available.</p>}</div></DetailSection>}
       {textbook && <>
-        <div className="textbook-source-banner">
-          <div><BookOpen size={18} /><strong>Formula textbook source</strong></div>
-          <span>PDF {formatPages(textbook.pages)}</span>
-          <small>{textbook.verification} review</small>
-        </div>
         <details className="english-details textbook-extracts">
-          <summary>Textbook extracts<span>Read cited sections</span></summary>
+          <summary>{language === "zh" ? "教材摘录" : "Textbook extracts"}<span>{language === "zh" ? formatChinesePages(textbook.pages) : "Read cited sections"}</span></summary>
           {Object.entries(textbook.fields).map(([field, passages]) => (
             <section key={field}>
               <h4>{field}</h4>
@@ -931,25 +947,13 @@ function FormulaDetail({ language, formula, usages }: { language: Language; form
         </details>
       </>}
       {language === "en" && web && <>
-        <div className="web-source-banner">
-          <div><Library size={18} /><strong>American Dragon supplement</strong></div>
-          <a href={web.sourceUrl} target="_blank" rel="noreferrer">Open source <ArrowRight size={14} /></a>
-          <small>Pending review</small>
-        </div>
-        {web.englishName && <DetailSection title="English reference name"><p>{web.englishName}</p>{web.alsoKnownAs.length > 0 && <p className="muted">Also known as: {web.alsoKnownAs.join("; ")}</p>}</DetailSection>}
-        {web.formulaActions.length > 0 && <DetailSection title="Supplemental actions"><ReferenceList values={web.formulaActions} /></DetailSection>}
-        {web.syndromes.length > 0 && <DetailSection title="Syndromes"><ReferenceList values={web.syndromes} /></DetailSection>}
-        {web.ingredients.length > 0 && <details className="english-details"><summary>Supplemental ingredient notes<span>Read section</span></summary><div className="web-ingredient-list">{web.ingredients.map((item, index) => <article key={`${item.pinyin}-${index}`}><strong>{item.pinyin}</strong><span>{item.pharmaceuticalLatin}</span><small>{item.dose}</small>{item.actions && <p>{item.actions}</p>}</article>)}</div></details>}
-        {web.clinicalManifestations.length > 0 && <CollapsibleList title="Clinical manifestations" values={web.clinicalManifestations} />}
-        {web.treats.length > 0 && <CollapsibleList title="Conditions listed by source" values={web.treats} />}
-        {web.contraindicationsAndInteractions.length > 0 && <CollapsibleList title="Contraindications & interactions" values={web.contraindicationsAndInteractions} />}
+        {web.contraindicationsAndInteractions.length > 0 && <CautionList values={web.contraindicationsAndInteractions} />}
         {web.notes.length > 0 && <CollapsibleList title="Source notes" values={web.notes} />}
-        {web.modifications.length > 0 && <CollapsibleList title="Modifications" values={web.modifications} />}
+        {web.modifications.length > 0 && <ModificationSection values={web.modifications} />}
       </>}
       <SourceNote language={language} title={[
         "ACU Five",
         textbook && "Formula Study textbook",
-        web && "American Dragon",
       ].filter(Boolean).join(" / ")} />
     </div>
   );
@@ -994,6 +998,112 @@ function EnglishText({ value }: { value: string }) {
   return <div className="english-prose">{value.split(/\n{2,}/).map((paragraph, index) => <p key={index}>{paragraph.replace(/\n/g, " ")}</p>)}</div>;
 }
 
+type ModificationIngredient = {
+  mode: "add" | "remove";
+  latin: string;
+  pinyin: string;
+  dose: string;
+};
+
+type ModificationGroup = {
+  condition: string;
+  ingredients: ModificationIngredient[];
+};
+
+function ModificationSection({ values }: { values: string[] }) {
+  const groups = parseModifications(values);
+  if (groups.length === 0) return null;
+
+  return (
+    <DetailSection title="Modifications">
+      <div className="modification-grid">
+        {groups.map((group, index) => (
+          <details className="modification-card" key={`${group.condition}-${index}`}>
+            <summary>{group.condition}<span>{group.ingredients.length}</span></summary>
+            <div className="modification-ingredients">
+              {group.ingredients.map((ingredient, ingredientIndex) => (
+                <span className={`modification-chip ${ingredient.mode === "remove" ? "is-removed" : ""}`} key={`${group.condition}-${ingredient.pinyin}-${ingredientIndex}`}>
+                  <strong>{ingredient.pinyin || ingredient.latin}</strong>
+                  {ingredient.latin && ingredient.pinyin && <small>{ingredient.latin}</small>}
+                  {ingredient.dose && <em>{ingredient.dose}</em>}
+                </span>
+              ))}
+            </div>
+          </details>
+        ))}
+      </div>
+    </DetailSection>
+  );
+}
+
+function parseModifications(values: string[]) {
+  const groups: ModificationGroup[] = [];
+  const activeGroups = new Map<number, ModificationGroup>();
+
+  const ensureGroup = (condition: string, column: number) => {
+    const normalizedCondition = condition.replace(/^For\s+/i, "").replace(/[:：]+$/, "").trim();
+    if (!normalizedCondition || normalizedCondition.toLowerCase() === "or") return activeGroups.get(column);
+    const existing = groups.find((group) => group.condition.toLowerCase() === normalizedCondition.toLowerCase());
+    const group = existing ?? { condition: normalizedCondition, ingredients: [] };
+    if (!existing) groups.push(group);
+    activeGroups.set(column, group);
+    return group;
+  };
+
+  for (const row of values) {
+    const cells = row.split("|").map((cell) => cell.trim()).filter(Boolean);
+    if (cells.length === 0) continue;
+    const hasIngredient = cells.some(isModificationIngredientCell);
+
+    if (!hasIngredient) {
+      cells.forEach((cell, column) => {
+        if (isModificationConditionCell(cell)) ensureGroup(cell, column);
+      });
+      continue;
+    }
+
+    let localGroup: ModificationGroup | undefined;
+    for (let index = 0; index < cells.length; index += 1) {
+      const cell = cells[index];
+      if (isModificationConditionCell(cell)) {
+        localGroup = ensureGroup(cell, Math.floor(index / 2));
+        continue;
+      }
+      if (!isModificationIngredientCell(cell)) continue;
+
+      const parsed = parseModificationIngredient(cell, cells[index + 1]);
+      const group = localGroup ?? activeGroups.get(Math.floor(index / 2)) ?? ensureGroup("General modification", 0);
+      if (group && parsed) group.ingredients.push(parsed);
+      if (cells[index + 1] && !isModificationIngredientCell(cells[index + 1]) && !isModificationConditionCell(cells[index + 1])) index += 1;
+    }
+  }
+
+  return groups.filter((group) => group.ingredients.length > 0);
+}
+
+function isModificationConditionCell(value: string) {
+  return /^For\b.+[:：]$/i.test(value);
+}
+
+function isModificationIngredientCell(value: string) {
+  return /^[+-]\s*/.test(value);
+}
+
+function parseModificationIngredient(value: string, pinyinCell?: string): ModificationIngredient | null {
+  const match = value.match(/^([+-])\s*(?:(\d+(?:\.\d+)?\s*g)\s*)?(.+)$/i);
+  if (!match) return null;
+  const [, marker, dose = "", latin] = match;
+  const pinyin = pinyinCell && !isModificationIngredientCell(pinyinCell) && !isModificationConditionCell(pinyinCell)
+    ? pinyinCell
+    : "";
+  return {
+    mode: marker === "-" ? "remove" : "add",
+    latin: latin.trim(),
+    pinyin: pinyin.trim(),
+    dose: dose.trim(),
+  };
+}
+
 function CollapsibleEnglish({ title, value }: { title: string; value: string }) {
   return <details className="english-details"><summary>{title}<span>Read section</span></summary><EnglishText value={value} /></details>;
 }
@@ -1002,9 +1112,35 @@ function ReferenceList({ values }: { values: string[] }) {
   return <ul>{values.map((value, index) => <li key={`${value}-${index}`}>{value}</li>)}</ul>;
 }
 
-function EmojiPointList({ values }: { values: string[] }) {
+function CautionList({ values }: { values: string[] }) {
   return (
-    <ul className="emoji-point-list">
+    <DetailSection title="Contraindications & interactions">
+      <div className="caution-list">
+        {values.map((value, index) => (
+          <article className="caution-item" key={`${value}-${index}`}>
+            <span aria-hidden="true">{cautionEmoji(value)}</span>
+            <p>{value}</p>
+          </article>
+        ))}
+      </div>
+    </DetailSection>
+  );
+}
+
+function cautionEmoji(value: string) {
+  const normalized = value.toLowerCase();
+  if (/pregnan|fetus|miscarriage/.test(normalized)) return "🤰";
+  if (/contraindicat|do not|avoid/.test(normalized)) return "⛔";
+  if (/caution|extreme caution/.test(normalized)) return "⚠️";
+  if (/tox|poison|overdose/.test(normalized)) return "☠️";
+  if (/deficien|weak|spleen|stomach|yin|yang|blood|qi/.test(normalized)) return "🩺";
+  if (/heat|cold|damp|phlegm|excess/.test(normalized)) return "🌡️";
+  return "⚕️";
+}
+
+function EmojiPointList({ values, className = "" }: { values: string[]; className?: string }) {
+  return (
+    <ul className={`emoji-point-list ${className}`}>
       {values.map((value, index) => (
         <li key={`${value}-${index}`}>
           <span aria-hidden="true">{pointEmoji(value)}</span>
@@ -1015,27 +1151,76 @@ function EmojiPointList({ values }: { values: string[] }) {
   );
 }
 
-function parseIndications(value: string) {
-  const parts = value
+function parseIndications(value: string, clinicalManifestations: string[] = [], actions: string[] = []) {
+  const actionLike = isActionLikeIndication(value, actions);
+  const parts = (actionLike ? "" : value)
     .split(/[,;，；]\s*/)
     .map((part) => part.trim().replace(/[。.]+$/, ""))
     .filter(Boolean);
   const symptoms: string[] = [];
   const pulse: string[] = [];
   const tongue: string[] = [];
+  const coating: string[] = [];
 
-  for (const part of parts) {
+  for (const part of [...parts, ...clinicalManifestations]) {
     const cleaned = part.replace(/^(and|with)\s+/i, "");
-    if (/\bpulse\b|脉/i.test(cleaned)) pulse.push(cleaned);
-    else if (/\btongue\b|\bcoat(?:ing)?\b|舌|苔/i.test(cleaned)) tongue.push(cleaned);
-    else symptoms.push(cleaned);
+    const diagnostic = parseDiagnosticPart(cleaned);
+    if (diagnostic.type === "pulse") pulse.push(diagnostic.value);
+    else if (diagnostic.type === "tongue") tongue.push(diagnostic.value);
+    else if (diagnostic.type === "coating") coating.push(diagnostic.value);
+    else symptoms.push(diagnostic.value);
   }
 
   return {
-    symptoms: symptoms.length > 0 ? symptoms : ["General clinical presentation"],
-    pulse: pulse.join("; "),
-    tongue: tongue.join("; "),
+    symptoms: uniqueDisplayValues(symptoms.length > 0 ? symptoms : [value || "General clinical presentation"], normalizeIndicationKey),
+    pulse: uniqueDisplayValues(pulse).join("; "),
+    tongue: uniqueDisplayValues(tongue).join("; "),
+    coating: uniqueDisplayValues(coating).join("; "),
   };
+}
+
+function parseDiagnosticPart(value: string) {
+  const cleaned = value.trim();
+  const abbreviationMatch = cleaned.match(/^(P|T|C)\s*[:：]\s*(.+)$/i);
+  if (abbreviationMatch) {
+    const [, marker, content] = abbreviationMatch;
+    if (/^p$/i.test(marker)) return { type: "pulse", value: content.trim() };
+    if (/^t$/i.test(marker)) return { type: "tongue", value: content.trim() };
+    return { type: "coating", value: content.trim() };
+  }
+  if (/\bpulse\b|脉/i.test(cleaned)) return { type: "pulse", value: cleaned };
+  if (/\bcoat(?:ing)?\b|苔/i.test(cleaned)) return { type: "coating", value: cleaned };
+  if (/\btongue\b|舌/i.test(cleaned)) return { type: "tongue", value: cleaned };
+  return { type: "symptom", value: cleaned };
+}
+
+function isActionLikeIndication(value: string, actions: string[]) {
+  const normalized = value.trim().replace(/[.。]+$/, "").toLowerCase();
+  if (!normalized) return true;
+  if (actions.some((action) => action.trim().replace(/[.。]+$/, "").toLowerCase() === normalized)) return true;
+  return (
+    normalized.split(/[,;]/).length <= 2 &&
+    /^(tonif|clear|nourish|warm|drain|dispels?|spreads?|regulates?|harmonizes?|moves?|stops?|calms?|promotes?|raises?|descends?|resolves?|transforms?)/.test(normalized)
+  );
+}
+
+function uniqueDisplayValues(values: string[], normalizeValue: (value: string) => string = (value) => value.toLowerCase().replace(/\s+/g, " ").trim()) {
+  const seen = new Set<string>();
+  return values.filter((value) => {
+    const key = normalizeValue(value);
+    if (!key || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+function normalizeIndicationKey(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/\bnasal (obstruction|congestion|stuffiness)\b/g, "nasal obstruction")
+    .replace(/\bstuffy nose\b/g, "nasal obstruction")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function pointEmoji(value: string) {
@@ -1054,10 +1239,9 @@ function pointEmoji(value: string) {
   return "✨";
 }
 
-function formatPages(pages: number[]) {
-  if (pages.length === 0) return "page unavailable";
-  if (pages.length === 1) return `page ${pages[0]}`;
-  return `pages ${pages.join(", ")}`;
+function formatChinesePages(pages: number[]) {
+  if (pages.length === 0) return "页码未标注";
+  return `第 ${pages.join("、")} 页`;
 }
 
 function CollapsibleList({ title, values }: { title: string; values: string[] }) {
