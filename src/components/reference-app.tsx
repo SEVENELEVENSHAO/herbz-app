@@ -208,7 +208,7 @@ const thermalLabels: Record<ThermalProperty, string> = {
 };
 
 const sectionMeta: Record<Section, [string, string]> = {
-  home: ["总览", "Overview"],
+  home: ["方剂", "Formulas"],
   formulas: ["方剂", "Formulas"],
   herbs: ["中药", "Herbs"],
   compare: ["对照", "Compare"],
@@ -250,6 +250,10 @@ function matches(values: Array<string | null | undefined>, query: string) {
 
 function formulaActionText(formula: Formula) {
   return normalize(formula.actions.join(" "));
+}
+
+function textMatchesKeywords(text: string, keywords: string[]) {
+  return keywords.some((keyword) => text.includes(normalize(keyword)));
 }
 
 const reviewedFormulaCategories: Record<string, string> = {
@@ -333,8 +337,392 @@ function getActionCategory(formula: Formula) {
 function getActionSubcategory(formula: Formula, category: ActionCategory) {
   const actionText = formulaActionText(formula);
   return category.subcategories.find((subcategory) =>
-    subcategory.keywords.some((keyword) => actionText.includes(keyword))
+    textMatchesKeywords(actionText, subcategory.keywords)
   )?.id ?? (category.id === "other" ? "specialized" : "other");
+}
+
+type HerbActionSubcategoryGroup = {
+  subcategory: ActionSubcategory | { id: "other"; label: "Other"; keywords: string[] };
+  evidence: string[];
+};
+
+type HerbActionCategoryGroup = {
+  category: ActionCategory;
+  subcategories: HerbActionSubcategoryGroup[];
+};
+
+function herbActionText(herb: Herb) {
+  const english = herb.englishReference;
+  return normalize([
+    english?.actions,
+    english?.keyCharacteristics,
+  ].filter(Boolean).join(" "));
+}
+
+function herbEvidenceText(herb: Herb) {
+  const english = herb.englishReference;
+  return [
+    english?.keyCharacteristics,
+    english?.actions,
+  ].filter(Boolean).join("\n\n");
+}
+
+function extractActionEvidence(source: string, category: ActionCategory, subcategory?: ActionSubcategory | { id: "other"; label: "Other"; keywords: string[] }) {
+  const keywords = [...category.keywords, ...(subcategory?.keywords ?? [])].map(normalize).filter(Boolean);
+  const chunks = source
+    .replace(/\s+/g, " ")
+    .split(/(?<=[:.])\s+(?=[A-Z])/)
+    .map((chunk) => chunk.trim())
+    .filter(Boolean);
+  const matched = chunks.filter((chunk) => {
+    const normalized = normalize(chunk);
+    return keywords.some((keyword) => normalized.includes(keyword));
+  });
+
+  return uniqueDisplayValues(matched.length > 0 ? matched : chunks.slice(0, 2)).slice(0, 3);
+}
+
+function getHerbActionGroups(herb: Herb, related: Formula[]) {
+  const directText = herbActionText(herb);
+  const directEvidence = herbEvidenceText(herb);
+  const formulaSignals = related.flatMap((formula) => formula.actions);
+  const formulaText = normalize(formulaSignals.join(" "));
+  const useFormulaFallback = !actionCategories.some((category) =>
+    category.id !== "other" && textMatchesKeywords(directText, category.keywords)
+  );
+
+  return actionCategories
+    .filter((category) => category.id !== "other")
+    .map((category): HerbActionCategoryGroup | null => {
+      const categoryMatchesDirect = textMatchesKeywords(directText, category.keywords);
+      const categoryMatchesFormula = useFormulaFallback && textMatchesKeywords(formulaText, category.keywords);
+      if (!categoryMatchesDirect && !categoryMatchesFormula) return null;
+
+      const specificSubcategories = category.subcategories
+        .map((subcategory): HerbActionSubcategoryGroup | null => {
+          const subcategoryMatchesDirect = textMatchesKeywords(directText, subcategory.keywords);
+          const subcategoryMatchesFormula = useFormulaFallback && textMatchesKeywords(formulaText, subcategory.keywords);
+          if (!subcategoryMatchesDirect && !subcategoryMatchesFormula) return null;
+
+          return {
+            subcategory,
+            evidence: subcategoryMatchesDirect && directEvidence
+              ? extractActionEvidence(directEvidence, category, subcategory)
+              : uniqueDisplayValues(formulaSignals.filter((action) =>
+                  textMatchesKeywords(normalize(action), [...category.keywords, ...subcategory.keywords])
+                )).slice(0, 3),
+          };
+        })
+        .filter((group): group is HerbActionSubcategoryGroup => Boolean(group));
+
+      const subcategories = [
+        ...specificSubcategories,
+        ...(specificSubcategories.length === 0
+          ? [{
+              subcategory: { id: "other" as const, label: "General", keywords: [] },
+              evidence: categoryMatchesDirect && directEvidence
+                ? extractActionEvidence(directEvidence, category)
+                : uniqueDisplayValues(formulaSignals.filter((action) =>
+                    textMatchesKeywords(normalize(action), category.keywords)
+                  )).slice(0, 3),
+            }]
+          : []),
+      ].filter((group, index, groups) =>
+        group.evidence.length > 0 &&
+        groups.findIndex((item) => item.subcategory.id === group.subcategory.id) === index
+      );
+
+      return subcategories.length > 0 ? { category, subcategories } : null;
+    })
+    .filter((group): group is HerbActionCategoryGroup => Boolean(group));
+}
+
+function relatedFormulasForHerb(herb: Herb, formulas: Formula[]) {
+  return herb.formulaIds.map((id) => formulas.find((formula) => formula.id === id)).filter(Boolean) as Formula[];
+}
+
+type HerbLibrarySubcategoryGroup = {
+  subcategory: ActionSubcategory | { id: "other"; label: "General"; keywords: string[] };
+  herbs: Herb[];
+};
+
+type HerbLibraryCategoryGroup = {
+  category: ActionCategory;
+  subcategories: HerbLibrarySubcategoryGroup[];
+  count: number;
+};
+
+function getHerbLibraryGroups(herbs: Herb[], formulas: Formula[]) {
+  const groups = new Map(actionCategories.map((category) => [
+    category.id,
+    new Map([
+      ...category.subcategories.map((subcategory) => [subcategory.id, [] as Herb[]] as const),
+      ...(category.id !== "other" ? [["other", [] as Herb[]] as const] : []),
+    ]),
+  ]));
+
+  for (const herb of herbs) {
+    const actionGroups = getHerbActionGroups(herb, relatedFormulasForHerb(herb, formulas));
+    if (actionGroups.length === 0) {
+      groups.get("other")?.get("specialized")?.push(herb);
+      continue;
+    }
+
+    for (const actionGroup of actionGroups) {
+      for (const subcategoryGroup of actionGroup.subcategories) {
+        const subcategoryId = subcategoryGroup.subcategory.id;
+        const target = groups.get(actionGroup.category.id)?.get(subcategoryId === "other" ? "other" : subcategoryId);
+        if (target && !target.some((item) => item.id === herb.id)) target.push(herb);
+      }
+    }
+  }
+
+  return actionCategories
+    .map((category): HerbLibraryCategoryGroup => {
+      const categoryGroups = groups.get(category.id);
+      const subcategories = [
+        ...category.subcategories,
+        ...(category.id !== "other" ? [{ id: "other" as const, label: "General", keywords: [] }] : []),
+      ]
+        .map((subcategory) => ({
+          subcategory,
+          herbs: categoryGroups?.get(subcategory.id) ?? [],
+        }))
+        .filter((group) => group.herbs.length > 0);
+
+      return {
+        category,
+        subcategories,
+        count: new Set(subcategories.flatMap((group) => group.herbs.map((herb) => herb.id))).size,
+      };
+    })
+    .filter((group) => group.count > 0);
+}
+
+function HerbCard({ language, herb, onOpen }: { language: Language; herb: Herb; onOpen: (herb: Herb) => void }) {
+  const primaryChinese = herb.chineseNames[0] || herb.pinyinNames[0] || "";
+  const primaryPinyin = herb.pinyinNames[0] || herb.englishNames.find(Boolean) || primaryChinese;
+  const secondaryName = herb.englishNames.find(Boolean);
+
+  return (
+    <button className="herb-card" key={herb.id} onClick={() => onOpen(herb)}>
+      <div className={`herb-color thermal-${herb.thermalProperties[0] ?? "neutral"}`}><Leaf size={19} /></div>
+      <h3>{primaryChinese}</h3>
+      <div className="herb-card-bottom">
+        <span>{primaryPinyin}</span>
+        {language === "en" && secondaryName && secondaryName !== primaryPinyin && <small>{secondaryName}</small>}
+      </div>
+      <div><span>{herb.formulaIds.length} {language === "zh" ? "方" : "formulas"}</span><ArrowRight size={15} /></div>
+    </button>
+  );
+}
+
+const channelMeta: Record<string, { label: string; className: string }> = {
+  lung: { label: "LU", className: "channel-metal" },
+  "large intestine": { label: "LI", className: "channel-metal" },
+  stomach: { label: "ST", className: "channel-earth" },
+  spleen: { label: "SP", className: "channel-earth" },
+  heart: { label: "HT", className: "channel-fire" },
+  "small intestine": { label: "SI", className: "channel-fire" },
+  bladder: { label: "BL", className: "channel-water" },
+  kidney: { label: "KI", className: "channel-water" },
+  pericardium: { label: "PC", className: "channel-fire" },
+  "triple burner": { label: "SJ", className: "channel-fire" },
+  "san jiao": { label: "SJ", className: "channel-fire" },
+  gallbladder: { label: "GB", className: "channel-wood" },
+  "gall bladder": { label: "GB", className: "channel-wood" },
+  liver: { label: "LR", className: "channel-wood" },
+  ren: { label: "REN", className: "channel-extra" },
+  du: { label: "DU", className: "channel-extra" },
+};
+
+function parseChannels(value?: string) {
+  if (!value) return [];
+  return uniqueDisplayValues(
+    value
+      .replace(/\band\b/gi, ",")
+      .split(/[,;/]+/)
+      .map((channel) => channel.trim())
+      .filter(Boolean),
+    (channel) => normalize(channel)
+  )
+    .map((channel) => {
+      const meta = channelMeta[normalize(channel)] ?? {
+        label: channel.slice(0, 2).toUpperCase(),
+        className: "channel-extra",
+      };
+      return { name: channel, ...meta };
+    });
+}
+
+function parseDoseChips(...values: Array<string | string[] | null | undefined>) {
+  const doses = values
+    .flatMap((value) => Array.isArray(value) ? value : [value])
+    .filter((value): value is string => Boolean(value))
+    .flatMap((value) => value.match(/\d+(?:\.\d+)?\s*(?:-\s*\d+(?:\.\d+)?)?\s*(?:g|mg|ml)?/gi) ?? [])
+    .map((value) => value.replace(/\s+/g, " ").replace(/-\s+/g, "-").trim());
+
+  return uniqueDisplayValues(doses);
+}
+
+function stripOcrSectionHeaders(value: string) {
+  return value
+    .split(/\b(?:DOSAGE|DosAGE|DoSAGE|CAUTIONS?\s*(?:&|AND)?\s*CONTRAINDICATIONS?|CONTRAINDICATIONS?|COMMENTARY|Mechanisms of Selected Combinations|TRADITIONAL CONTRAINDICATIONS|TOXICITY|NOMENCLATURE)\b/i)[0]
+    .replace(/^\s*\d+\s+(?:\/\s*)?(?:Herbs|Substances)\b[^-:;.]*/i, "")
+    .replace(/^\s*\d+(?:\s+\d+)?\s+(?=[-:])/i, "")
+    .trim();
+}
+
+function parseActionBullets(value: string) {
+  const withoutCombinationLines = value
+    .split(/\n/)
+    .filter((line) => !/^[\s>\-]*with\b/i.test(line.trim()))
+    .filter((line) => !/^\s*[-–—]*\s*with\b/i.test(line.trim()))
+    .join(" ");
+
+  const cleaned = withoutCombinationLines
+    .replace(/\s+/g, " ")
+    .replace(/^:\s*/, "")
+    .trim();
+
+  const chunks = cleaned
+    .split(/(?<=[.:])\s+(?=(?:Tonif|Open|Promot|Warm|Clear|Drain|Dispel|Expel|Regulat|Move|Stop|Calm|Nourish|Transform|Resolve|Anchor|Descend|Raise|Release)\w*\b)/i)
+    .map((chunk) => chunk.trim().replace(/^[-–—]\s*/, "").replace(/\s*-\s*$/, ""))
+    .filter(Boolean);
+
+  return uniqueDisplayValues(chunks.length > 1 ? chunks : cleaned.split(/\s+-\s+/)).slice(0, 8);
+}
+
+function parseHerbActionsAndIndications(value: string) {
+  const cleanedValue = stripOcrSectionHeaders(value);
+  const actions: string[] = [];
+  const indications: string[] = [];
+  const actionStartPattern = /^\s*[-–—:]?\s*(releases?|expels?|opens?|promotes?|tonif(?:y|ies)|warms?|clears?|drains?|dispels?|regulates?|moves?|stops?|calms?|nourishes?|transforms?|resolves?|anchors?|descends?|raises?)\b/i;
+  const entries: string[] = [];
+  let current = "";
+  let skippingCombination = false;
+
+  for (const rawLine of cleanedValue.split(/\n/)) {
+    const line = rawLine.trim();
+    if (!line) continue;
+    if (/^[\s>\-]*with\b/i.test(line)) {
+      skippingCombination = true;
+      continue;
+    }
+
+    if (/^[-–—]*\s*with\b/i.test(line)) {
+      skippingCombination = true;
+      continue;
+    }
+
+    const startsAction = actionStartPattern.test(line) || /^[\s:>\-]*(invigorates?|checks?|induces?)\b/i.test(line);
+    if (startsAction) {
+      if (current) entries.push(current);
+      current = line.replace(/^[-–—:]\s*/, "");
+      skippingCombination = false;
+      continue;
+    }
+
+    if (!skippingCombination && current) current = `${current} ${line}`;
+  }
+
+  if (current) entries.push(current);
+
+  for (const bullet of (entries.length > 0 ? entries : parseActionBullets(cleanedValue))) {
+    const colonMatch = bullet.match(/^(.+?):\s*(.+)$/);
+    const forMatch = bullet.match(/^(.+?)\s+for\s+(.+)$/i);
+
+    if (colonMatch) {
+      actions.push(colonMatch[1].replace(/^[-–—]\s*/, "").trim());
+      indications.push(...simplifyIndicationText(colonMatch[2]));
+    } else if (forMatch) {
+      actions.push(forMatch[1].replace(/^[-–—]\s*/, "").trim());
+      indications.push(...simplifyIndicationText(forMatch[2]));
+    } else {
+      actions.push(bullet.replace(/^[-–—]\s*/, "").trim());
+    }
+  }
+
+  return {
+    actions: uniqueDisplayValues(actions).slice(0, 8),
+    indications: uniqueDisplayValues(indications).slice(0, 8),
+  };
+}
+
+function parseKeyCharacteristicActions(value: string) {
+  return uniqueDisplayValues(
+    value
+      .replace(/\s+/g, " ")
+      .split(/[;,]/)
+      .map((item) => item.trim().replace(/^and\s+/i, ""))
+      .filter((item) => item.length > 2)
+      .map((item) => item.charAt(0).toUpperCase() + item.slice(1))
+  ).slice(0, 5);
+}
+
+function simplifyIndicationText(value: string) {
+  return value
+    .replace(/^for\s+/i, "")
+    .replace(/\bas in\b.+$/i, "")
+    .replace(/\bespecially when\b/gi, "when")
+    .split(/[,.;]|\band\b/i)
+    .map((item) => item.trim().replace(/^for\s+/i, ""))
+    .filter((item) => item.length > 2 && !/^with\b/i.test(item))
+    .slice(0, 5);
+}
+
+type HerbCombination = {
+  title: string;
+  notes: string[];
+};
+
+function formatCombinationTitle(value: string) {
+  const pinyinMatch = value.match(/^With\s+.+?\(([^)]+)\)$/i);
+  if (!pinyinMatch) return value;
+
+  const pinyin = pinyinMatch[1]
+    .replace(/(?<=[a-z])(?:0|6)(?=[a-z])/gi, "o")
+    .replace(/\d/g, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(" ");
+
+  return pinyin ? `With ${pinyin}` : value;
+}
+
+function parseHerbCombinations(value: string) {
+  const sections = value
+    .split(/\n(?=>\s*(?:WITH|WrTH)\b)/i)
+    .map((section) => section.trim())
+    .filter(Boolean);
+
+  return sections.map((section): HerbCombination => {
+    const lines = section.split(/\n/).map((line) => line.trim()).filter(Boolean);
+    const rawTitle = lines.shift() ?? "Combination";
+    const titleParts = rawTitle
+      .replace(/^>\s*/g, "")
+      .replace(/^(?:WITH|WrTH)\s+/i, "With ")
+      .replace(/\s+/g, " ")
+      .split(/\s*;\s*/)
+      .map((part) => part.trim())
+      .filter(Boolean);
+    const title = formatCombinationTitle(titleParts.shift() ?? "Combination");
+    const titleNotes = titleParts
+      .map((note) => note.charAt(0).toUpperCase() + note.slice(1));
+    const body = lines.join(" ").replace(/\s+/g, " ").trim();
+    const bodyNotes = body
+      .split(/(?<=[.!?])\s+(?=[A-Z])/)
+      .map((note) => note.trim())
+      .filter(Boolean);
+    const notes = [...titleNotes, ...bodyNotes];
+
+    return {
+      title,
+      notes: notes.length > 0 ? notes : [body].filter(Boolean),
+    };
+  });
 }
 
 export function ReferenceApp({ data }: { data: ReferenceData }) {
@@ -461,7 +849,7 @@ export function ReferenceApp({ data }: { data: ReferenceData }) {
         </div>
         <nav className="main-nav" aria-label="Primary navigation">
           {navSections.map((key) => {
-            const Icon = key === "home" ? Library : key === "herbs" ? Leaf : key === "compare" ? Columns2 : GraduationCap;
+            const Icon = key === "home" ? FlaskConical : key === "herbs" ? Leaf : key === "compare" ? Columns2 : GraduationCap;
             return (
               <button key={key} className={section === key ? "active" : ""} onClick={() => navigate(key)}>
                 <Icon size={19} />
@@ -497,7 +885,7 @@ export function ReferenceApp({ data }: { data: ReferenceData }) {
               usagesByFormula={usagesByFormula} onOpen={(item) => setDetail({ type: "formula", item })}
               onBookmark={toggleBookmark} onCompare={toggleCompare} onCompareNow={() => navigate("compare")} />
           )}
-          {section === "herbs" && <HerbLibrary language={language} herbs={herbs} total={data.herbs.length} thermal={thermal} setThermal={setThermal} onOpen={(item) => setDetail({ type: "herb", item })} />}
+          {section === "herbs" && <HerbLibrary language={language} herbs={herbs} formulas={data.formulas} total={data.herbs.length} thermal={thermal} setThermal={setThermal} onOpen={(item) => setDetail({ type: "herb", item })} />}
           {section === "compare" && <CompareView language={language} formulas={data.formulas} compareIds={compareIds} onRemove={toggleCompare} onBrowse={() => navigate("formulas")} usagesByFormula={usagesByFormula} />}
           {section === "study" && <StudyView language={language} formulas={data.formulas} bookmarks={bookmarks} onOpen={(item) => setDetail({ type: "formula", item })} />}
         </div>
@@ -593,8 +981,8 @@ function HomeCategories({ language, formulas, total, query, onBrowseAll, onOpen 
   return (
     <section className="category-browser">
       <NavigatorHeading
-          kicker={language === "zh" ? "按功效分类" : "FORMULAS BY ACTION"}
-          title={language === "zh" ? "浏览方剂分类" : "Browse Formula Categories"}
+          kicker={language === "zh" ? "方剂库" : "FORMULA LIBRARY"}
+          title={language === "zh" ? "方剂库" : "Formula Library"}
           description={language === "zh" ? `${total} 个方剂按教材主要功效整理。` : `${total} formulas organized by primary textbook action.`}
       >
         <div className="navigator-heading-actions">
@@ -604,7 +992,7 @@ function HomeCategories({ language, formulas, total, query, onBrowseAll, onOpen 
         </button>
         </div>
       </NavigatorHeading>
-      <div className="category-strip-list">
+      <div className="category-strip-list tight-category-grid">
         {grouped.map(({ category, subcategories, count }, index) => {
           const categoryOpen = selectedCategoryId === category.id;
           return (
@@ -759,13 +1147,22 @@ function FormulaLibrary({ language, formulas, total, bookmarks, compareIds, usag
   );
 }
 
-function HerbLibrary({ language, herbs, total, thermal, setThermal, onOpen }: {
+function HerbLibrary({ language, herbs, formulas, total, thermal, setThermal, onOpen }: {
   language: Language;
-  herbs: Herb[]; total: number; thermal: ThermalProperty | "all"; setThermal: (value: ThermalProperty | "all") => void; onOpen: (herb: Herb) => void;
+  herbs: Herb[];
+  formulas: Formula[];
+  total: number;
+  thermal: ThermalProperty | "all";
+  setThermal: (value: ThermalProperty | "all") => void;
+  onOpen: (herb: Herb) => void;
 }) {
+  const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
+  const [selectedSubcategoryId, setSelectedSubcategoryId] = useState<string | null>(null);
+  const grouped = useMemo(() => getHerbLibraryGroups(herbs, formulas), [herbs, formulas]);
+
   return (
     <section>
-      <PageHeading kicker={language === "zh" ? "中药库" : "MATERIA MEDICA"} title={language === "zh" ? "中药索引" : "Herb Library"} description={language === "zh" ? `显示 ${herbs.length} / ${total} 味中药。` : `Showing ${herbs.length} of ${total} herbs.`} />
+      <PageHeading kicker={language === "zh" ? "中药库" : "MATERIA MEDICA"} title={language === "zh" ? "中药索引" : "Herb Library"} description={language === "zh" ? `显示 ${herbs.length} / ${total} 味中药。` : `Showing ${herbs.length} of ${total} herbs by action category.`} />
       <div className="thermal-filters">
         {(["all", "hot", "warm", "neutral", "cool", "cold"] as const).map((item) => (
           <button key={item} className={`${thermal === item ? "active" : ""} filter-${item}`} onClick={() => setThermal(item)}>
@@ -773,15 +1170,51 @@ function HerbLibrary({ language, herbs, total, thermal, setThermal, onOpen }: {
           </button>
         ))}
       </div>
-      <div className="herb-grid">
-        {herbs.map((herb) => (
-          <button className="herb-card" key={herb.id} onClick={() => onOpen(herb)}>
-            <div className={`herb-color thermal-${herb.thermalProperties[0] ?? "neutral"}`}><Leaf size={19} /><span>{thermalLabels[herb.thermalProperties[0] ?? "neutral"]}</span></div>
-            <h3>{language === "zh" ? herb.chineseNames[0] : herb.englishNames.find(Boolean) || herb.pinyinNames[0]}</h3>
-            <div><span>{herb.formulaIds.length} {language === "zh" ? "方" : "formulas"}</span><ArrowRight size={15} /></div>
-          </button>
-        ))}
+      <div className="category-strip-list tight-category-grid herb-category-strip-list">
+        {grouped.map(({ category, subcategories, count }, index) => {
+          const categoryOpen = selectedCategoryId === category.id;
+          return (
+            <section className={`category-strip-group category-tone-${index % 5} ${categoryOpen ? "is-open" : ""}`} key={category.id}>
+              <button
+                className="category-strip"
+                onClick={() => {
+                  setSelectedCategoryId(categoryOpen ? null : category.id);
+                  setSelectedSubcategoryId(null);
+                }}
+                aria-expanded={categoryOpen}
+              >
+                <span>{language === "zh" ? categoryChinese[category.id] : category.label}</span>
+                <span><strong>{count}</strong><ChevronDown size={18} /></span>
+              </button>
+              {categoryOpen && (
+                <div className="subcategory-strip-list">
+                  {subcategories.map(({ subcategory, herbs: subgroupHerbs }) => {
+                    const subcategoryOpen = selectedSubcategoryId === subcategory.id;
+                    return (
+                      <section className={`subcategory-strip-group ${subcategoryOpen ? "is-open" : ""}`} key={subcategory.id}>
+                        <button
+                          className="subcategory-strip"
+                          onClick={() => setSelectedSubcategoryId(subcategoryOpen ? null : subcategory.id)}
+                          aria-expanded={subcategoryOpen}
+                        >
+                          <span>{language === "zh" ? subcategoryChinese[subcategory.id] ?? subcategory.label : subcategory.label}</span>
+                          <span><strong>{subgroupHerbs.length}</strong><ChevronDown size={16} /></span>
+                        </button>
+                        {subcategoryOpen && (
+                          <div className="herb-grid herb-strip-grid">
+                            {subgroupHerbs.map((herb) => <HerbCard key={herb.id} language={language} herb={herb} onOpen={onOpen} />)}
+                          </div>
+                        )}
+                      </section>
+                    );
+                  })}
+                </div>
+              )}
+            </section>
+          );
+        })}
         {!herbs.length && <EmptyState label="没有找到匹配的中药" />}
+        {herbs.length > 0 && grouped.length === 0 && <EmptyState label={language === "zh" ? "没有功效分类" : "No action categories found."} />}
       </div>
     </section>
   );
@@ -962,40 +1395,174 @@ function FormulaDetail({ language, formula, usages }: { language: Language; form
 function HerbDetail({ language, herb, formulas, onFormulaOpen }: { language: Language; herb: Herb; formulas: Formula[]; onFormulaOpen: (formula: Formula) => void }) {
   const related = herb.formulaIds.map((id) => formulas.find((formula) => formula.id === id)).filter(Boolean) as Formula[];
   const english = herb.englishReference;
+  const channels = parseChannels(english?.channels);
+  const doseChips = parseDoseChips(herb.observedDoses);
+  const englishNames = herb.englishNames.filter(Boolean);
+  const parsedActionIndications = english?.actions ? parseHerbActionsAndIndications(english.actions) : { actions: [], indications: [] };
+  const actionIndications = {
+    actions: uniqueDisplayValues([
+      ...(english?.keyCharacteristics ? parseKeyCharacteristicActions(english.keyCharacteristics) : []),
+      ...parsedActionIndications.actions,
+    ]).slice(0, 10),
+    indications: parsedActionIndications.indications,
+  };
   return (
     <div className="detail-content">
-      <div className="detail-title"><div className={`seal-small thermal-${herb.thermalProperties[0] ?? "neutral"}`}><Leaf size={24} /></div><div><span>{language === "zh" ? "中药" : "HERB"}</span><h1>{language === "zh" ? herb.chineseNames.join(" / ") : herb.englishNames.filter(Boolean).join(" / ") || herb.pinyinNames.join(" / ")}</h1></div></div>
-      <div className="herb-facts"><article><span>{language === "zh" ? "药性" : "Thermal"}</span><strong>{herb.thermalProperties.map((item) => language === "zh" ? thermalLabels[item].split(" ")[0] : thermalLabels[item].split(" ").at(-1)).join(" · ")}</strong></article><article><span>{language === "zh" ? "已见剂量" : "Observed doses"}</span><strong>{herb.observedDoses.slice(0, 4).join(" · ") || "—"}</strong></article><article><span>{language === "zh" ? "方剂关联" : "Formula links"}</span><strong>{related.length}</strong></article></div>
+      <div className={`detail-title herb-detail-title thermal-${herb.thermalProperties[0] ?? "neutral"}`}>
+        <div>
+          <span>{language === "zh" ? "中药" : "HERB"}</span>
+          <h1>{herb.chineseNames.join(" / ")}</h1>
+          <p>{herb.pinyinNames.join(" / ")}</p>
+          {englishNames.length > 0 && <small>{englishNames.join(" / ")}</small>}
+        </div>
+      </div>
+      {channels.length > 0 && (
+        <div className="channel-row" aria-label="Channels entered">
+          <span className="channel-row-label">{language === "zh" ? "缁忕粶" : "Channels"}</span>
+          <div className="channel-chip-list">
+            {channels.map((channel) => (
+              <span className={`channel-chip ${channel.className}`} title={channel.name} key={channel.name}>{channel.label}</span>
+            ))}
+          </div>
+        </div>
+      )}
+      <div className="herb-facts herb-detail-facts">
+        {doseChips.length > 0 && (
+          <article className="herb-dosage-card">
+            <span>{language === "zh" ? "剂量" : "Dosage"}</span>
+            <div className="dose-chip-list">{doseChips.map((dose) => <strong key={dose}>{dose}</strong>)}</div>
+          </article>
+        )}
+        {english?.pharmaceuticalName && <article><span>Pharmaceutical name</span><strong>{english.pharmaceuticalName}</strong></article>}
+        {english?.properties && <article><span>Properties</span><strong>{english.properties}</strong></article>}
+      </div>
       {language === "en" && english && <>
-        <div className="english-source-banner">
-          <div><Languages size={18} /><strong>English Materia Medica</strong></div>
-          <span>PDF pages {english.pageStart}–{english.pageEnd}</span>
-          <small>OCR · Pending review</small>
-        </div>
-        <div className="english-facts">
-          {english.pharmaceuticalName && <article><span>Pharmaceutical name</span><strong>{english.pharmaceuticalName}</strong></article>}
-          {english.properties && <article><span>Properties</span><strong>{english.properties}</strong></article>}
-          {english.channels && <article><span>Channels entered</span><strong>{english.channels}</strong></article>}
-          {english.dosage && <article><span>Dosage</span><strong>{english.dosage}</strong></article>}
-        </div>
-        {english.keyCharacteristics && <DetailSection title="Key characteristics"><EnglishText value={english.keyCharacteristics} /></DetailSection>}
-        {english.actions && <DetailSection title="Actions and indications"><EnglishText value={english.actions} /></DetailSection>}
-        {english.cautions && <DetailSection title="Cautions and contraindications"><EnglishText value={english.cautions} /></DetailSection>}
+        {(actionIndications.actions.length > 0 || actionIndications.indications.length > 0) && (
+          <div className="two-column-detail herb-action-indication-detail">
+            {actionIndications.actions.length > 0 && (
+              <DetailSection title="Actions">
+                <EmojiPointList values={actionIndications.actions} />
+              </DetailSection>
+            )}
+            {actionIndications.indications.length > 0 && (
+              <DetailSection title="Indications">
+                <EmojiPointList values={actionIndications.indications} className="indication-point-list" />
+              </DetailSection>
+            )}
+          </div>
+        )}
+        <HerbSafetySection
+          cautions={english.cautions}
+          traditionalContraindications={english.traditionalContraindications}
+          toxicity={english.toxicity}
+        />
         {english.commentary && <CollapsibleEnglish title="Commentary" value={english.commentary} />}
-        {english.combinations && <CollapsibleEnglish title="Mechanisms of selected combinations" value={english.combinations} />}
-        {english.comparisons && <CollapsibleEnglish title="Comparisons" value={english.comparisons} />}
-        {english.traditionalContraindications && <CollapsibleEnglish title="Traditional contraindications" value={english.traditionalContraindications} />}
-        {english.toxicity && <CollapsibleEnglish title="Toxicity" value={english.toxicity} />}
-        {english.nomenclaturePreparation && <CollapsibleEnglish title="Nomenclature & preparation" value={english.nomenclaturePreparation} />}
+        {english.combinations && <HerbCombinationSection value={english.combinations} />}
       </>}
       <DetailSection title={language === "zh" ? "相关方剂" : "Related formulas"}><div className="related-list">{related.map((formula) => <button key={formula.id} onClick={() => onFormulaOpen(formula)}><div><strong>{formula.names.chinese}</strong><span>{formula.names.pinyin}</span>{language === "en" && formula.names.english && <small>{formula.names.english}</small>}</div><ArrowRight size={16} /></button>)}</div></DetailSection>
-      <SourceNote language={language} title={english ? "ACU Five / Bensky Materia Medica 3e" : "ACU Five"} />
     </div>
   );
 }
 
 function EnglishText({ value }: { value: string }) {
   return <div className="english-prose">{value.split(/\n{2,}/).map((paragraph, index) => <p key={index}>{paragraph.replace(/\n/g, " ")}</p>)}</div>;
+}
+
+function cleanSafetyNote(value?: string, tone?: string) {
+  const cleaned = (value ? stripOcrSectionHeaders(value) : undefined)
+    ?.replace(/\bsee\s+toxi\w*\s+bel\w*\.?/gi, "")
+    .replace(/\bbelo?w\.?$/gi, "")
+    .replace(/\bsee\.?$/gi, "")
+    .replace(/^[\s:;,.]+/, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (/^none noted\.?$/i.test(cleaned ?? "")) return "None noted.";
+  if (/^pregnancy\.?$/i.test(cleaned ?? "")) return "Use with caution during pregnancy.";
+
+  if (tone === "toxicity" && cleaned) {
+    const normalized = normalize(cleaned);
+    const toxicitySignals = [
+      "toxicity",
+      "toxic dose",
+      "toxic substance",
+      "is toxic",
+      "slightly toxic",
+      "toxic and",
+      "overdos",
+      "poison",
+      "poisoning",
+      "allergic",
+      "reaction",
+      "large quantity",
+      "large quantities",
+      "large dosage",
+      "long term",
+      "long-term",
+      "restricted",
+      "addictive",
+      "arrhythmia",
+      "blood pressure",
+      "coma",
+      "convulsion",
+    ];
+
+    if (!textMatchesKeywords(normalized, toxicitySignals)) return undefined;
+  }
+
+  return cleaned || undefined;
+}
+
+function HerbSafetySection({ cautions, traditionalContraindications, toxicity }: {
+  cautions?: string;
+  traditionalContraindications?: string;
+  toxicity?: string;
+}) {
+  const safetyNotes = [
+    { label: "Cautions", value: cleanSafetyNote(cautions, "caution"), tone: "caution" },
+    { label: "Traditional contraindications", value: cleanSafetyNote(traditionalContraindications, "traditional"), tone: "traditional" },
+    { label: "Toxicity", value: cleanSafetyNote(toxicity, "toxicity"), tone: "toxicity" },
+  ].filter((item): item is { label: string; value: string; tone: string } => Boolean(item.value?.trim()));
+
+  if (safetyNotes.length === 0) return null;
+
+  return (
+    <DetailSection title="Safety notes">
+      <div className="herb-safety-grid">
+        {safetyNotes.map((note) => (
+          <article className={`herb-safety-card safety-${note.tone}`} key={note.label}>
+            <div className="herb-safety-card-title">
+              <span>!</span>
+              <h4>{note.label}</h4>
+            </div>
+            <EnglishText value={note.value} />
+          </article>
+        ))}
+      </div>
+    </DetailSection>
+  );
+}
+
+function HerbCombinationSection({ value }: { value: string }) {
+  const combinations = parseHerbCombinations(value);
+  if (combinations.length === 0) return null;
+
+  return (
+    <DetailSection title="Mechanisms of selected combinations">
+      <div className="herb-combination-grid">
+        {combinations.map((combination, index) => (
+          <article className="herb-combination-card" key={`${combination.title}-${index}`}>
+            <h4>{combination.title}</h4>
+            <ul>
+              {combination.notes.map((note, noteIndex) => (
+                <li key={`${combination.title}-${noteIndex}`}>{note}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </DetailSection>
+  );
 }
 
 type ModificationIngredient = {

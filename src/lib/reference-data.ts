@@ -82,6 +82,7 @@ export function getReferenceData(): ReferenceData {
     formulaId: canonicalIdByVariant.get(usage.formulaId) ?? usage.formulaId,
   }));
   const formulaIdsByHerbName = new Map<string, string[]>();
+  const dosesByHerbName = new Map<string, string[]>();
   for (const formula of formulas) {
     for (const ingredient of formula.ingredients) {
       for (const name of [ingredient.chineseName, ingredient.pinyin]) {
@@ -90,17 +91,27 @@ export function getReferenceData(): ReferenceData {
           ...(formulaIdsByHerbName.get(name) ?? []),
           formula.id,
         ]));
+        dosesByHerbName.set(name, unique([
+          ...(dosesByHerbName.get(name) ?? []),
+          ingredient.dose,
+        ]));
       }
     }
   }
   const herbs = (herbsJson.herbs as Herb[]).map((herb) => {
     const ingredientFormulaIds = [...herb.chineseNames, ...herb.pinyinNames]
       .flatMap((name) => formulaIdsByHerbName.get(name) ?? []);
+    const formulaObservedDoses = [...herb.chineseNames, ...herb.pinyinNames]
+      .flatMap((name) => dosesByHerbName.get(name) ?? []);
     return {
       ...herb,
       formulaIds: unique([
         ...herb.formulaIds.map((id) => canonicalIdByVariant.get(id) ?? id),
         ...ingredientFormulaIds,
+      ]),
+      observedDoses: unique([
+        ...herb.observedDoses,
+        ...formulaObservedDoses,
       ]),
     };
   });
