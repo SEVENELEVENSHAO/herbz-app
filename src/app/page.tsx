@@ -1,6 +1,5 @@
-import { ReferenceApp } from "@/components/reference-app";
-import { getReferenceData } from "@/lib/reference-data";
+import { ReferenceClientApp } from "@/components/reference-client-app";
 
 export default function Home() {
-  return <ReferenceApp data={getReferenceData()} />;
+  return <ReferenceClientApp />;
 }

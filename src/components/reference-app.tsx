@@ -752,7 +752,7 @@ export function ReferenceApp({ data }: { data: ReferenceData }) {
       queueMicrotask(() => setBookmarks(migrated));
       localStorage.setItem("herbz-bookmarks", JSON.stringify(migrated));
     }
-    if ("serviceWorker" in navigator) {
+    if (process.env.NODE_ENV === "production" && "serviceWorker" in navigator) {
       const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
       navigator.serviceWorker.register(`${basePath}/sw.js`);
     }
@@ -1001,53 +1001,68 @@ function HomeCategories({ language, formulas, total, query, onBrowseAll, onOpen 
         </button>
         </div>
       </NavigatorHeading>
-      <div className="category-strip-list tight-category-grid">
-        {grouped.map(({ category, subcategories, count }, index) => {
-          const categoryOpen = selectedCategoryId === category.id;
+      <div className="category-strip-list formula-category-strip-list">
+        {Array.from({ length: Math.ceil(grouped.length / 3) }, (_, rowIndex) => {
+          const rowGroups = grouped.slice(rowIndex * 3, rowIndex * 3 + 3);
+          const openGroup = rowGroups.find(({ category }) => selectedCategoryId === category.id);
+          const openIndex = openGroup ? grouped.findIndex(({ category }) => category.id === openGroup.category.id) : -1;
+
           return (
-            <section className={`category-strip-group category-tone-${index % 5} ${categoryOpen ? "is-open" : ""}`} key={category.id}>
-              <button
-                className="category-strip"
-                onClick={() => {
-                  setSelectedCategoryId(categoryOpen ? null : category.id);
-                  setSelectedSubcategoryId(null);
-                }}
-                aria-expanded={categoryOpen}
-              >
-                <span>{language === "zh" ? categoryChinese[category.id] : category.label}</span>
-                <span><strong>{count}</strong><ChevronDown size={18} /></span>
-              </button>
-              {categoryOpen && (
-                <div className="subcategory-strip-list">
-                  {subcategories.map(({ subcategory, formulas: subgroupFormulas }) => {
-                    const subcategoryOpen = selectedSubcategoryId === subcategory.id;
-                    return (
-                      <section className={`subcategory-strip-group ${subcategoryOpen ? "is-open" : ""}`} key={subcategory.id}>
-                        <button
-                          className="subcategory-strip"
-                          onClick={() => setSelectedSubcategoryId(subcategoryOpen ? null : subcategory.id)}
-                          aria-expanded={subcategoryOpen}
-                        >
-                          <span>{language === "zh" ? subcategoryChinese[subcategory.id] ?? subcategory.label : subcategory.label}</span>
-                          <span><strong>{subgroupFormulas.length}</strong><ChevronDown size={16} /></span>
-                        </button>
-                        {subcategoryOpen && (
-                          <div className="strip-formula-grid">
-                            {subgroupFormulas.map((formula) => (
-                              <button className="strip-formula-card" key={formula.id} onClick={() => onOpen(formula)}>
-                                <strong>{formula.names.chinese}</strong>
-                                <span className="formula-pinyin">{formula.names.pinyin}</span>
-                                {language === "en" && formula.names.english && <small>{formula.names.english}</small>}
-                              </button>
-                            ))}
-                          </div>
-                        )}
-                      </section>
-                    );
-                  })}
+            <div className="category-strip-row" key={`formula-category-row-${rowIndex}`}>
+              <div className="category-strip-row-cards">
+                {rowGroups.map(({ category, count }, groupIndex) => {
+                  const index = rowIndex * 3 + groupIndex;
+                  const categoryOpen = selectedCategoryId === category.id;
+                  return (
+                    <section className={`category-strip-group category-tone-${index % 5} ${categoryOpen ? "is-open" : ""}`} key={category.id}>
+                      <button
+                        className="category-strip"
+                        onClick={() => {
+                          setSelectedCategoryId(categoryOpen ? null : category.id);
+                          setSelectedSubcategoryId(null);
+                        }}
+                        aria-expanded={categoryOpen}
+                      >
+                        <span>{language === "zh" ? categoryChinese[category.id] : category.label}</span>
+                        <span><strong>{count}</strong><ChevronDown size={18} /></span>
+                      </button>
+                    </section>
+                  );
+                })}
+              </div>
+              {openGroup && (
+                <div className={`category-expansion-panel category-tone-${openIndex % 5}`}>
+                  <div className="subcategory-strip-list">
+                    {openGroup.subcategories.map(({ subcategory, formulas: subgroupFormulas }) => {
+                      const subcategoryOpen = selectedSubcategoryId === subcategory.id;
+                      return (
+                        <section className={`subcategory-strip-group ${subcategoryOpen ? "is-open" : ""}`} key={subcategory.id}>
+                          <button
+                            className="subcategory-strip"
+                            onClick={() => setSelectedSubcategoryId(subcategoryOpen ? null : subcategory.id)}
+                            aria-expanded={subcategoryOpen}
+                          >
+                            <span>{language === "zh" ? subcategoryChinese[subcategory.id] ?? subcategory.label : subcategory.label}</span>
+                            <span><strong>{subgroupFormulas.length}</strong><ChevronDown size={16} /></span>
+                          </button>
+                          {subcategoryOpen && (
+                            <div className="strip-formula-grid">
+                              {subgroupFormulas.map((formula) => (
+                                <button className="strip-formula-card" key={formula.id} onClick={() => onOpen(formula)}>
+                                  <strong>{formula.names.chinese}</strong>
+                                  <span className="formula-pinyin">{formula.names.pinyin}</span>
+                                  {language === "en" && formula.names.english && <small>{formula.names.english}</small>}
+                                </button>
+                              ))}
+                            </div>
+                          )}
+                        </section>
+                      );
+                    })}
+                  </div>
                 </div>
               )}
-            </section>
+            </div>
           );
         })}
       </div>
