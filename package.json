@@ -13,6 +13,7 @@
     "import:formula-textbook": "node scripts/import_formula_textbook.mjs",
     "import:english-herbs": "python scripts/import_english_materia_medica.py --pdf \"D:\\BaiduNetdiskDownload\\[OCR]_Chinese Herbal Medicine_20260612_0216.text.pdf\" --herbs src/data/herbs.json --review-output data/review/english-herbs.review.json",
     "import:american-dragon": "python scripts/import_american_dragon.py"
+    ,"import:apk-reference": "node scripts/import_apk_reference.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.17.0",
@@ -21,6 +22,7 @@
     "react-dom": "19.2.4"
   },
   "devDependencies": {
+    "better-sqlite3-multiple-ciphers": "^12.11.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
