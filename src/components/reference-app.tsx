@@ -12,8 +12,8 @@ import {
   GraduationCap,
   Languages,
   Leaf,
+  Library,
   Menu,
-  Plus,
   Search,
   Shuffle,
   X,
@@ -55,7 +55,7 @@ const actionCategories: ActionCategory[] = [
       { id: "ying-blood", label: "Clear Ying and Blood Heat", keywords: ["blood heat", "cools blood", "nutritive-level"] },
       { id: "heat-toxin", label: "Clear Heat Toxin", keywords: ["heat toxin", "toxic heat", "clears toxin", "relieves toxicity", "resolves toxicity"] },
       { id: "organ-fire", label: "Clear Organ Fire", keywords: ["heart fire", "liver fire", "stomach heat", "lung heat", "bladder", "liver/stomach", "liver/gallbladder"] },
-      { id: "deficiency-heat", label: "Clear Deficiency Heat", keywords: ["deficiency heat", "deficient heat", "empty heat", "deficiency fever", "steaming bones", "stasis fever"] },
+      { id: "deficiency-heat", label: "Clear Deficiency Heat", keywords: ["deficiency heat", "empty heat", "deficiency fever", "steaming bones", "stasis fever"] },
       { id: "qi-level", label: "Clear Qi-Level Heat", keywords: ["clear heat", "clears fire", "drains heat", "severe heat", "miasmic heat"] },
     ],
   },
@@ -193,9 +193,6 @@ const actionCategories: ActionCategory[] = [
       { id: "food-with-deficiency", label: "Reduce Food and Tonify", keywords: ["strengthens spleen", "tonifies", "supports"] },
     ],
   },
-  { id: "expel-parasites", label: "Expel Parasites", description: "Antiparasitic formulas", keywords: ["parasite", "worms"], subcategories: [{ id: "antiparasitic", label: "Antiparasitic", keywords: [] }] },
-  { id: "induce-vomiting", label: "Induce Vomiting", description: "Emetic formulas", keywords: ["induce vomiting", "emetic"], subcategories: [{ id: "emetic", label: "Emetic", keywords: [] }] },
-  { id: "empirical", label: "Empirical Formulas", description: "Specialized traditional formulas", keywords: [], subcategories: [{ id: "empirical", label: "Empirical", keywords: [] }] },
   {
     id: "other", label: "Other Actions", description: "Formulas with specialized actions", keywords: [],
     subcategories: [{ id: "specialized", label: "Specialized Actions", keywords: [] }],
@@ -298,16 +295,6 @@ const reviewedFormulaCategories: Record<string, string> = {
 };
 
 function getActionCategory(formula: Formula) {
-  const apkCategoryIds: Record<string, string> = {
-    "解表剂": "release-exterior", "泻下剂": "drain-downward", "和解剂": "harmonize", "清热剂": "clear-heat",
-    "温里剂": "warm-interior", "补益剂": "tonify", "固涩剂": "stabilize-bind", "安神剂": "calm-spirit",
-    "开窍剂": "open-orifices", "理气剂": "regulate-qi", "理血剂": "regulate-blood", "治风剂": "treat-wind",
-    "治燥剂": "treat-dryness", "祛湿剂": "expel-dampness", "祛痰剂": "dispel-phlegm", "消食剂": "reduce-food",
-    "驱虫剂": "expel-parasites", "涌吐剂": "induce-vomiting", "验方": "empirical",
-  };
-  if (formula.category?.system === "formula-apk" && apkCategoryIds[formula.category.category]) {
-    return apkCategoryIds[formula.category.category];
-  }
   const reviewedCategory = reviewedFormulaCategories[normalize(formula.names.pinyin)];
   if (reviewedCategory) return reviewedCategory;
 
@@ -466,32 +453,7 @@ type HerbLibraryCategoryGroup = {
 };
 
 function getHerbLibraryGroups(herbs: Herb[], formulas: Formula[]) {
-  const herbCategoryLabels: Record<string, string> = {
-    "解表药": "Exterior-Releasing Herbs", "清热药": "Heat-Clearing Herbs", "泻下药": "Purgative Herbs",
-    "祛风湿药": "Wind-Damp Herbs", "化湿药": "Dampness-Transforming Herbs", "利水渗湿药": "Water-Draining Herbs",
-    "温里药": "Interior-Warming Herbs", "理气药": "Qi-Regulating Herbs", "消食药": "Food-Reducing Herbs",
-    "驱虫药": "Antiparasitic Herbs", "止血药": "Hemostatic Herbs", "活血化瘀药": "Blood-Invigorating Herbs",
-    "化痰药": "Phlegm-Transforming Herbs", "止咳平喘药": "Cough-Relieving Herbs", "安神药": "Spirit-Calming Herbs",
-    "平肝息风药": "Liver-Calming Herbs", "开窍药": "Orifice-Opening Herbs", "补虚药": "Tonifying Herbs",
-    "收敛药": "Astringent Herbs", "涌吐药": "Emetic Herbs", "解毒杀虫燥湿止痒药": "Detoxifying and Antipruritic Herbs",
-    "拔毒化腐生肌药": "Toxin-Drawing and Tissue-Regenerating Herbs",
-  };
-  const explicitRows = new Map<number, { category: string; subcategory: string | null }>();
-  for (const herb of herbs) if (herb.category?.system === "herb-apk") {
-    explicitRows.set(herb.category.categoryId, { category: herb.category.category, subcategory: herb.category.subcategory });
-  }
-  const explicitCategoryNames = [...new Set([...explicitRows.values()].map((row) => row.category))];
-  const explicitCategories: ActionCategory[] = explicitCategoryNames.map((name) => ({
-    id: `herb-apk-${name}`,
-    label: herbCategoryLabels[name] ?? name,
-    description: name,
-    keywords: [],
-    subcategories: [...explicitRows.entries()].filter(([, row]) => row.category === name).map(([id, row]) => ({
-      id: `herb-apk-sub-${id}`, label: row.subcategory ?? "General", keywords: [],
-    })),
-  }));
-  const libraryCategories = [...explicitCategories, ...actionCategories];
-  const groups = new Map(libraryCategories.map((category) => [
+  const groups = new Map(actionCategories.map((category) => [
     category.id,
     new Map([
       ...category.subcategories.map((subcategory) => [subcategory.id, [] as Herb[]] as const),
@@ -500,10 +462,6 @@ function getHerbLibraryGroups(herbs: Herb[], formulas: Formula[]) {
   ]));
 
   for (const herb of herbs) {
-    if (herb.category?.system === "herb-apk") {
-      groups.get(`herb-apk-${herb.category.category}`)?.get(`herb-apk-sub-${herb.category.categoryId}`)?.push(herb);
-      continue;
-    }
     const actionGroups = getHerbActionGroups(herb, relatedFormulasForHerb(herb, formulas));
     if (actionGroups.length === 0) {
       groups.get("other")?.get("specialized")?.push(herb);
@@ -519,7 +477,7 @@ function getHerbLibraryGroups(herbs: Herb[], formulas: Formula[]) {
     }
   }
 
-  return libraryCategories
+  return actionCategories
     .map((category): HerbLibraryCategoryGroup => {
       const categoryGroups = groups.get(category.id);
       const subcategories = [
@@ -619,7 +577,7 @@ function parseActionBullets(value: string) {
   const withoutCombinationLines = value
     .split(/\n/)
     .filter((line) => !/^[\s>\-]*with\b/i.test(line.trim()))
-    .filter((line) => !/^[\s>*-]*with\b/i.test(line.trim()))
+    .filter((line) => !/^\s*[-–—]*\s*with\b/i.test(line.trim()))
     .join(" ");
 
   const cleaned = withoutCombinationLines
@@ -629,7 +587,7 @@ function parseActionBullets(value: string) {
 
   const chunks = cleaned
     .split(/(?<=[.:])\s+(?=(?:Tonif|Open|Promot|Warm|Clear|Drain|Dispel|Expel|Regulat|Move|Stop|Calm|Nourish|Transform|Resolve|Anchor|Descend|Raise|Release)\w*\b)/i)
-    .map((chunk) => chunk.trim().replace(/^[\s*-]+/, "").replace(/\s*-\s*$/, ""))
+    .map((chunk) => chunk.trim().replace(/^[-–—]\s*/, "").replace(/\s*-\s*$/, ""))
     .filter(Boolean);
 
   return uniqueDisplayValues(chunks.length > 1 ? chunks : cleaned.split(/\s+-\s+/)).slice(0, 8);
@@ -652,7 +610,7 @@ function parseHerbActionsAndIndications(value: string) {
       continue;
     }
 
-    if (/^[\s>*-]*with\b/i.test(line)) {
+    if (/^[-–—]*\s*with\b/i.test(line)) {
       skippingCombination = true;
       continue;
     }
@@ -660,7 +618,7 @@ function parseHerbActionsAndIndications(value: string) {
     const startsAction = actionStartPattern.test(line) || /^[\s:>\-]*(invigorates?|checks?|induces?)\b/i.test(line);
     if (startsAction) {
       if (current) entries.push(current);
-      current = line.replace(/^[\s*-]+/, "");
+      current = line.replace(/^[-–—:]\s*/, "");
       skippingCombination = false;
       continue;
     }
@@ -675,13 +633,13 @@ function parseHerbActionsAndIndications(value: string) {
     const forMatch = bullet.match(/^(.+?)\s+for\s+(.+)$/i);
 
     if (colonMatch) {
-      actions.push(colonMatch[1].replace(/^[\s*-]+/, "").trim());
+      actions.push(colonMatch[1].replace(/^[-–—]\s*/, "").trim());
       indications.push(...simplifyIndicationText(colonMatch[2]));
     } else if (forMatch) {
-      actions.push(forMatch[1].replace(/^[\s*-]+/, "").trim());
+      actions.push(forMatch[1].replace(/^[-–—]\s*/, "").trim());
       indications.push(...simplifyIndicationText(forMatch[2]));
     } else {
-      actions.push(bullet.replace(/^[\s*-]+/, "").trim());
+      actions.push(bullet.replace(/^[-–—]\s*/, "").trim());
     }
   }
 
@@ -919,7 +877,7 @@ export function ReferenceApp({ data }: { data: ReferenceData }) {
             <input
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder={language === "zh" ? "搜索方名、中药、功效、证候或拼音..." : "Search formulas, herbs, actions, patterns, or pinyin..."}
+              placeholder={language === "zh" ? "搜索方名、中药、功效、证候或拼音…" : "Search formulas, herbs, actions, patterns, or pinyin…"}
             />
             {query && <button onClick={() => setQuery("")} aria-label={language === "zh" ? "清除搜索" : "Clear search"}><X size={17} /></button>}
           </div>
@@ -936,7 +894,7 @@ export function ReferenceApp({ data }: { data: ReferenceData }) {
               onBookmark={toggleBookmark} onCompare={toggleCompare} onCompareNow={() => navigate("compare")} />
           )}
           {section === "herbs" && <HerbLibrary language={language} herbs={herbs} formulas={data.formulas} total={data.herbs.length} thermal={thermal} setThermal={setThermal} onOpen={(item) => setDetail({ type: "herb", item })} />}
-          {section === "compare" && <CompareView language={language} formulas={data.formulas} compareIds={compareIds} onAdd={addToCompare} onRemove={toggleCompare} usagesByFormula={usagesByFormula} />}
+          {section === "compare" && <CompareView language={language} formulas={data.formulas} compareIds={compareIds} onRemove={toggleCompare} onBrowse={() => navigate("formulas")} usagesByFormula={usagesByFormula} />}
           {section === "study" && <StudyView language={language} formulas={data.formulas} bookmarks={bookmarks} onOpen={(item) => setDetail({ type: "formula", item })} />}
         </div>
       </main>
@@ -1001,7 +959,6 @@ function HomeCategories({ language, formulas, total, query, onBrowseAll, onOpen 
       .filter((group) => group.count > 0);
   }, [formulas]);
 
-
   if (query) {
     return (
       <section className="category-browser">
@@ -1025,7 +982,7 @@ function HomeCategories({ language, formulas, total, query, onBrowseAll, onOpen 
             )
           )}
         </div>
-        {!formulas.length && <EmptyState label={language === "zh" ? "没有找到匹配的方剂" : "No formulas match this search."} />}
+        {!formulas.length && <EmptyState label="No formulas match this search." />}
       </section>
     );
   }
@@ -1047,6 +1004,8 @@ function HomeCategories({ language, formulas, total, query, onBrowseAll, onOpen 
       <div className="category-strip-list formula-category-strip-list">
         {Array.from({ length: Math.ceil(grouped.length / 3) }, (_, rowIndex) => {
           const rowGroups = grouped.slice(rowIndex * 3, rowIndex * 3 + 3);
+          const openGroup = rowGroups.find(({ category }) => selectedCategoryId === category.id);
+          const openIndex = openGroup ? grouped.findIndex(({ category }) => category.id === openGroup.category.id) : -1;
 
           return (
             <div className="category-strip-row" key={`formula-category-row-${rowIndex}`}>
@@ -1054,7 +1013,6 @@ function HomeCategories({ language, formulas, total, query, onBrowseAll, onOpen 
                 {rowGroups.map(({ category, count }, groupIndex) => {
                   const index = rowIndex * 3 + groupIndex;
                   const categoryOpen = selectedCategoryId === category.id;
-                  const panelId = `formula-category-panel-${category.id}`;
                   return (
                     <section className={`category-strip-group category-tone-${index % 5} ${categoryOpen ? "is-open" : ""}`} key={category.id}>
                       <button
@@ -1064,7 +1022,6 @@ function HomeCategories({ language, formulas, total, query, onBrowseAll, onOpen 
                           setSelectedSubcategoryId(null);
                         }}
                         aria-expanded={categoryOpen}
-                        aria-controls={panelId}
                       >
                         <span>{language === "zh" ? categoryChinese[category.id] : category.label}</span>
                         <span><strong>{count}</strong><ChevronDown size={18} /></span>
@@ -1073,35 +1030,22 @@ function HomeCategories({ language, formulas, total, query, onBrowseAll, onOpen 
                   );
                 })}
               </div>
-              {rowGroups.map(({ category, subcategories }, groupIndex) => {
-                const index = rowIndex * 3 + groupIndex;
-                const categoryOpen = selectedCategoryId === category.id;
-                const panelId = `formula-category-panel-${category.id}`;
-
-                return (
-                  <div
-                    className={`category-expansion-panel category-tone-${index % 5} ${categoryOpen ? "is-open" : ""}`}
-                    id={panelId}
-                    key={panelId}
-                    aria-hidden={!categoryOpen}
-                  >
-                    <div className="category-expansion-inner">
-                      <div className="subcategory-strip-list">
-                        {subcategories.map(({ subcategory, formulas: subgroupFormulas }) => {
+              {openGroup && (
+                <div className={`category-expansion-panel category-tone-${openIndex % 5}`}>
+                  <div className="subcategory-strip-list">
+                    {openGroup.subcategories.map(({ subcategory, formulas: subgroupFormulas }) => {
                       const subcategoryOpen = selectedSubcategoryId === subcategory.id;
-                      const subcategoryPanelId = `${panelId}-${subcategory.id}`;
                       return (
                         <section className={`subcategory-strip-group ${subcategoryOpen ? "is-open" : ""}`} key={subcategory.id}>
                           <button
                             className="subcategory-strip"
                             onClick={() => setSelectedSubcategoryId(subcategoryOpen ? null : subcategory.id)}
                             aria-expanded={subcategoryOpen}
-                            aria-controls={subcategoryPanelId}
                           >
                             <span>{language === "zh" ? subcategoryChinese[subcategory.id] ?? subcategory.label : subcategory.label}</span>
                             <span><strong>{subgroupFormulas.length}</strong><ChevronDown size={16} /></span>
                           </button>
-                          <div className={`subcategory-formula-panel ${subcategoryOpen ? "is-open" : ""}`} id={subcategoryPanelId} aria-hidden={!subcategoryOpen}>
+                          {subcategoryOpen && (
                             <div className="strip-formula-grid">
                               {subgroupFormulas.map((formula) => (
                                 <button className="strip-formula-card" key={formula.id} onClick={() => onOpen(formula)}>
@@ -1111,15 +1055,13 @@ function HomeCategories({ language, formulas, total, query, onBrowseAll, onOpen 
                                 </button>
                               ))}
                             </div>
-                          </div>
+                          )}
                         </section>
                       );
-                        })}
-                      </div>
-                    </div>
+                    })}
                   </div>
-                );
-              })}
+                </div>
+              )}
             </div>
           );
         })}
@@ -1146,6 +1088,58 @@ function NavigatorHeading({ kicker, title, description, onBack, children }: {
   );
 }
 
+export function Home({ data, language, bookmarks, onNavigate, onOpen }: {
+  data: ReferenceData; language: "zh" | "en"; bookmarks: string[];
+  onNavigate: (section: Section) => void; onOpen: (formula: Formula) => void;
+}) {
+  const featured = data.formulas.filter((formula) => formula.usageCount > 2).slice(0, 4);
+  return (
+    <>
+      <section className="hero">
+        <div className="hero-copy">
+          <div className="eyebrow">中医方药 · 双语参考</div>
+          <h1>{language === "zh" ? "从方到药，" : "From formula to herb,"}<span>{language === "zh" ? "一脉贯通。" : "connected with clarity."}</span></h1>
+          <p>{language === "zh" ? "面向学习与临床查阅的私人资料库。快速检索方剂组成、功效、主治、证候及中药属性。" : "A private study and clinical reference for formula composition, actions, indications, patterns, and materia medica."}</p>
+          <div className="hero-actions">
+            <button className="primary-button" onClick={() => onNavigate("formulas")}>浏览方剂 <ArrowRight size={17} /></button>
+            <button className="secondary-button" onClick={() => onNavigate("study")}><GraduationCap size={17} /> 开始研习</button>
+          </div>
+        </div>
+        <div className="hero-seal" aria-hidden="true"><span>方</span><span>药</span></div>
+      </section>
+      <section className="stats-grid">
+        <Stat icon={FlaskConical} value={data.stats.variants} label="方剂版本" english="Formula variants" />
+        <Stat icon={Leaf} value={data.stats.herbs} label="中药索引" english="Indexed herbs" />
+        <Stat icon={Library} value={data.stats.usages} label="临床关联" english="Clinical links" />
+        <Stat icon={Bookmark} value={bookmarks.length} label="我的收藏" english="Bookmarks" />
+      </section>
+      <section className="section-block">
+        <div className="section-heading"><div><span>常用方剂</span><h2>从这里继续查阅</h2></div><button className="text-button" onClick={() => onNavigate("formulas")}>查看全部 <ArrowRight size={16} /></button></div>
+        <div className="formula-grid">{featured.map((formula, index) => <FormulaCard key={formula.id} formula={formula} index={index} onOpen={onOpen} />)}</div>
+      </section>
+      <section className="source-strip"><div><BookOpen size={22} /><strong>资料来源</strong></div><p>方剂学 · 中药学 · ACU Five clinical reference</p><span>仅供学习参考 · Educational use only</span></section>
+    </>
+  );
+}
+
+function Stat({ icon: Icon, value, label, english }: { icon: typeof Leaf; value: number; label: string; english: string }) {
+  return <article className="stat-card"><Icon size={20} /><strong>{value}</strong><div><span>{label}</span><small>{english}</small></div></article>;
+}
+
+function FormulaCard({ formula, index, onOpen }: { formula: Formula; index: number; onOpen: (formula: Formula) => void }) {
+  return (
+    <button className={`formula-card tone-card-${index % 4}`} onClick={() => onOpen(formula)}>
+      <div className="formula-card-top"><span>{formula.names.chinese.slice(0, 1)}</span><ArrowRight size={17} /></div>
+      <h3>{formula.names.chinese}</h3><span className="formula-pinyin">{formula.names.pinyin}</span>
+      <p>{formula.actions.slice(0, 2).join(" · ")}</p>
+      <div className="mini-ingredients">
+        {formula.ingredients.slice(0, 5).map((ingredient) => <span className={`thermal-${ingredient.thermalProperty}`} key={ingredient.position}>{ingredient.chineseName}</span>)}
+        {formula.ingredients.length > 5 && <span>+{formula.ingredients.length - 5}</span>}
+      </div>
+    </button>
+  );
+}
+
 function FormulaLibrary({ language, formulas, total, bookmarks, compareIds, usagesByFormula, onOpen, onBookmark, onCompare, onCompareNow }: {
   language: Language;
   formulas: Formula[]; total: number; bookmarks: string[]; compareIds: string[]; usagesByFormula: Map<string, Usage[]>;
@@ -1154,7 +1148,7 @@ function FormulaLibrary({ language, formulas, total, bookmarks, compareIds, usag
   return (
     <section>
       <PageHeading kicker={language === "zh" ? "方剂库" : "FORMULA LIBRARY"} title={language === "zh" ? "方剂全览" : "Formula Library"} description={language === "zh" ? `显示 ${formulas.length} / ${total} 个方剂。` : `Showing ${formulas.length} of ${total} formulas.`} />
-      <div className="result-toolbar"><span>{language === "zh" ? `${formulas.length} 个结果` : `${formulas.length} results`}</span>{compareIds.length > 0 && <button className="compare-pill" onClick={onCompareNow}><Columns2 size={15} /> {language === "zh" ? `对照 ${compareIds.length}` : `Compare ${compareIds.length}`}</button>}</div>
+      <div className="result-toolbar"><span>{formulas.length} results</span>{compareIds.length > 0 && <button className="compare-pill" onClick={onCompareNow}><Columns2 size={15} /> 对照 {compareIds.length}</button>}</div>
       <div className="formula-list">
         {formulas.map((formula, index) => (
           <article className="formula-row" key={formula.id}>
@@ -1171,7 +1165,7 @@ function FormulaLibrary({ language, formulas, total, bookmarks, compareIds, usag
             </div>
           </article>
         ))}
-        {!formulas.length && <EmptyState label={language === "zh" ? "没有找到匹配的方剂" : "No matching formulas found."} />}
+        {!formulas.length && <EmptyState label="没有找到匹配的方剂" />}
       </div>
     </section>
   );
@@ -1243,107 +1237,39 @@ function HerbLibrary({ language, herbs, formulas, total, thermal, setThermal, on
             </section>
           );
         })}
-        {!herbs.length && <EmptyState label={language === "zh" ? "没有找到匹配的中药" : "No matching herbs found."} />}
+        {!herbs.length && <EmptyState label="没有找到匹配的中药" />}
         {herbs.length > 0 && grouped.length === 0 && <EmptyState label={language === "zh" ? "没有功效分类" : "No action categories found."} />}
       </div>
     </section>
   );
 }
 
-function CompareView({ language, formulas, compareIds, onAdd, onRemove, usagesByFormula }: {
+function CompareView({ language, formulas, compareIds, onRemove, onBrowse, usagesByFormula }: {
   language: Language;
-  formulas: Formula[]; compareIds: string[]; onAdd: (id: string) => void; onRemove: (id: string) => void; usagesByFormula: Map<string, Usage[]>;
+  formulas: Formula[]; compareIds: string[]; onRemove: (id: string) => void; onBrowse: () => void; usagesByFormula: Map<string, Usage[]>;
 }) {
-  const [draftQuery, setDraftQuery] = useState("");
-  const [searchQuery, setSearchQuery] = useState("");
   const selected = compareIds.map((id) => formulas.find((formula) => formula.id === id)).filter(Boolean) as Formula[];
-  const searchResults = useMemo(() => {
-    const selectedIds = new Set(compareIds);
-    const pool = formulas.filter((formula) => !selectedIds.has(formula.id));
-    const filtered = searchQuery
-      ? pool.filter((formula) => matches([
-        formula.names.chinese,
-        formula.names.pinyin,
-        formula.names.english,
-        ...formula.actions,
-        formula.indications,
-        ...formula.ingredients.flatMap((item) => [item.chineseName, item.pinyin, item.englishName]),
-        formula.americanDragonReference?.englishName,
-        ...(formula.americanDragonReference?.alsoKnownAs ?? []),
-        ...(formula.americanDragonReference?.formulaActions ?? []),
-        ...(formula.americanDragonReference?.syndromes ?? []),
-        ...(formula.americanDragonReference?.clinicalManifestations ?? []),
-        ...(formula.americanDragonReference?.treats ?? []),
-        ...(usagesByFormula.get(formula.id) ?? []).flatMap((usage) => [
-          usage.conditionName,
-          usage.conditionPinyin,
-          usage.patternName,
-          usage.treatmentPrinciple,
-        ]),
-      ], searchQuery))
-      : pool;
-
-    return filtered.slice(0, selected.length === 0 ? 12 : 8);
-  }, [compareIds, formulas, searchQuery, selected.length, usagesByFormula]);
-
-  function submitSearch(event: React.FormEvent) {
-    event.preventDefault();
-    setSearchQuery(draftQuery.trim());
-  }
-
   return (
     <section>
       <PageHeading kicker={language === "zh" ? "并列比较" : "SIDE BY SIDE"} title={language === "zh" ? "方剂对照" : "Formula Comparison"} description={language === "zh" ? "最多选择三个方剂进行比较。" : "Compare up to three formulas."} />
-      <div className={`compare-workspace selected-${selected.length}`}>
-        {selected.length > 0 && (
-          <div className="comparison-grid" style={{ gridTemplateColumns: `repeat(${selected.length}, minmax(0, 1fr))` }}>
-            {selected.map((formula) => (
-              <article className="comparison-card" key={formula.id}>
-                <button className="comparison-remove" onClick={() => onRemove(formula.id)} aria-label={language === "zh" ? "移除方剂" : "Remove formula"}><X size={16} /></button>
-                <h2>{formula.names.chinese}</h2><span className="formula-pinyin">{formula.names.pinyin}</span>{language === "en" && formula.names.english && <small className="formula-english">{formula.names.english}</small>}
-                <CompareSection title={language === "zh" ? "组成" : "Ingredients"}><div className="compare-ingredients">{formula.ingredients.map((item) => <span className={`ingredient-${item.thermalProperty}`} key={item.position}>{item.chineseName}<small>{item.dose}</small></span>)}</div></CompareSection>
-                {language === "en" && <><CompareSection title="Actions">{formula.actions.map((action) => <p key={action}>{action}</p>)}</CompareSection><CompareSection title="Indications"><p>{formula.indications}</p></CompareSection><CompareSection title="Patterns">{(usagesByFormula.get(formula.id) ?? []).slice(0, 5).map((usage) => <p key={usage.id}>{usage.patternName}</p>)}</CompareSection></>}
-              </article>
-            ))}
-          </div>
-        )}
-        {selected.length < 3 && (
-          <aside className="compare-search-panel">
-            <form className="compare-search" onSubmit={submitSearch}>
-              <Search size={18} />
-              <input
-                value={draftQuery}
-                onChange={(event) => setDraftQuery(event.target.value)}
-                placeholder={language === "zh" ? "搜索方剂" : "Search formulas"}
-              />
-              <button type="submit">{language === "zh" ? "搜索" : "Search"}</button>
-            </form>
-            <div className="compare-search-meta">
-              <span>{searchResults.length} {language === "zh" ? "个结果" : "results"}</span>
-              <strong>{selected.length}/3</strong>
-            </div>
-            <div className="compare-result-grid">
-              {searchResults.map((formula) => (
-                <article className="compare-result-card" key={formula.id}>
-                  <div>
-                    <h3>{formula.names.chinese}</h3>
-                    <span>{formula.names.pinyin}</span>
-                    {language === "en" && formula.names.english && <small>{formula.names.english}</small>}
-                    {language === "en" && <p>{formula.actions.slice(0, 2).join(" · ")}</p>}
-                  </div>
-                  <button onClick={() => onAdd(formula.id)} aria-label={language === "zh" ? "加入对照" : `Add ${formula.names.pinyin} to comparison`}>
-                    <Plus size={16} />
-                  </button>
-                </article>
-              ))}
-              {searchResults.length === 0 && <EmptyState label={language === "zh" ? "没有找到匹配的方剂" : "No formulas match this search."} />}
-            </div>
-          </aside>
-        )}
-      </div>
+      {selected.length < 2 ? (
+        <div className="empty-panel"><Columns2 size={34} /><h3>{language === "zh" ? "选择至少两个方剂" : "Select at least two formulas"}</h3><button className="primary-button" onClick={onBrowse}>{language === "zh" ? "浏览方剂" : "Browse formulas"}</button></div>
+      ) : (
+        <div className="comparison-grid" style={{ gridTemplateColumns: `repeat(${selected.length}, minmax(0, 1fr))` }}>
+          {selected.map((formula) => (
+            <article className="comparison-card" key={formula.id}>
+              <button className="comparison-remove" onClick={() => onRemove(formula.id)}><X size={16} /></button>
+              <h2>{formula.names.chinese}</h2><span className="formula-pinyin">{formula.names.pinyin}</span>{language === "en" && formula.names.english && <small className="formula-english">{formula.names.english}</small>}
+              <CompareSection title={language === "zh" ? "组成" : "Ingredients"}><div className="compare-ingredients">{formula.ingredients.map((item) => <span className={`ingredient-${item.thermalProperty}`} key={item.position}>{item.chineseName}<small>{item.dose}</small></span>)}</div></CompareSection>
+              {language === "en" && <><CompareSection title="Actions">{formula.actions.map((action) => <p key={action}>{action}</p>)}</CompareSection><CompareSection title="Indications"><p>{formula.indications}</p></CompareSection><CompareSection title="Patterns">{(usagesByFormula.get(formula.id) ?? []).slice(0, 5).map((usage) => <p key={usage.id}>{usage.patternName}</p>)}</CompareSection></>}
+            </article>
+          ))}
+        </div>
+      )}
     </section>
   );
 }
+
 function CompareSection({ title, children }: { title: string; children: React.ReactNode }) {
   return <section className="compare-section"><h4>{title}</h4>{children}</section>;
 }
@@ -1405,7 +1331,6 @@ function FormulaDetail({ language, formula, usages, isCompared, onAddCompare }: 
 }) {
   const web = formula.americanDragonReference;
   const textbook = formula.textbookReference;
-  const apk = formula.apkReference;
   const indicationDetails = parseIndications(
     formula.indications,
     web?.clinicalManifestations ?? [],
@@ -1444,12 +1369,11 @@ function FormulaDetail({ language, formula, usages, isCompared, onAddCompare }: 
                 </div>
               </div>
               <div className="ingredient-dose">
-                <strong>{ingredient.dose || "-"}</strong>
+                <strong>{ingredient.dose || "—"}</strong>
               </div>
             </article>
           ))}
         </div>
-        {formula.ingredients.length === 0 && apk?.ingredientText && <EnglishText value={apk.ingredientText} />}
       </DetailSection>
       {language === "en" && <div className="two-column-detail">
         <DetailSection title="Actions">
@@ -1495,15 +1419,9 @@ function FormulaDetail({ language, formula, usages, isCompared, onAddCompare }: 
         {web.notes.length > 0 && <CollapsibleList title="Source notes" values={web.notes} />}
         {web.modifications.length > 0 && <ModificationSection values={web.modifications} />}
       </>}
-      {apk && <>
-        {apk.usage && <CollapsibleEnglish title={language === "zh" ? "用法" : "Preparation and use"} value={apk.usage} />}
-        {apk.appliedTo && <CollapsibleEnglish title={language === "zh" ? "临床应用" : "Clinical applications"} value={apk.appliedTo} />}
-        {apk.notes && <CollapsibleEnglish title={language === "zh" ? "注意事项" : "Source notes"} value={apk.notes} />}
-      </>}
       <SourceNote language={language} title={[
         "ACU Five",
         textbook && "Formula Study textbook",
-        apk && "中医方剂 APK (pending review)",
       ].filter(Boolean).join(" / ")} />
     </div>
   );
@@ -1512,7 +1430,6 @@ function FormulaDetail({ language, formula, usages, isCompared, onAddCompare }: 
 function HerbDetail({ language, herb, formulas, onFormulaOpen }: { language: Language; herb: Herb; formulas: Formula[]; onFormulaOpen: (formula: Formula) => void }) {
   const related = herb.formulaIds.map((id) => formulas.find((formula) => formula.id === id)).filter(Boolean) as Formula[];
   const english = herb.englishReference;
-  const apk = herb.apkReference;
   const channels = parseChannels(english?.channels);
   const doseChips = parseDoseChips(herb.observedDoses);
   const englishNames = herb.englishNames.filter(Boolean);
@@ -1536,7 +1453,7 @@ function HerbDetail({ language, herb, formulas, onFormulaOpen }: { language: Lan
       </div>
       {channels.length > 0 && (
         <div className="channel-row" aria-label="Channels entered">
-          <span className="channel-row-label">{language === "zh" ? "归经" : "Channels"}</span>
+          <span className="channel-row-label">{language === "zh" ? "缁忕粶" : "Channels"}</span>
           <div className="channel-chip-list">
             {channels.map((channel) => (
               <span className={`channel-chip ${channel.className}`} title={channel.name} key={channel.name}>{channel.label}</span>
@@ -1576,14 +1493,6 @@ function HerbDetail({ language, herb, formulas, onFormulaOpen }: { language: Lan
         />
         {english.commentary && <CollapsibleEnglish title="Commentary" value={english.commentary} />}
         {english.combinations && <HerbCombinationSection value={english.combinations} />}
-      </>}
-      {apk && <>
-        {apk.propertiesAndChannels && <DetailSection title={language === "zh" ? "性味归经" : "Properties and channels"}><EnglishText value={apk.propertiesAndChannels} /></DetailSection>}
-        {apk.function && <DetailSection title={language === "zh" ? "功效" : "Functions"}><EnglishText value={apk.function} /></DetailSection>}
-        {apk.appliedTo && <CollapsibleEnglish title={language === "zh" ? "应用" : "Applications"} value={apk.appliedTo} />}
-        {apk.usage && <CollapsibleEnglish title={language === "zh" ? "用法用量" : "Dosage and use"} value={apk.usage} />}
-        {apk.notes && <CollapsibleEnglish title={language === "zh" ? "注意事项" : "Source notes"} value={apk.notes} />}
-        <SourceNote language={language} title="中医中药 APK (pending review)" />
       </>}
       <DetailSection title={language === "zh" ? "相关方剂" : "Related formulas"}><div className="related-list">{related.map((formula) => <button key={formula.id} onClick={() => onFormulaOpen(formula)}><div><strong>{formula.names.chinese}</strong><span>{formula.names.pinyin}</span>{language === "en" && formula.names.english && <small>{formula.names.english}</small>}</div><ArrowRight size={16} /></button>)}</div></DetailSection>
     </div>

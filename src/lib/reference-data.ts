@@ -4,8 +4,6 @@ import usagesJson from "@/data/usages.json";
 import sourcesJson from "@/data/source-resources.json";
 import americanDragonJson from "@/data/american-dragon-formulas.json";
 import textbookFormulasJson from "@/data/textbook-formulas.json";
-import apkFormulasJson from "@/data/apk-formulas.json";
-import apkHerbsJson from "@/data/apk-herbs.json";
 import type { Formula, Herb, ReferenceData, SourceResource, Usage } from "@/types/reference";
 
 function normalizeFormulaName(value: string) {
@@ -33,18 +31,11 @@ function formulaCompleteness(formula: Formula) {
 }
 
 export function getReferenceData(): ReferenceData {
-  const formulaCategoryByName = new Map(apkFormulasJson.classifications.map((item) => [item.name, item]));
-  const herbCategoryByName = new Map(apkHerbsJson.classifications.map((item) => [item.name, item]));
   const supplemental = americanDragonJson.references as Record<string, Formula["americanDragonReference"]>;
   const appFormulas = formulasJson.formulas as Omit<Formula, "variantIds">[];
   const textbookFormulas = textbookFormulasJson.formulas as Omit<Formula, "variantIds">[];
-  const apkFormulas = apkFormulasJson.formulas as Omit<Formula, "variantIds">[];
-  const sourceFormulas = [...appFormulas, ...textbookFormulas, ...apkFormulas].map((formula): Formula => ({
+  const sourceFormulas = [...appFormulas, ...textbookFormulas].map((formula): Formula => ({
     ...formula,
-    category: formula.category ?? (() => {
-      const match = formulaCategoryByName.get(formula.names.chinese);
-      return match ? { system: "formula-apk" as const, ...match } : undefined;
-    })(),
     variantIds: [formula.id],
     americanDragonReference: supplemental[formula.id],
   }));
@@ -107,16 +98,13 @@ export function getReferenceData(): ReferenceData {
       }
     }
   }
-  const sourceHerbs = [...(herbsJson.herbs as Herb[]), ...(apkHerbsJson.herbs as Herb[])];
-  const herbs = sourceHerbs.map((herb) => {
-    const categoryMatch = herb.chineseNames.map((name) => herbCategoryByName.get(name)).find(Boolean);
+  const herbs = (herbsJson.herbs as Herb[]).map((herb) => {
     const ingredientFormulaIds = [...herb.chineseNames, ...herb.pinyinNames]
       .flatMap((name) => formulaIdsByHerbName.get(name) ?? []);
     const formulaObservedDoses = [...herb.chineseNames, ...herb.pinyinNames]
       .flatMap((name) => dosesByHerbName.get(name) ?? []);
     return {
       ...herb,
-      category: herb.category ?? (categoryMatch ? { system: "herb-apk" as const, ...categoryMatch } : undefined),
       formulaIds: unique([
         ...herb.formulaIds.map((id) => canonicalIdByVariant.get(id) ?? id),
         ...ingredientFormulaIds,

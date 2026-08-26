@@ -1,84 +1,16 @@
 {
   "summary": {
-    "existingUniqueNames": 273,
-    "siteIndexEntries": 2785,
-    "matchedUniqueNames": 238,
-    "explicitAliasMatches": 4,
-    "unmatchedExistingNames": 35,
+    "existingUniqueNames": 158,
+    "siteIndexEntries": 2795,
+    "matchedUniqueNames": 140,
+    "unmatchedExistingNames": 18,
     "failedPages": 0
   },
-  "explicitAliases": [
-    {
-      "normalizedName": "daochisan",
-      "siteNormalizedName": "daochiresan",
-      "formulaIds": [
-        "dao-chi-san-7ca8de52",
-        "dao-chi-san-textbook-40c468ac"
-      ],
-      "siteLabel": "Dao Chi (Re) San",
-      "siteUrl": "https://www.americandragon.com/Herb%20Formulas%20copy/DaoChi(Re)San.html"
-    },
-    {
-      "normalizedName": "gegenqinliantang",
-      "siteNormalizedName": "gegenhuangqinhuangliantang",
-      "formulaIds": [
-        "ge-gen-qin-lian-tang-d311fea3",
-        "ge-gen-huang-qin-huang-lian-tang-textbook-f9ba1dc9"
-      ],
-      "siteLabel": "Ge Gen Huang Qin Huang Lian Tang",
-      "siteUrl": "https://www.americandragon.com/Herb%20Formulas%20copy/GeGenHuangQinHuangLianTang.html"
-    },
-    {
-      "normalizedName": "huoxiangzhengqisan",
-      "siteNormalizedName": "huoxiangzhengqitang",
-      "formulaIds": [
-        "huo-xiang-zheng-qi-san-28202930",
-        "huo-xiang-zheng-qi-san-4b877d34",
-        "huo-xiang-zheng-qi-san-textbook-40b19a29"
-      ],
-      "siteLabel": "Huo Xiang Zheng Qi Tang",
-      "siteUrl": "https://www.americandragon.com/Herb%20Formulas%20copy/HuoXiangZhengQiTang.html"
-    },
-    {
-      "normalizedName": "lizhongwan",
-      "siteNormalizedName": "lizhongtang",
-      "formulaIds": [
-        "li-zhong-wan-d38e813f",
-        "li-zhong-wan-textbook-00258eea"
-      ],
-      "siteLabel": "Li Zhong Tang",
-      "siteUrl": "https://www.americandragon.com/Herb%20Formulas%20copy/LiZhongTang.html"
-    }
-  ],
   "unmatchedExisting": [
-    {
-      "normalizedName": "ajiaojizihuangtang",
-      "formulaIds": [
-        "a-jiao-ji-zi-huang-tang-textbook-100222a9"
-      ]
-    },
-    {
-      "normalizedName": "baolongwan",
-      "formulaIds": [
-        "bao-long-wan-textbook-17afc168"
-      ]
-    },
-    {
-      "normalizedName": "beimuguaweisan",
-      "formulaIds": [
-        "bei-mu-gua-wei-san-textbook-d698a434"
-      ]
-    },
     {
       "normalizedName": "cangfudaotanwan",
       "formulaIds": [
         "cang-fu-dao-tan-wan-c6af2051"
-      ]
-    },
-    {
-      "normalizedName": "canluyin",
-      "formulaIds": [
-        "can-lu-yin-textbook-51cb0b4a"
       ]
     },
     {
@@ -87,26 +19,7 @@
         "chai-hu-shu-gan-san-ea4cc548",
         "chai-hu-shu-gan-san-3ba19747",
         "chai-hu-shu-gan-san-cad539ac",
-        "chai-hu-shu-gan-san-7c5cca8c",
-        "chai-hu-shu-gan-san-textbook-765fbcd2"
-      ]
-    },
-    {
-      "normalizedName": "conggujiegengtang",
-      "formulaIds": [
-        "cong-gu-jie-geng-tang-textbook-7302d654"
-      ]
-    },
-    {
-      "normalizedName": "dahuangmochongwan",
-      "formulaIds": [
-        "da-huang-mo-chong-wan-textbook-8f80be7d"
-      ]
-    },
-    {
-      "normalizedName": "dahuangmudantang",
-      "formulaIds": [
-        "da-huang-mu-dan-tang-textbook-aa3b2dde"
+        "chai-hu-shu-gan-san-7c5cca8c"
       ]
     },
     {
@@ -118,21 +31,9 @@
       ]
     },
     {
-      "normalizedName": "daqinwutang",
+      "normalizedName": "daochisan",
       "formulaIds": [
-        "da-qin-wu-tang-textbook-7414efc8"
-      ]
-    },
-    {
-      "normalizedName": "daxianxiongtang",
-      "formulaIds": [
-        "da-xian-xiong-tang-textbook-1a8c758e"
-      ]
-    },
-    {
-      "normalizedName": "dayuanyin",
-      "formulaIds": [
-        "da-yuan-yin-textbook-f0d1a097"
+        "dao-chi-san-7ca8de52"
       ]
     },
     {
@@ -148,21 +49,9 @@
       ]
     },
     {
-      "normalizedName": "gehuajiexingtang",
+      "normalizedName": "gegenqinliantang",
       "formulaIds": [
-        "ge-hua-jie-xing-tang-textbook-31cdd4b1"
-      ]
-    },
-    {
-      "normalizedName": "guaweiyanbaibaijiutang",
-      "formulaIds": [
-        "gua-wei-yan-bai-bai-jiu-tang-textbook-7d9a6393"
-      ]
-    },
-    {
-      "normalizedName": "guilingganlusan",
-      "formulaIds": [
-        "gui-ling-gan-lu-san-textbook-32ab4ea1"
+        "ge-gen-qin-lian-tang-d311fea3"
       ]
     },
     {
@@ -178,21 +67,16 @@
       ]
     },
     {
-      "normalizedName": "jishidaozhiwan",
+      "normalizedName": "huoxiangzhengqisan",
       "formulaIds": [
-        "ji-shi-dao-zhi-wan-textbook-e5784926"
+        "huo-xiang-zheng-qi-san-28202930",
+        "huo-xiang-zheng-qi-san-4b877d34"
       ]
     },
     {
-      "normalizedName": "jiujixiyansan",
+      "normalizedName": "lizhongwan",
       "formulaIds": [
-        "jiu-ji-xi-yan-san-textbook-117fb932"
-      ]
-    },
-    {
-      "normalizedName": "lianpuyin",
-      "formulaIds": [
-        "lian-pu-yin-textbook-1be6a3da"
+        "li-zhong-wan-d38e813f"
       ]
     },
     {
@@ -202,28 +86,9 @@
       ]
     },
     {
-      "normalizedName": "mahuangxingrengancaoshigaotang",
-      "formulaIds": [
-        "ma-huang-xing-ren-gan-cao-shi-gao-tang-textbook-29a95aa6"
-      ]
-    },
-    {
-      "normalizedName": "muxiangbinlangwan",
-      "formulaIds": [
-        "mu-xiang-bin-lang-wan-textbook-cfa4d1ed"
-      ]
-    },
-    {
-      "normalizedName": "neibuhuangqitang",
-      "formulaIds": [
-        "nei-bu-huang-qi-tang-textbook-3f03424c"
-      ]
-    },
-    {
       "normalizedName": "qingqihuatantang",
       "formulaIds": [
-        "qing-qi-hua-tan-tang-82725a26",
-        "qing-qi-hua-tan-wan-textbook-496e715b"
+        "qing-qi-hua-tan-tang-82725a26"
       ]
     },
     {
@@ -245,12 +110,6 @@
       ]
     },
     {
-      "normalizedName": "sangdiesan",
-      "formulaIds": [
-        "sang-die-san-textbook-6fe51073"
-      ]
-    },
-    {
       "normalizedName": "shashenmaidongtang",
       "formulaIds": [
         "sha-shen-mai-dong-tang-266e4f30",
@@ -261,12 +120,6 @@
       "normalizedName": "xiexintang",
       "formulaIds": [
         "xie-xin-tang-e09b8c0e"
-      ]
-    },
-    {
-      "normalizedName": "yugongsan",
-      "formulaIds": [
-        "yu-gong-san-textbook-77c2e6cf"
       ]
     }
   ],

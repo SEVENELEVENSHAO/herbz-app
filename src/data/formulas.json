@@ -1155,64 +1155,7 @@
         "Supports Wei Qi"
       ],
       "indications": "Lung Qi deficiency with weak cough, shortness of breath, spontaneous sweating, fatigue, and weak voice.",
-      "ingredients": [
-        {
-          "position": 1,
-          "chineseName": "人参",
-          "pinyin": "Ren Shen",
-          "englishName": "Ginseng",
-          "dose": "2-9g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 2,
-          "chineseName": "??",
-          "pinyin": "Dang Shen",
-          "englishName": "Codonopsis root",
-          "dose": "(12-18g)",
-          "thermalProperty": "neutral"
-        },
-        {
-          "position": 3,
-          "chineseName": "黄芪",
-          "pinyin": "Huang Qi",
-          "englishName": "Astragalus",
-          "dose": "3-30g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 4,
-          "chineseName": "熟地黄",
-          "pinyin": "Shu Di Huang",
-          "englishName": "Prepared Rehmannia",
-          "dose": "3-24g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 5,
-          "chineseName": "五味子",
-          "pinyin": "Wu Wei Zi",
-          "englishName": "Schisandra Fruit",
-          "dose": "1-6g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 6,
-          "chineseName": "??",
-          "pinyin": "Zi Wan",
-          "englishName": "Aster root",
-          "dose": "3-9g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 7,
-          "chineseName": "桑白皮",
-          "pinyin": "Sang Bai Pi",
-          "englishName": "",
-          "dose": "3-12g",
-          "thermalProperty": "cold"
-        }
-      ],
+      "ingredients": [],
       "sourceModules": [
         "src/lungContent.ts"
       ],
@@ -2625,56 +2568,7 @@
         "Stops cough"
       ],
       "indications": "Liver Fire attacking Lung with cough, chest/hypochondriac pain, irritability, bitter taste, and red eyes.",
-      "ingredients": [
-        {
-          "position": 1,
-          "chineseName": "桑白皮",
-          "pinyin": "Chao Sang Bai Pi",
-          "englishName": "",
-          "dose": "10g",
-          "thermalProperty": "cold"
-        },
-        {
-          "position": 2,
-          "chineseName": "地骨皮",
-          "pinyin": "Di Gu Pi",
-          "englishName": "lycium bark, cortex of wolfberry root",
-          "dose": "10g",
-          "thermalProperty": "cold"
-        },
-        {
-          "position": 3,
-          "chineseName": "炙甘草",
-          "pinyin": "Zhi Gan Cao",
-          "englishName": "Honey-fried Licorice",
-          "dose": "1g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 4,
-          "chineseName": "粳米",
-          "pinyin": "Geng Mi",
-          "englishName": "",
-          "dose": "8g",
-          "thermalProperty": "neutral"
-        },
-        {
-          "position": 5,
-          "chineseName": "??",
-          "pinyin": "Qing Dai",
-          "englishName": "Indigo naturalis",
-          "dose": "1g",
-          "thermalProperty": "cold"
-        },
-        {
-          "position": 6,
-          "chineseName": "???",
-          "pinyin": "Hai Ge Ke",
-          "englishName": "Clam shell",
-          "dose": "3g",
-          "thermalProperty": "cold"
-        }
-      ],
+      "ingredients": [],
       "sourceModules": [
         "src/lungContent.ts"
       ],
@@ -2991,80 +2885,7 @@
         "Stops night sweating"
       ],
       "indications": "Yin deficiency Fire with night sweats, heat sensations, red tongue, and rapid pulse.",
-      "ingredients": [
-        {
-          "position": 1,
-          "chineseName": "当归",
-          "pinyin": "Dang Gui",
-          "englishName": "Chinese Angelica",
-          "dose": "3-15g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 2,
-          "chineseName": "生地黄",
-          "pinyin": "Sheng Di Huang",
-          "englishName": "Rehmannia Root",
-          "dose": "5-30g",
-          "thermalProperty": "cold"
-        },
-        {
-          "position": 3,
-          "chineseName": "熟地黄",
-          "pinyin": "Shu Di Huang",
-          "englishName": "Prepared Rehmannia",
-          "dose": "9-30g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 4,
-          "chineseName": "黄连",
-          "pinyin": "Huang Lian",
-          "englishName": "Coptis",
-          "dose": "3-10g",
-          "thermalProperty": "cold"
-        },
-        {
-          "position": 5,
-          "chineseName": "黄芩",
-          "pinyin": "Huang Qin",
-          "englishName": "Scutellaria",
-          "dose": "3-18g",
-          "thermalProperty": "cold"
-        },
-        {
-          "position": 6,
-          "chineseName": "黄柏",
-          "pinyin": "Huang Bai",
-          "englishName": "phellodendron bark, Amur cork-tree bark",
-          "dose": "3-12g",
-          "thermalProperty": "cold"
-        },
-        {
-          "position": 7,
-          "chineseName": "牡蛎",
-          "pinyin": "Mu Li",
-          "englishName": "Oyster Shell",
-          "dose": "9-30g",
-          "thermalProperty": "cool"
-        },
-        {
-          "position": 8,
-          "chineseName": "小麦",
-          "pinyin": "Xiao Mai",
-          "englishName": "Wheat",
-          "dose": "9-30g",
-          "thermalProperty": "cool"
-        },
-        {
-          "position": 9,
-          "chineseName": "黄芪",
-          "pinyin": "Huang Qi",
-          "englishName": "Astragalus",
-          "dose": "9-30g",
-          "thermalProperty": "warm"
-        }
-      ],
+      "ingredients": [],
       "sourceModules": [
         "src/lungContent.ts"
       ],
@@ -3245,80 +3066,7 @@
         "Transforms Phlegm and stops wheezing"
       ],
       "indications": "Wheezing with Phlegm-Heat constrained by exterior Wind-Cold: labored breathing, thick yellow sputum, and chest oppression.",
-      "ingredients": [
-        {
-          "position": 1,
-          "chineseName": "白果",
-          "pinyin": "Bai Guo",
-          "englishName": "ginkyo",
-          "dose": "4.8-10g",
-          "thermalProperty": "neutral"
-        },
-        {
-          "position": 2,
-          "chineseName": "麻黄",
-          "pinyin": "Ma Huang",
-          "englishName": "ephedra stem, ma-huang",
-          "dose": "3-10g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 3,
-          "chineseName": "紫苏子",
-          "pinyin": "Zi Su Zi",
-          "englishName": "Perilla Fruit",
-          "dose": "1-12g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 4,
-          "chineseName": "甘草",
-          "pinyin": "Gan Cao",
-          "englishName": "Licorice Root",
-          "dose": "0.6-6g",
-          "thermalProperty": "neutral"
-        },
-        {
-          "position": 5,
-          "chineseName": "款冬花",
-          "pinyin": "Kuan Dong Hua",
-          "englishName": "Coltsfoot Flower",
-          "dose": "3-12g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 6,
-          "chineseName": "杏仁",
-          "pinyin": "Xing Ren",
-          "englishName": "'apricot seed or kernel",
-          "dose": "1.8-12g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 7,
-          "chineseName": "桑白皮",
-          "pinyin": "Sang Bai Pi",
-          "englishName": "",
-          "dose": "1.8-12g",
-          "thermalProperty": "cold"
-        },
-        {
-          "position": 8,
-          "chineseName": "黄芩",
-          "pinyin": "Huang Qin",
-          "englishName": "Scutellaria",
-          "dose": "0.6-9g",
-          "thermalProperty": "cold"
-        },
-        {
-          "position": 9,
-          "chineseName": "半夏",
-          "pinyin": "Ban Xia",
-          "englishName": "Pinellia",
-          "dose": "3-12g",
-          "thermalProperty": "warm"
-        }
-      ],
+      "ingredients": [],
       "sourceModules": [
         "src/lungContent.ts"
       ],
@@ -5007,48 +4755,7 @@
         "Regulates nutritive and defensive Qi"
       ],
       "indications": "Ying-Wei disharmony with sweating, aversion to wind, mild fever, and floating moderate pulse.",
-      "ingredients": [
-        {
-          "position": 1,
-          "chineseName": "桂枝",
-          "pinyin": "Gui Zhi",
-          "englishName": "Cinnamon Twig",
-          "dose": "4-9g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 2,
-          "chineseName": "白芍",
-          "pinyin": "Bai Shao",
-          "englishName": "White Peony Root",
-          "dose": "4-9g",
-          "thermalProperty": "cool"
-        },
-        {
-          "position": 3,
-          "chineseName": "生姜",
-          "pinyin": "Sheng Jiang",
-          "englishName": "Fresh Ginger",
-          "dose": "3-9g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 4,
-          "chineseName": "大枣",
-          "pinyin": "Da Zao",
-          "englishName": "Jujube",
-          "dose": "3-12g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 5,
-          "chineseName": "炙甘草",
-          "pinyin": "Zhi Gan Cao",
-          "englishName": "Honey-fried Licorice",
-          "dose": "2-6",
-          "thermalProperty": "warm"
-        }
-      ],
+      "ingredients": [],
       "sourceModules": [
         "src/lungContent.ts"
       ],
@@ -6419,80 +6126,7 @@
         "Promotes water transformation"
       ],
       "indications": "Kidney Yang deficiency with wheeze on exertion, cold lower body, edema tendency, weak low back/knees, and deep weak pulse.",
-      "ingredients": [
-        {
-          "position": 1,
-          "chineseName": "熟地黄",
-          "pinyin": "Shu Di Huang",
-          "englishName": "Prepared Rehmannia",
-          "dose": "8-30g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 2,
-          "chineseName": "山茱萸",
-          "pinyin": "Shan Zhu Yu",
-          "englishName": "Cornus Fruit",
-          "dose": "4-20g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 3,
-          "chineseName": "山药",
-          "pinyin": "Shan Yao",
-          "englishName": "Chinese Yam",
-          "dose": "4-15g",
-          "thermalProperty": "neutral"
-        },
-        {
-          "position": 4,
-          "chineseName": "附子",
-          "pinyin": "Fu Zi",
-          "englishName": "Aconite",
-          "dose": "1-15g",
-          "thermalProperty": "hot"
-        },
-        {
-          "position": 5,
-          "chineseName": "桂枝",
-          "pinyin": "Gui Zhi",
-          "englishName": "Cinnamon Twig",
-          "dose": "1-9g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 6,
-          "chineseName": "肉桂",
-          "pinyin": "Rou Gui",
-          "englishName": "",
-          "dose": "(3-5g)",
-          "thermalProperty": "hot"
-        },
-        {
-          "position": 7,
-          "chineseName": "泽泻",
-          "pinyin": "Ze Xie",
-          "englishName": "Alisma",
-          "dose": "3-15g",
-          "thermalProperty": "cold"
-        },
-        {
-          "position": 8,
-          "chineseName": "茯苓",
-          "pinyin": "Fu Ling",
-          "englishName": "Poria",
-          "dose": "3-15g",
-          "thermalProperty": "neutral"
-        },
-        {
-          "position": 9,
-          "chineseName": "牡丹皮",
-          "pinyin": "Mu Dan Pi",
-          "englishName": "Moutan Bark",
-          "dose": "3-15g",
-          "thermalProperty": "cool"
-        }
-      ],
+      "ingredients": [],
       "sourceModules": [
         "src/lungContent.ts"
       ],
@@ -8401,40 +8035,7 @@
         "Transforms Phlegm and stasis"
       ],
       "indications": "Pulmonary abscess with cough, chest pain, foul purulent sputum, fever, and constrained Lung Qi.",
-      "ingredients": [
-        {
-          "position": 1,
-          "chineseName": "芦根",
-          "pinyin": "Lu Gen",
-          "englishName": "Reed Rhizome",
-          "dose": "3g",
-          "thermalProperty": "cold"
-        },
-        {
-          "position": 2,
-          "chineseName": "薏苡仁",
-          "pinyin": "Yi Yi Ren",
-          "englishName": "",
-          "dose": "10g",
-          "thermalProperty": "cool"
-        },
-        {
-          "position": 3,
-          "chineseName": "冬瓜子",
-          "pinyin": "Dong Gua Zi",
-          "englishName": "Winter Melon Seed",
-          "dose": "5g",
-          "thermalProperty": "cool"
-        },
-        {
-          "position": 4,
-          "chineseName": "桃仁",
-          "pinyin": "Tao Ren",
-          "englishName": "Peach Kernel",
-          "dose": "3g",
-          "thermalProperty": "neutral"
-        }
-      ],
+      "ingredients": [],
       "sourceModules": [
         "src/lungContent.ts"
       ],
@@ -8535,72 +8136,7 @@
         "Relieves deficiency Heat"
       ],
       "indications": "Yin deficiency with effulgent Fire, tidal fever, night sweats, irritability, and red tongue.",
-      "ingredients": [
-        {
-          "position": 1,
-          "chineseName": "秦艽",
-          "pinyin": "Qin Jiao",
-          "englishName": "large gentian root, gentiana macrophylla root, chin-chiu",
-          "dose": "5-15g",
-          "thermalProperty": "neutral"
-        },
-        {
-          "position": 2,
-          "chineseName": "柴胡",
-          "pinyin": "Chai Hu",
-          "englishName": "Bupleurum",
-          "dose": "9-30g",
-          "thermalProperty": "cool"
-        },
-        {
-          "position": 3,
-          "chineseName": "鳖甲",
-          "pinyin": "Bie Jia",
-          "englishName": "Chinese soft-shelled turtle shell (dorsal aspect) bekko",
-          "dose": "9-30g",
-          "thermalProperty": "cool"
-        },
-        {
-          "position": 4,
-          "chineseName": "知母",
-          "pinyin": "Zhi Mu",
-          "englishName": "",
-          "dose": "5-15g",
-          "thermalProperty": "cold"
-        },
-        {
-          "position": 5,
-          "chineseName": "地骨皮",
-          "pinyin": "Di Gu Pi",
-          "englishName": "lycium bark, cortex of wolfberry root",
-          "dose": "9-30g",
-          "thermalProperty": "cold"
-        },
-        {
-          "position": 6,
-          "chineseName": "当归",
-          "pinyin": "Dang Gui",
-          "englishName": "Chinese Angelica",
-          "dose": "5-15g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 7,
-          "chineseName": "??",
-          "pinyin": "Wu Mei",
-          "englishName": "Mume fruit",
-          "dose": "(2-15g)",
-          "thermalProperty": "neutral"
-        },
-        {
-          "position": 8,
-          "chineseName": "青蒿",
-          "pinyin": "Qing Hao",
-          "englishName": "sweet wormwood",
-          "dose": "(1.5-15g)",
-          "thermalProperty": "cold"
-        }
-      ],
+      "ingredients": [],
       "sourceModules": [
         "src/lungContent.ts"
       ],
@@ -9381,32 +8917,7 @@
         "Promotes digestion"
       ],
       "indications": "Turbid Phlegm with cough, wheeze, copious sputum, chest fullness, and food stagnation tendency.",
-      "ingredients": [
-        {
-          "position": 1,
-          "chineseName": "白芥子",
-          "pinyin": "Bai Jie Zi",
-          "englishName": "White Mustard Seed",
-          "dose": "6-9g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 2,
-          "chineseName": "紫苏子",
-          "pinyin": "Zi Su Zi",
-          "englishName": "Perilla Fruit",
-          "dose": "6-9g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 3,
-          "chineseName": "莱菔子",
-          "pinyin": "Lai Fu Zi",
-          "englishName": "radish seed, raphanus",
-          "dose": "6-9",
-          "thermalProperty": "neutral"
-        }
-      ],
+      "ingredients": [],
       "sourceModules": [
         "src/lungContent.ts"
       ],
@@ -9429,80 +8940,7 @@
         "Transforms Phlegm"
       ],
       "indications": "Phlegm-Heat obstructing Lung with panting, cough, thick yellow sputum, thirst, and rapid pulse.",
-      "ingredients": [
-        {
-          "position": 1,
-          "chineseName": "桑白皮",
-          "pinyin": "Sang Bai Pi",
-          "englishName": "",
-          "dose": "10g",
-          "thermalProperty": "cold"
-        },
-        {
-          "position": 2,
-          "chineseName": "黄芩",
-          "pinyin": "Huang Qin",
-          "englishName": "Scutellaria",
-          "dose": "10g",
-          "thermalProperty": "cold"
-        },
-        {
-          "position": 3,
-          "chineseName": "黄连",
-          "pinyin": "Huang Lian",
-          "englishName": "Coptis",
-          "dose": "2g",
-          "thermalProperty": "cold"
-        },
-        {
-          "position": 4,
-          "chineseName": "栀子",
-          "pinyin": "Chao Zhi Zi",
-          "englishName": "Gardenia Fruit",
-          "dose": "10g",
-          "thermalProperty": "cold"
-        },
-        {
-          "position": 5,
-          "chineseName": "紫苏子",
-          "pinyin": "Zi Su Zi",
-          "englishName": "Perilla Fruit",
-          "dose": "10g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 6,
-          "chineseName": "杏仁",
-          "pinyin": "Xing Ren",
-          "englishName": "'apricot seed or kernel",
-          "dose": "6-9g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 7,
-          "chineseName": "川贝母",
-          "pinyin": "Chuan Bei Mu",
-          "englishName": "Fritillaria",
-          "dose": "5g",
-          "thermalProperty": "cool"
-        },
-        {
-          "position": 8,
-          "chineseName": "???",
-          "pinyin": "Ting Li Zi",
-          "englishName": "Pepperweed seed",
-          "dose": "10g",
-          "thermalProperty": "cold"
-        },
-        {
-          "position": 9,
-          "chineseName": "??",
-          "pinyin": "Bai Bu",
-          "englishName": "Stemona root",
-          "dose": "10g",
-          "thermalProperty": "warm"
-        }
-      ],
+      "ingredients": [],
       "sourceModules": [
         "src/lungContent.ts"
       ],
@@ -9525,72 +8963,7 @@
         "Stops cough"
       ],
       "indications": "Wind-Heat cough with mild fever, thirst, sore throat, and yellow or sticky sputum.",
-      "ingredients": [
-        {
-          "position": 1,
-          "chineseName": "桑叶",
-          "pinyin": "Sang Ye",
-          "englishName": "white mulberry leaf",
-          "dose": "6-12g",
-          "thermalProperty": "cold"
-        },
-        {
-          "position": 2,
-          "chineseName": "菊花",
-          "pinyin": "Ju Hua",
-          "englishName": "chrysanthemum flower kikuka",
-          "dose": "3-10g",
-          "thermalProperty": "cool"
-        },
-        {
-          "position": 3,
-          "chineseName": "连翘",
-          "pinyin": "Lian Qiao",
-          "englishName": "Forsythia Fruit",
-          "dose": "4.5-15g",
-          "thermalProperty": "cool"
-        },
-        {
-          "position": 4,
-          "chineseName": "薄荷",
-          "pinyin": "Bo He",
-          "englishName": "Mint",
-          "dose": "2.4-6g",
-          "thermalProperty": "cool"
-        },
-        {
-          "position": 5,
-          "chineseName": "桔梗",
-          "pinyin": "Jie Geng",
-          "englishName": "Platycodon",
-          "dose": "3-10g",
-          "thermalProperty": "neutral"
-        },
-        {
-          "position": 6,
-          "chineseName": "杏仁",
-          "pinyin": "Xing Ren",
-          "englishName": "'apricot seed or kernel",
-          "dose": "6-10g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 7,
-          "chineseName": "芦根",
-          "pinyin": "Lu Gen",
-          "englishName": "Reed Rhizome",
-          "dose": "6-30g",
-          "thermalProperty": "cold"
-        },
-        {
-          "position": 8,
-          "chineseName": "甘草",
-          "pinyin": "Gan Cao",
-          "englishName": "Licorice Root",
-          "dose": "1.5-6g",
-          "thermalProperty": "neutral"
-        }
-      ],
+      "ingredients": [],
       "sourceModules": [
         "src/lungContent.ts"
       ],
@@ -9700,64 +9073,7 @@
         "Stops cough"
       ],
       "indications": "Warm-Dryness injuring Lung with dry cough, scant sticky sputum, dry throat, and thirst.",
-      "ingredients": [
-        {
-          "position": 1,
-          "chineseName": "桑叶",
-          "pinyin": "Sang Ye",
-          "englishName": "white mulberry leaf",
-          "dose": "3-12g",
-          "thermalProperty": "cold"
-        },
-        {
-          "position": 2,
-          "chineseName": "杏仁",
-          "pinyin": "Xing Ren",
-          "englishName": "'apricot seed or kernel",
-          "dose": "1.5-12g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 3,
-          "chineseName": "栀子",
-          "pinyin": "Zhi Zi",
-          "englishName": "Gardenia Fruit",
-          "dose": "1-10g",
-          "thermalProperty": "cold"
-        },
-        {
-          "position": 4,
-          "chineseName": "淡豆豉",
-          "pinyin": "Dan Dou Chi",
-          "englishName": "Prepared Soybean",
-          "dose": "1-10g",
-          "thermalProperty": "cool"
-        },
-        {
-          "position": 5,
-          "chineseName": "浙贝母",
-          "pinyin": "Zhe Bei Mu",
-          "englishName": "Zhejiang Fritillary Bulb",
-          "dose": "1-6g",
-          "thermalProperty": "cold"
-        },
-        {
-          "position": 6,
-          "chineseName": "北沙参",
-          "pinyin": "Bei Sha Shen",
-          "englishName": "glehnia root hokushajin",
-          "dose": "2-15g",
-          "thermalProperty": "cool"
-        },
-        {
-          "position": 7,
-          "chineseName": "梨皮",
-          "pinyin": "Li Pi",
-          "englishName": "Pear Peel",
-          "dose": "1-6g",
-          "thermalProperty": "cool"
-        }
-      ],
+      "ingredients": [],
       "sourceModules": [
         "src/lungContent.ts"
       ],
@@ -10508,48 +9824,7 @@
         "Generates fluids"
       ],
       "indications": "Qi and Yin deficiency with fatigue, shortness of breath, dry mouth, spontaneous sweating, and weak pulse.",
-      "ingredients": [
-        {
-          "position": 1,
-          "chineseName": "人参",
-          "pinyin": "Ren Shen",
-          "englishName": "Ginseng",
-          "dose": "3-15g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 2,
-          "chineseName": "??",
-          "pinyin": "Dang Shen",
-          "englishName": "Codonopsis root",
-          "dose": "(15-45g)",
-          "thermalProperty": "neutral"
-        },
-        {
-          "position": 3,
-          "chineseName": "???",
-          "pinyin": "Xi Yang Shen",
-          "englishName": "American ginseng",
-          "dose": "(15-45g)",
-          "thermalProperty": "cool"
-        },
-        {
-          "position": 4,
-          "chineseName": "麦冬",
-          "pinyin": "Mai Men Dong",
-          "englishName": "Ophiopogon Root",
-          "dose": "5-30g",
-          "thermalProperty": "cool"
-        },
-        {
-          "position": 5,
-          "chineseName": "五味子",
-          "pinyin": "Wu Wei Zi",
-          "englishName": "Schisandra Fruit",
-          "dose": "2-10g",
-          "thermalProperty": "warm"
-        }
-      ],
+      "ingredients": [],
       "sourceModules": [
         "src/lungContent.ts"
       ],
@@ -13953,72 +13228,7 @@
         "Transforms thin fluids"
       ],
       "indications": "Exterior Cold with interior thin fluids: cough, wheeze, watery sputum, chills, and absence of thirst.",
-      "ingredients": [
-        {
-          "position": 1,
-          "chineseName": "麻黄",
-          "pinyin": "Ma Huang",
-          "englishName": "ephedra stem, ma-huang",
-          "dose": "6-10g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 2,
-          "chineseName": "桂枝",
-          "pinyin": "Gui Zhi",
-          "englishName": "Cinnamon Twig",
-          "dose": "3-12g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 3,
-          "chineseName": "干姜",
-          "pinyin": "Gan Jiang",
-          "englishName": "Dried Ginger",
-          "dose": "3-12g",
-          "thermalProperty": "hot"
-        },
-        {
-          "position": 4,
-          "chineseName": "细辛",
-          "pinyin": "Xi Xin",
-          "englishName": "asarum, Chinese wild ginger",
-          "dose": "3-9g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 5,
-          "chineseName": "五味子",
-          "pinyin": "Wu Wei Zi",
-          "englishName": "Schisandra Fruit",
-          "dose": "3-12g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 6,
-          "chineseName": "白芍",
-          "pinyin": "Bai Shao",
-          "englishName": "White Peony Root",
-          "dose": "3-12g",
-          "thermalProperty": "cool"
-        },
-        {
-          "position": 7,
-          "chineseName": "半夏",
-          "pinyin": "Ban Xia",
-          "englishName": "Pinellia",
-          "dose": "6-12g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 8,
-          "chineseName": "炙甘草",
-          "pinyin": "Zhi Gan Cao",
-          "englishName": "Honey-fried Licorice",
-          "dose": "3-9g",
-          "thermalProperty": "warm"
-        }
-      ],
+      "ingredients": [],
       "sourceModules": [
         "src/lungContent.ts"
       ],
@@ -14310,40 +13520,7 @@
         "Stops cough and wheeze"
       ],
       "indications": "Lung Heat with cough, wheezing, steaming skin sensation, thirst, and yellow tongue coat.",
-      "ingredients": [
-        {
-          "position": 1,
-          "chineseName": "桑白皮",
-          "pinyin": "Sang Bai Pi",
-          "englishName": "",
-          "dose": "10-30g",
-          "thermalProperty": "cold"
-        },
-        {
-          "position": 2,
-          "chineseName": "地骨皮",
-          "pinyin": "Di Gu Pi",
-          "englishName": "lycium bark, cortex of wolfberry root",
-          "dose": "10-30g",
-          "thermalProperty": "cold"
-        },
-        {
-          "position": 3,
-          "chineseName": "炙甘草",
-          "pinyin": "Zhi Gan Cao",
-          "englishName": "Honey-fried Licorice",
-          "dose": "1-30g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 4,
-          "chineseName": "粳米",
-          "pinyin": "Jing Mi",
-          "englishName": "",
-          "dose": "8-30g",
-          "thermalProperty": "neutral"
-        }
-      ],
+      "ingredients": [],
       "sourceModules": [
         "src/lungContent.ts"
       ],
@@ -14412,96 +13589,7 @@
         "Stops cough"
       ],
       "indications": "Wind-Cold or cool-dry cough with thin sputum, nasal congestion, no thirst, and floating pulse.",
-      "ingredients": [
-        {
-          "position": 1,
-          "chineseName": "杏仁",
-          "pinyin": "Xing Ren",
-          "englishName": "'apricot seed or kernel",
-          "dose": "6-10g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 2,
-          "chineseName": "紫苏叶",
-          "pinyin": "Zi Su Ye",
-          "englishName": "Perilla Leaf",
-          "dose": "3-9g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 3,
-          "chineseName": "前胡",
-          "pinyin": "Qian Hu",
-          "englishName": "Peucedanum",
-          "dose": "6-9g",
-          "thermalProperty": "cool"
-        },
-        {
-          "position": 4,
-          "chineseName": "桔梗",
-          "pinyin": "Jie Geng",
-          "englishName": "Platycodon",
-          "dose": "1-10g",
-          "thermalProperty": "neutral"
-        },
-        {
-          "position": 5,
-          "chineseName": "枳壳",
-          "pinyin": "Zhi Ke",
-          "englishName": "Bitter Orange",
-          "dose": "3-10g",
-          "thermalProperty": "cool"
-        },
-        {
-          "position": 6,
-          "chineseName": "陈皮",
-          "pinyin": "Chen Pi",
-          "englishName": "Tangerine Peel",
-          "dose": "3-6g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 7,
-          "chineseName": "茯苓",
-          "pinyin": "Fu Ling",
-          "englishName": "Poria",
-          "dose": "9-12g",
-          "thermalProperty": "neutral"
-        },
-        {
-          "position": 8,
-          "chineseName": "半夏",
-          "pinyin": "Ban Xia",
-          "englishName": "Pinellia",
-          "dose": "6-10g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 9,
-          "chineseName": "生姜",
-          "pinyin": "Sheng Jiang",
-          "englishName": "Fresh Ginger",
-          "dose": "1-6g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 10,
-          "chineseName": "大枣",
-          "pinyin": "Da Zao",
-          "englishName": "Jujube",
-          "dose": "1-6g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 11,
-          "chineseName": "甘草",
-          "pinyin": "Gan Cao",
-          "englishName": "Licorice Root",
-          "dose": "1-6g",
-          "thermalProperty": "neutral"
-        }
-      ],
+      "ingredients": [],
       "sourceModules": [
         "src/lungContent.ts"
       ],
@@ -16138,32 +15226,7 @@
         "Stops spontaneous sweating"
       ],
       "indications": "Lung Qi deficiency with spontaneous sweating, aversion to wind, recurrent colds, and weak pulse.",
-      "ingredients": [
-        {
-          "position": 1,
-          "chineseName": "黄芪",
-          "pinyin": "Huang Qi",
-          "englishName": "Astragalus",
-          "dose": "10-120g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 2,
-          "chineseName": "白术",
-          "pinyin": "Bai Zhu",
-          "englishName": "Atractylodes",
-          "dose": "9-60g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 3,
-          "chineseName": "防风",
-          "pinyin": "Fang Feng",
-          "englishName": "Siler Root",
-          "dose": "9-60g",
-          "thermalProperty": "warm"
-        }
-      ],
+      "ingredients": [],
       "sourceModules": [
         "src/lungContent.ts"
       ],
@@ -16256,120 +15319,7 @@
         "Stops cough and bleeding"
       ],
       "indications": "Pulmonary consumption with cough, hemoptysis, tidal fever, night sweats, and emaciation.",
-      "ingredients": [
-        {
-          "position": 1,
-          "chineseName": "天冬",
-          "pinyin": "Tian Men Dong",
-          "englishName": "Asparagus Root",
-          "dose": "30g",
-          "thermalProperty": "cold"
-        },
-        {
-          "position": 2,
-          "chineseName": "麦冬",
-          "pinyin": "Mai Men Dong",
-          "englishName": "Ophiopogon Root",
-          "dose": "30g",
-          "thermalProperty": "cool"
-        },
-        {
-          "position": 3,
-          "chineseName": "生地黄",
-          "pinyin": "Sheng Di Huang",
-          "englishName": "Rehmannia Root",
-          "dose": "30g",
-          "thermalProperty": "cold"
-        },
-        {
-          "position": 4,
-          "chineseName": "熟地黄",
-          "pinyin": "Shu Di Huang",
-          "englishName": "Prepared Rehmannia",
-          "dose": "30g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 5,
-          "chineseName": "山药",
-          "pinyin": "Shan Yao",
-          "englishName": "Chinese Yam",
-          "dose": "30g",
-          "thermalProperty": "neutral"
-        },
-        {
-          "position": 6,
-          "chineseName": "??",
-          "pinyin": "Bai Bu",
-          "englishName": "Stemona root",
-          "dose": "30g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 7,
-          "chineseName": "沙参",
-          "pinyin": "Sha Shen",
-          "englishName": "glehnia/adenophora root",
-          "dose": "30g",
-          "thermalProperty": "cool"
-        },
-        {
-          "position": 8,
-          "chineseName": "川贝母",
-          "pinyin": "Chuan Bei Mu",
-          "englishName": "Fritillaria",
-          "dose": "30g",
-          "thermalProperty": "cool"
-        },
-        {
-          "position": 9,
-          "chineseName": "阿胶",
-          "pinyin": "E Jiao",
-          "englishName": "Donkey-hide Gelatin",
-          "dose": "30g",
-          "thermalProperty": "neutral"
-        },
-        {
-          "position": 10,
-          "chineseName": "茯苓",
-          "pinyin": "Fu Ling",
-          "englishName": "Poria",
-          "dose": "15g",
-          "thermalProperty": "neutral"
-        },
-        {
-          "position": 11,
-          "chineseName": "???",
-          "pinyin": "Shui Ta Gan",
-          "englishName": "Otter liver",
-          "dose": "15g",
-          "thermalProperty": "neutral"
-        },
-        {
-          "position": 12,
-          "chineseName": "??",
-          "pinyin": "San Qi",
-          "englishName": "Notoginseng root",
-          "dose": "15g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 13,
-          "chineseName": "菊花",
-          "pinyin": "Bai Ju Hua",
-          "englishName": "chrysanthemum flower kikuka",
-          "dose": "60g",
-          "thermalProperty": "cool"
-        },
-        {
-          "position": 14,
-          "chineseName": "桑叶",
-          "pinyin": "Sang Ye",
-          "englishName": "white mulberry leaf",
-          "dose": "60g",
-          "thermalProperty": "cold"
-        }
-      ],
+      "ingredients": [],
       "sourceModules": [
         "src/lungContent.ts"
       ],
@@ -16764,48 +15714,7 @@
         "Strengthens Spleen and Kidney"
       ],
       "indications": "Yang deficiency with water retention, edema, cold limbs, palpitations, dizziness, and loose stool.",
-      "ingredients": [
-        {
-          "position": 1,
-          "chineseName": "附子",
-          "pinyin": "Fu Zi",
-          "englishName": "Aconite",
-          "dose": "5-15g",
-          "thermalProperty": "hot"
-        },
-        {
-          "position": 2,
-          "chineseName": "白术",
-          "pinyin": "Bai Zhu",
-          "englishName": "Atractylodes",
-          "dose": "3-15g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 3,
-          "chineseName": "茯苓",
-          "pinyin": "Fu Ling",
-          "englishName": "Poria",
-          "dose": "5-20g",
-          "thermalProperty": "neutral"
-        },
-        {
-          "position": 4,
-          "chineseName": "生姜",
-          "pinyin": "Sheng Jiang",
-          "englishName": "Fresh Ginger",
-          "dose": "3-9g",
-          "thermalProperty": "warm"
-        },
-        {
-          "position": 5,
-          "chineseName": "白芍",
-          "pinyin": "Bai Shao",
-          "englishName": "White Peony Root",
-          "dose": "3-9g",
-          "thermalProperty": "cool"
-        }
-      ],
+      "ingredients": [],
       "sourceModules": [
         "src/lungContent.ts"
       ],

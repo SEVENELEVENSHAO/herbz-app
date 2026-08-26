@@ -112,24 +112,6 @@
       ]
     },
     {
-      "formulaIds": [],
-      "observedDoses": [],
-      "id": "bai-bu",
-      "chineseNames": [
-        "??"
-      ],
-      "pinyinNames": [
-        "Bai Bu"
-      ],
-      "englishNames": [
-        "Stemona root",
-        "Stemonae Radix"
-      ],
-      "thermalProperties": [
-        "warm"
-      ]
-    },
-    {
       "id": "bai-dou-kou",
       "chineseNames": [
         "白豆蔻"
@@ -258,27 +240,6 @@
         "chemicalConstituents": "Glycerol derivates: 1-0-feruloylglycerol, 1,2-0-diferuloylglycerol,\n1,3-0-diferuloylglycerol, 1-0-feruioyl-2-0-p-coumaroylglycerol, 1-0\nferuloyl-3-0-p-coumaroylglycerol, 1-0-p-coumaroylglycerol, 1-O-p\ncoumaroyl-2-O-feruloylglycerol\nPhenolic glycosides: regaloside A, B, D, E, F, lilioside A, 3,6-0diferuloylsucrose\nAlkaioids: colchizine, B,-solamargine\nTriterpenes: brownioside, deacylbrownioside\nOther constituents: meconic acid, dioxane fignins, proteins,\nsugars, fats\n\n836\nAlternate species & tocal variants\n12 / Tonifying Herbs",
         "additionalProductInformation": "Three different products can be distinguished: # juan dan, also\ncalledIOngya bai heLilium lancifoliumbai he\nalso called # su bai he (Lilium browni); and shan dan,\nalso called il Tt chuan bai he (Lilium pumilum).\nmo han lian"
       }
-    },
-    {
-      "id": "bai-jie-zi",
-      "chineseNames": [
-        "白芥子"
-      ],
-      "pinyinNames": [
-        "Bai Jie Zi"
-      ],
-      "englishNames": [
-        "White Mustard Seed"
-      ],
-      "thermalProperties": [
-        "warm"
-      ],
-      "formulaIds": [
-        "san-zi-yang-qin-tang-50ddaf1a"
-      ],
-      "observedDoses": [
-        "6-9g"
-      ]
     },
     {
       "id": "bai-jiu",
@@ -2756,24 +2717,6 @@
       ]
     },
     {
-      "formulaIds": [],
-      "observedDoses": [],
-      "id": "dang-shen",
-      "chineseNames": [
-        "??"
-      ],
-      "pinyinNames": [
-        "Dang Shen"
-      ],
-      "englishNames": [
-        "Codonopsis root",
-        "Codonopsis Radix"
-      ],
-      "thermalProperties": [
-        "neutral"
-      ]
-    },
-    {
       "id": "deng-xin-cao",
       "chineseNames": [
         "灯心草"
@@ -2969,27 +2912,6 @@
         "alternateNames": "Tding zi xiang\nTgong ding xiang",
         "additionalProductInformation": "1\nAs noted above, two different products can be distinguished: the\nflower buds,known as the male cloveT gong ding xiang\nand the dried, almost ripe fruit, known as the mother ciove\nmu ding xiang.The flower buds are the standard product,as\ntheir volatile oil content is seven times greater than that of the\nfruit. For this reason, the fruit is regarded as unacceptable by the\nChinese Pharmacopoeia.\nxido hui xiang\nFoeniculi Fructus"
       }
-    },
-    {
-      "id": "dong-gua-zi",
-      "chineseNames": [
-        "冬瓜子"
-      ],
-      "pinyinNames": [
-        "Dong Gua Zi"
-      ],
-      "englishNames": [
-        "Winter Melon Seed"
-      ],
-      "thermalProperties": [
-        "cool"
-      ],
-      "formulaIds": [
-        "qian-jin-wei-jing-tang-3a79923e"
-      ],
-      "observedDoses": [
-        "5g"
-      ]
     },
     {
       "id": "dong-kui-zi",
@@ -4240,24 +4162,6 @@
       }
     },
     {
-      "formulaIds": [],
-      "observedDoses": [],
-      "id": "hai-ge-ke",
-      "chineseNames": [
-        "???"
-      ],
-      "pinyinNames": [
-        "Hai Ge Ke"
-      ],
-      "englishNames": [
-        "Clam shell",
-        "Meretricis/Cyclinae Concha"
-      ],
-      "thermalProperties": [
-        "cold"
-      ]
-    },
-    {
       "id": "hai-zao",
       "chineseNames": [
         "海藻"
@@ -5433,8 +5337,7 @@
         "粳米"
       ],
       "pinyinNames": [
-        "Jing Mi",
-        "Geng Mi"
+        "Jing Mi"
       ],
       "englishNames": [
         ""
@@ -5500,17 +5403,14 @@
     {
       "id": "ju-hua",
       "chineseNames": [
-        "菊花",
-        "???"
+        "菊花"
       ],
       "pinyinNames": [
-        "Ju Hua",
-        "Bai Ju Hua"
+        "Ju Hua"
       ],
       "englishNames": [
         "",
-        "chrysanthemum flower kikuka",
-        "White chrysanthemum flower"
+        "chrysanthemum flower kikuka"
       ],
       "thermalProperties": [
         "cool"
@@ -5589,27 +5489,6 @@
       ],
       "observedDoses": [
         "6 g"
-      ]
-    },
-    {
-      "id": "kuan-dong-hua",
-      "chineseNames": [
-        "款冬花"
-      ],
-      "pinyinNames": [
-        "Kuan Dong Hua"
-      ],
-      "englishNames": [
-        "Coltsfoot Flower"
-      ],
-      "thermalProperties": [
-        "warm"
-      ],
-      "formulaIds": [
-        "ding-chuan-tang-b480d3bc"
-      ],
-      "observedDoses": [
-        "3-12g"
       ]
     },
     {
@@ -5725,27 +5604,6 @@
       ],
       "observedDoses": [
         "3根"
-      ]
-    },
-    {
-      "id": "li-pi",
-      "chineseNames": [
-        "梨皮"
-      ],
-      "pinyinNames": [
-        "Li Pi"
-      ],
-      "englishNames": [
-        "Pear Peel"
-      ],
-      "thermalProperties": [
-        "cool"
-      ],
-      "formulaIds": [
-        "sang-xing-tang-ae0e6354"
-      ],
-      "observedDoses": [
-        "1-6g"
       ]
     },
     {
@@ -6275,18 +6133,14 @@
     {
       "id": "mai-dong",
       "chineseNames": [
-        "麦冬",
-        "???"
+        "麦冬"
       ],
       "pinyinNames": [
-        "Mai Dong",
-        "Mai Men Dong"
+        "Mai Dong"
       ],
       "englishNames": [
         "",
-        "Ophiopogon Root",
-        "Ophiopogon tuber",
-        "Ophiopogonis Tuber"
+        "Ophiopogon Root"
       ],
       "thermalProperties": [
         "cool"
@@ -7362,23 +7216,6 @@
       }
     },
     {
-      "formulaIds": [],
-      "observedDoses": [],
-      "id": "qing-dai",
-      "chineseNames": [
-        "??"
-      ],
-      "pinyinNames": [
-        "Qing Dai"
-      ],
-      "englishNames": [
-        "Indigo naturalis"
-      ],
-      "thermalProperties": [
-        "cold"
-      ]
-    },
-    {
       "id": "qing-hao",
       "chineseNames": [
         "青蒿"
@@ -7826,24 +7663,6 @@
         "alternateNames": "dT ru xiang\nming ru xiang",
         "additionalProductInformation": "Depending on the shape and quality, two different products can\nbe distinguished: frankincense pearls (# ru xiang zhu), also\ncalled drop frankincense (# dr ru xiang), and original frankincenseyuan ru xiangwhich consists of dark colored\nmasses. Frankincense pearis are said to be of superior quality,\nwith the best coming from Somalia.\n2(2)\nmo yao"
       }
-    },
-    {
-      "formulaIds": [],
-      "observedDoses": [],
-      "id": "san-qi",
-      "chineseNames": [
-        "??"
-      ],
-      "pinyinNames": [
-        "San Qi"
-      ],
-      "englishNames": [
-        "Notoginseng root",
-        "Notoginseng Radix"
-      ],
-      "thermalProperties": [
-        "warm"
-      ]
     },
     {
       "id": "sang-bai-pi",
@@ -9117,24 +8936,6 @@
       ]
     },
     {
-      "formulaIds": [],
-      "observedDoses": [],
-      "id": "shui-ta-gan",
-      "chineseNames": [
-        "???"
-      ],
-      "pinyinNames": [
-        "Shui Ta Gan"
-      ],
-      "englishNames": [
-        "Otter liver",
-        "Lutrae Jecur"
-      ],
-      "thermalProperties": [
-        "neutral"
-      ]
-    },
-    {
       "id": "su-he-xiang",
       "chineseNames": [
         "苏合香"
@@ -9368,19 +9169,15 @@
     {
       "id": "tian-dong",
       "chineseNames": [
-        "天冬",
-        "???"
+        "天冬"
       ],
       "pinyinNames": [
-        "Tian Dong",
-        "Tian Men Dong"
+        "Tian Dong"
       ],
       "englishNames": [
         "",
         "Asparagus Root",
-        "dendrobium",
-        "Asparagus tuber",
-        "Asparagi Radix"
+        "dendrobium"
       ],
       "thermalProperties": [
         "cold"
@@ -9520,24 +9317,6 @@
         "chemicalConstituents": "Phenolic compounds: vanilline, vanillyl alcohole, p-hydroxybenzyl\nalcohole, p-hydroxybenzaldehyde, 3,4-dihydroxybenzaldehyde,\n4,4-dihydroxydiphenyl methane, p-hydroxybenzyl ethyl ether,\n4,4 --dihydroxydibenzyl ether, 4-ethyloxytolyl-4-hydroxybenzyl ether,\n4--hydroxybenzyl methyl ether\nGlycosides: gastrodin, p-hydroxymethyl phenyl-s-D-glucopyranoside,\nbis-(4-hydroxybenzyl) ether mono-3-D-glucopyranoside, 4-(f3-D-glucopyranosyioxy) benzyl alcohol, parishin\nOther constituents: organic acids, p-hydroxy benzaldehyde,\nf-sitosterol, daucosterol\nAdulterants\nMirabilis jalapa,Nyctaginaceaezi moThis has flattened\ncylindrical or fusiform roots, 6-12cm long, 1.5-4cm in diameter,\nwith a yellowish white, greyish yellow,or yellowish brown surface\ntranslucent, twisted, with longitudinal channels and scars of lateral roots.It has a hard texture,and an uneven,yellowish white or\npale brown, horny cross section, sometimes with concentric lines.\nIt has a weak aroma and an acrid taste. By contrast,the stan\ndard herb is oblong and elliptical, sometimes with a bent shape,\n6-13cm long,2-6cm in diameter,with a yellowish white or pale\nyellowish brown, irregularly wrinkled surface, a hard texture,a yellowish white, horny, and even cross section,with a characteristic\naroma and sweet taste.\nDahlia pinnata, Compositae (# da li ju): This is a fusiform,\nslightly bent rhizome, with a white or greyish white surface with\ndeep, irregular iongitudinal channels, a hard texture, fibrous at\nboth ends, and a white and horny cross section.\nCanna edulisCannaceaeba jiao yuThis is an elliptoi\ndal rhizome, with a greyish white or yellowish grey surface. The\nunpeeled rhizome exhibits 3-8 ring nodes,a solid texture,and\nwhite spots on cross section. There is no characteristic aroma,\nbut it has a sweet taste, and sticks to the teeth when chewed.\nSee photos on page 1157.\nSolanum tuberosum, Solanaceae # ma ling shu; potatoes):\nThis is an elliptoidal tuber, with a yellowish brown surface with\nirregular wrinkles or artificially pressed tine patterns. It has a weak\naroma,and a sweet, potato-tike taste.\nCacalia tanguticaxie jia caoCacalia davidii\nshuang she xie jia cao): An oblong, elliptoidal, or fusiform rhizome,\n3-9cm long, 1.5-2.5cm in diameter, with a greyish brown or dark\nbrown surface with distinct ring nodes and scars of lateral roots.\na hard texture, a yellowish white or greyish white and horny cross\nsection, and a weak aroma and slightly sweet taste.\nAlterniate names\nbai longpf\n#*#R chi Jian gen\naingfengca\ndong peng - Tibet\nming tian ma\nmu pu - Yunnan\nshan tu dou - NE China\n*k shui yang yu - Yunnan",
         "additionalProductInformation": "Traditionally, depending on when the harvest took p!ace, this herb\nwas divided into two categories:winter gastrodiadong\ntian ma,for that unearthed in winter,and spring gastroida\nchun tian ma,for that harvested in February and March.The\ncultivated product is harvested only once a year, in November\nThe best quality is said to be winter gastrodia from Yunnan and\nSichuancalled Sichuan gastrodiachuan tian maSpring\n\n16 / Substances that Extinguish Wind and Stop Tremors\ngastrodia is said to be of inferior quality, even when compared\nto the cultivated product, except in the provinces of Jiangsu and\nZhejiang.\nAlthough the wild-crafted winter gastrodia is said to be of superior\nquality,it should no longer be used.Gastrodia elata is listed as an\nendangered species and export of the herb collected in the wild\nis generally restricted. In the past, cultivation of gastrodia was\nthought to be impossible. However, over the last thirty years,the\nMedicines Institute of the Chinese Academy of Medical Sciences\nhas developed a method of artificial production using the sym\nbiotic relationship between Gastrodia elata and the widespread\nwood decay fungi Armillaria mellea, commonly known as honey\nfungus. The fungus produces coils in the cells of the tuber, and\nthese coils are digested by the plant as a source of nutrition,\nthereby'supporting the growth of the Gastrodia orchid. At present,\nthe share of the cuitivated product in China's domestic market\nexceeds 80 percent.\nGastrodia elata is listed under Appendix iI of the Convention on\nInternational Trade in Endangered Species of Wild Fauna and Flora\n(CITES), which requires a permit both for export from China and\nimport to other countries, and may therefore be difficult to obtain.\n*# 3\nct jt lt"
       }
-    },
-    {
-      "formulaIds": [],
-      "observedDoses": [],
-      "id": "ting-li-zi",
-      "chineseNames": [
-        "???"
-      ],
-      "pinyinNames": [
-        "Ting Li Zi"
-      ],
-      "englishNames": [
-        "Pepperweed seed",
-        "Lepidii/Descurainiae Semen"
-      ],
-      "thermalProperties": [
-        "cold"
-      ]
     },
     {
       "id": "tong-cao",
@@ -9800,24 +9579,6 @@
       }
     },
     {
-      "formulaIds": [],
-      "observedDoses": [],
-      "id": "wu-mei",
-      "chineseNames": [
-        "??"
-      ],
-      "pinyinNames": [
-        "Wu Mei"
-      ],
-      "englishNames": [
-        "Mume fruit",
-        "Mume Fructus"
-      ],
-      "thermalProperties": [
-        "neutral"
-      ]
-    },
-    {
       "id": "wu-wei-zi",
       "chineseNames": [
         "五味子"
@@ -10010,24 +9771,6 @@
         "alternateNames": "A. sieboldi\n#bai xi xin - Shaanxi\nda yao - Shandong\nma ti xiang-Hubeipen cao xi xin Sichuan\nA. heterotropoides\nliao xi xin\nx shen\n6 yan dai guo hua",
         "additionalProductInformation": "The best quality is wild crafted from Liaoning province and is\ncalled Liao[ning] asarum (7 fu # liao xi xin) or northern asarum\nbbei x7xin\n#)\nsheng jiang"
       }
-    },
-    {
-      "formulaIds": [],
-      "observedDoses": [],
-      "id": "xi-yang-shen",
-      "chineseNames": [
-        "???"
-      ],
-      "pinyinNames": [
-        "Xi Yang Shen"
-      ],
-      "englishNames": [
-        "American ginseng",
-        "Quinquefolii Radix"
-      ],
-      "thermalProperties": [
-        "cool"
-      ]
     },
     {
       "id": "xian-jiang",
@@ -11041,27 +10784,6 @@
       }
     },
     {
-      "id": "zhe-bei-mu",
-      "chineseNames": [
-        "浙贝母"
-      ],
-      "pinyinNames": [
-        "Zhe Bei Mu"
-      ],
-      "englishNames": [
-        "Zhejiang Fritillary Bulb"
-      ],
-      "thermalProperties": [
-        "cold"
-      ],
-      "formulaIds": [
-        "sang-xing-tang-ae0e6354"
-      ],
-      "observedDoses": [
-        "1-6g"
-      ]
-    },
-    {
       "id": "zhi-gan-cao",
       "chineseNames": [
         "炙甘草"
@@ -11653,47 +11375,6 @@
         "alternateNames": "Perilla frutescens\njia sye\nPerilla frutescens var. acuta\nye su ye",
         "additionalProductInformation": "In some areas the stems and leaves are used together. It is then\nsimply called ##* zi su. The quality of this product is inferior.\n# 3\njing jie"
       }
-    },
-    {
-      "id": "zi-su-zi",
-      "chineseNames": [
-        "紫苏子"
-      ],
-      "pinyinNames": [
-        "Zi Su Zi"
-      ],
-      "englishNames": [
-        "Perilla Fruit"
-      ],
-      "thermalProperties": [
-        "warm"
-      ],
-      "formulaIds": [
-        "ding-chuan-tang-b480d3bc",
-        "san-zi-yang-qin-tang-50ddaf1a"
-      ],
-      "observedDoses": [
-        "1-12g",
-        "6-9g"
-      ]
-    },
-    {
-      "formulaIds": [],
-      "observedDoses": [],
-      "id": "zi-wan",
-      "chineseNames": [
-        "??"
-      ],
-      "pinyinNames": [
-        "Zi Wan"
-      ],
-      "englishNames": [
-        "Aster root",
-        "Asteris Radix"
-      ],
-      "thermalProperties": [
-        "warm"
-      ]
     },
     {
       "id": "zong-lu-pi",
